@@ -10,7 +10,7 @@ import { Results } from "@/pages/results";
 import { SecondPage } from "@/pages/second";
 import { JudgesPage } from "@/pages/judges";
 import { PolicyPage } from "@/pages/policy";
-import { HowPage } from "@/pages/soon";
+import { HowRedirect } from "@/pages/soon";
 
 function ThemeQuery() {
   const [params] = useSearchParams();
@@ -29,7 +29,7 @@ export default function App() {
       <Shell>
         <Routes>
           <Route path="/" element={<Overview />} />
-          <Route path="/how" element={<HowPage />} />
+          <Route path="/how" element={<HowRedirect />} />
           <Route path="/cases" element={<CasesPage />} />
           <Route path="/cases/:id" element={<CasesPage />} />
           <Route path="/graph" element={<GraphPage />} />
