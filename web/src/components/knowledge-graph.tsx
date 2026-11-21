@@ -38,7 +38,7 @@ function CardNode({ data }: NodeProps) {
 
 const nodeTypes: NodeTypes = { card: CardNode };
 
-export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapsed = false }: { item: CaseFile; highlightIds?: string[]; focusId?: string; startCollapsed?: boolean }) {
+export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapsed = true }: { item: CaseFile; highlightIds?: string[]; focusId?: string; startCollapsed?: boolean }) {
   const animate = useMemo(
     () => typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     [],
