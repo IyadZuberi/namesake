@@ -12,7 +12,7 @@ def _line(hit_id, alert_id, decision, code, record_id, reason, evidence):
         "decision": decision,
         "reason_code": code,
         "customer_record_id": record_id,
-        "reason": reason,
+        "reason": explain.cap_sentences(reason),
         "evidence": explain.clean_evidence(evidence),
     }
 

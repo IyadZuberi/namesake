@@ -22,23 +22,36 @@ class Data:
     """All files plus the indexes the engine needs. Lists inside indexes are sorted (determinism)."""
 
     def __init__(self, data_dir):
-        def table(name):
-            return list(read_jsonl(os.path.join(data_dir, name + ".jsonl")))
+        self.missing = set()  # optional files that were absent: treated as empty, never as a reason to clear
+
+        def table(name, optional=False):
+            path = os.path.join(data_dir, name + ".jsonl")
+            if optional and not os.path.exists(path):
+                self.missing.add(name)
+                return []
+            return list(read_jsonl(path))
 
         self.hits = sorted(table("hits"), key=lambda h: h["hit_id"])
         self.alerts = {a["alert_id"]: a for a in table("alerts")}
         customers = table("customers")
         self.customers = {c["record_id"]: c for c in customers}
-        self.search_results = sorted(table("search_results"), key=lambda s: s["result_id"])
+        self.search_results = sorted(table("search_results", True), key=lambda s: s["result_id"])
 
-        with open(os.path.join(data_dir, "name_variants.json"), encoding="utf-8") as handle:
-            nv = json.load(handle)
+        nv_path = os.path.join(data_dir, "name_variants.json")
+        if os.path.exists(nv_path):
+            with open(nv_path, encoding="utf-8") as handle:
+                nv = json.load(handle)
+        else:  # without the variant list a name could look different when it is not: no clear on name
+            self.missing.add("name_variants")
+            nv = {}
+        nv.setdefault("groups", [])
+        nv.setdefault("company_legal_forms", [])
         self.pairs = names.variant_pairs(nv["groups"])
         self.legal = frozenset(x.lower() for x in nv["company_legal_forms"])
 
         acc = defaultdict(set)
         login = defaultdict(set)
-        for a in table("accounts"):
+        for a in table("accounts", True):
             acc[a["account_id"]].add(a["customer_id"])
             if a.get("login_handle"):
                 login[a["login_handle"]].add(a["customer_id"])
@@ -53,19 +66,19 @@ class Data:
 
         apps = defaultdict(set)      # customer -> applicant ids
         app_cus = defaultdict(set)   # applicant -> customer ids
-        for o in table("onboarding"):
+        for o in table("onboarding", True):
             apps[o["customer_id"]].add(o["kyc_applicant_id"])
             app_cus[o["kyc_applicant_id"]].add(o["customer_id"])
         self.applicants_of = {k: sorted(v) for k, v in apps.items()}
         self.customers_of_applicant = {k: sorted(v) for k, v in app_cus.items()}
 
         checks = defaultdict(list)
-        for k in sorted(table("kyc_checks"), key=lambda k: k["check_id"]):
+        for k in sorted(table("kyc_checks", True), key=lambda k: k["check_id"]):
             checks[k["applicant_id"]].append(k)
         self.checks_of = dict(checks)
 
         notes = defaultdict(list)
-        for n in sorted(table("notes"), key=lambda n: n["note_id"]):
+        for n in sorted(table("notes", True), key=lambda n: n["note_id"]):
             if n.get("requester_email"):
                 notes[n["requester_email"].strip().lower()].append(n)
         self.notes_of = dict(notes)
