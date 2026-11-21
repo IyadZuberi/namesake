@@ -221,7 +221,7 @@
       },
       "hit_id": "H-0291BE",
       "linked_via": "email",
-      "one_fact": "A verified full legal name for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -722,7 +722,7 @@
       },
       "hit_id": "H-070D71",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -982,7 +982,7 @@
       },
       "hit_id": "H-10C5AB",
       "linked_via": "account_ref",
-      "one_fact": "A documented place of residence or nationality for the listed person would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -1763,7 +1763,7 @@
       },
       "hit_id": "H-124374",
       "linked_via": "account_ref",
-      "one_fact": "A verified full legal name for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -2012,7 +2012,7 @@
       },
       "hit_id": "H-15C6B9",
       "linked_via": "account_ref",
-      "one_fact": "A verified full legal name for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -2242,7 +2242,7 @@
       },
       "hit_id": "H-15C891",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -2485,7 +2485,7 @@
       },
       "hit_id": "H-16833E",
       "linked_via": "login_handle",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -2997,7 +2997,7 @@
       },
       "hit_id": "H-1D3A20",
       "linked_via": "account_ref",
-      "one_fact": "A verified full legal name for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -3232,7 +3232,7 @@
       },
       "hit_id": "H-1D4788",
       "linked_via": "email",
-      "one_fact": "A verified date of birth for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -3460,7 +3460,7 @@
       },
       "hit_id": "H-1E239E",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -3695,7 +3695,7 @@
       },
       "hit_id": "H-2212FB",
       "linked_via": "email",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -5063,7 +5063,7 @@
       },
       "hit_id": "H-294C3D",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -5803,7 +5803,7 @@
       },
       "hit_id": "H-353722",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -6331,7 +6331,7 @@
       },
       "hit_id": "H-3CD7DC",
       "linked_via": "account_ref",
-      "one_fact": "A customer link or a more exact screened name, date of birth or city would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -6615,7 +6615,7 @@
       },
       "hit_id": "H-408524",
       "linked_via": "email",
-      "one_fact": "A documented place of residence or nationality for the listed person would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -7378,7 +7378,7 @@
       },
       "hit_id": "H-42EC60",
       "linked_via": "login_handle",
-      "one_fact": "A verified full legal name for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -8915,7 +8915,7 @@
       },
       "hit_id": "H-4C9FB3",
       "linked_via": "login_handle",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -9197,7 +9197,7 @@
       },
       "hit_id": "H-4DC1D3",
       "linked_via": "account_ref",
-      "one_fact": "A customer link or a more exact screened name, date of birth or city would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -9715,7 +9715,7 @@
       },
       "hit_id": "H-4F24F8",
       "linked_via": "login_handle",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -9954,7 +9954,7 @@
       },
       "hit_id": "H-5084C6",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -10703,7 +10703,7 @@
       },
       "hit_id": "H-57675F",
       "linked_via": "email",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -12222,7 +12222,7 @@
       },
       "hit_id": "H-66376B",
       "linked_via": "email",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -13710,7 +13710,7 @@
       },
       "hit_id": "H-6E3BBC",
       "linked_via": "account_ref",
-      "one_fact": "A documented place of residence or nationality for the listed person would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -13951,7 +13951,7 @@
       },
       "hit_id": "H-6F867C",
       "linked_via": "email",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -15199,7 +15199,7 @@
       },
       "hit_id": "H-75FDF3",
       "linked_via": "account_ref",
-      "one_fact": "A verified date of birth for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -15435,7 +15435,7 @@
       },
       "hit_id": "H-7E8FAD",
       "linked_via": "email",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -16437,7 +16437,7 @@
       },
       "hit_id": "H-83AB84",
       "linked_via": "email",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -16937,7 +16937,7 @@
       },
       "hit_id": "H-86289B",
       "linked_via": "login_handle",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -17186,7 +17186,7 @@
       },
       "hit_id": "H-8676AB",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -17957,7 +17957,7 @@
       },
       "hit_id": "H-930410",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -18966,7 +18966,7 @@
       },
       "hit_id": "H-95ACD1",
       "linked_via": "account_ref",
-      "one_fact": "A verified date of birth for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -19208,7 +19208,7 @@
       },
       "hit_id": "H-95F940",
       "linked_via": "login_handle",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -19705,7 +19705,7 @@
       },
       "hit_id": "H-9B1DDA",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -19953,7 +19953,7 @@
       },
       "hit_id": "H-9BB33B",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -20218,7 +20218,7 @@
       },
       "hit_id": "H-9C9AFF",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -21201,7 +21201,7 @@
       },
       "hit_id": "H-AA85CD",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -22716,7 +22716,7 @@
       },
       "hit_id": "H-BF58C5",
       "linked_via": "login_handle",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -25075,7 +25075,7 @@
       },
       "hit_id": "H-D8B86C",
       "linked_via": "login_handle",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -25331,7 +25331,7 @@
       },
       "hit_id": "H-DA6E6D",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -25573,7 +25573,7 @@
       },
       "hit_id": "H-DBFCE1",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -27113,7 +27113,7 @@
       },
       "hit_id": "H-E29585",
       "linked_via": "account_ref",
-      "one_fact": "A verified full legal name for the customer would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -27587,7 +27587,7 @@
       },
       "hit_id": "H-E9A5CB",
       "linked_via": "email",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -28451,7 +28451,7 @@
       },
       "hit_id": "H-EAB477",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [
@@ -30514,7 +30514,7 @@
       },
       "hit_id": "H-F9607A",
       "linked_via": "account_ref",
-      "one_fact": "A full date of birth for the hit would settle it.",
+      "one_fact": null,
       "persons": [
         {
           "countries": [

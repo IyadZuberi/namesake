@@ -6,21 +6,6 @@ Trace file for a hit: TRACEDIR/<hit_id>.json (either the trace object or an obje
 import argparse, json, os, re, sys
 
 ID_IN_TEXT = re.compile(r"\b(?:CUS|KYC|NOTE|SR)-[0-9A-Za-z]+")
-# The engine leaves one_fact null except when no customer was found. REVIEW reasons already
-# contain the settling sentence. Copy that sentence out. Do not write a new one.
-SETTLE = re.compile(r"([^.]*would settle it\.)")
-
-
-def derive_one_fact(trace, decision):
-    if not isinstance(trace, dict) or trace.get("one_fact"):
-        return trace
-    reason = decision.get("reason") if isinstance(decision, dict) else ""
-    found = SETTLE.search(reason or "")
-    if not found:
-        return trace
-    out = dict(trace)
-    out["one_fact"] = " ".join(found.group(1).split())
-    return out
 
 
 def read_jsonl(path):
@@ -49,7 +34,6 @@ def build(data, decisions, trace_dir=None, titles=None):
             with open(tp, encoding="utf-8") as f:
                 t = json.load(f)
             trace = t.get("trace", t) if isinstance(t, dict) else None
-            trace = derive_one_fact(trace, d)
         alert = dict(idx["alerts"].get(d.get("alert_id"), {}))
         # ids the decision (and trace) cite, plus the rows that link the alert to its customer(s); full rows (contracts v2)
         ids = set(d.get("evidence") or []) | ({d["customer_record_id"]} if d.get("customer_record_id") else set())
