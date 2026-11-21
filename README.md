@@ -1,13 +1,35 @@
 # Namesake
 
-**Clears false sanctions hits only when it can prove a contradiction, and shows its evidence.**
+> **Clears false sanctions hits only when it can prove a contradiction, and shows its evidence.**
 
-Namesake is an open, rules-based engine for watchlist screening. For each screening hit it decides **same person**, **different person** or **needs a human**. It writes a short reason and lists the record IDs it relied on. Python standard library only, no model and no network. Every run gives byte-identical output.
+<p align="center">
+  <img src="docs/images/hero.webp" width="100%" alt="Namesake landing page in dark mode: Clear sanctions false positives safely, with proof, and a worked Fire Drill case (S-0072) comparing the customer to the listed person">
+</p>
+
+<p align="center"><b>An open, rules-based engine for watchlist screening.</b><br/>
+For each screening hit it decides <b>same person</b>, <b>different person</b> or <b>needs a human</b>.<br/>
+It writes a short reason and lists the record IDs it relied on. Python standard library only, no model and no network. Every run gives byte-identical output.</p>
+
+<p align="center">
+  <img alt="Python 3" src="https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white">
+  <img alt="154 tests passing" src="https://img.shields.io/badge/tests-154%20passing-brightgreen">
+  <a href="https://namesake-pearl.vercel.app"><img alt="Live demo" src="https://img.shields.io/badge/live%20demo-namesake--pearl.vercel.app-0D1012"></a>
+</p>
+
+<p align="center">
+  <a href="https://namesake-pearl.vercel.app">Live demo</a> ·
+  Demo video (coming soon) ·
+  <a href="#the-problem">The problem</a> ·
+  <a href="#what-namesake-does">How it works</a> ·
+  <a href="#results-measured-honest">Results</a> ·
+  <a href="#for-judges">For judges</a> ·
+  <a href="#quickstart">Quickstart</a>
+</p>
 
 > Built solo at the Grok Bot London Financial Crime Hackathon (21 Nov 2026), Track 2 "Same Person or Not?".
 >
 > **Live demo:** https://namesake-pearl.vercel.app
-> **Demo video:** to be added.
+> **Demo video:** coming soon.
 
 ---
 
@@ -50,6 +72,33 @@ flowchart LR
   E --> O[(one JSON line per hit)]
 ```
 
+## The site
+
+The public site is a product page and an analyst workbench over **synthetic Fire Drill cases** (invented names only). It does not ship event data.
+
+<p align="center">
+  <img src="docs/images/workbench.webp" width="49%" alt="Workbench case queue: a list of synthetic Fire Drill cases on the left, with the first case and its knowledge graph open on the right">
+  <img src="docs/images/case.webp" width="49%" alt="Opened Fire Drill case S-0072 in the workbench: customer born 1985, listed person born 1952, decision DIFFERENT on DOB_MISMATCH">
+</p>
+<p align="center"><em>Left: the workbench queue. Right: case S-0072, cleared as a different person because the dates of birth contradict.</em></p>
+
+<p align="center">
+  <img src="docs/images/case-graph.webp" width="100%" alt="Knowledge graph for Fire Drill case S-0072: sources fan into the customer and the listed person, seven gates run down the side, and the DOB gate shows a contradiction leading to DIFFERENT_ENTITY">
+</p>
+<p align="center"><em>The knowledge graph for the same case. Sources fan into the two people; the seven gates run by the side; the marked path is the rule that decided it.</em></p>
+
+<p align="center">
+  <img src="docs/images/policy.webp" width="49%" alt="Policy page: the nine principles from the bank identity SOP, each mapped to a file in the engine">
+  <img src="docs/images/results-practice.webp" width="49%" alt="Results page, Practice tab: decision score 100.0 on 50 of 50 labels, 0 unsafe clearances, name-only baseline 17.6, with the caveat that the labels were used while building">
+</p>
+<p align="center"><em>Left: every written policy principle, mapped to the code. Right: practice labels, 50/50, no unsafe clearances (not a held-out score).</em></p>
+
+<p align="center">
+  <img src="docs/images/results-dev.webp" width="49%" alt="Results page, Dev tab: 819 lines counted as 461 DIFFERENT, 236 REVIEW and 122 SAME, counts only because dev has no labels">
+  <img src="docs/images/results-firedrill.webp" width="49%" alt="Results page, Fire Drill tab: 122 of 122 expected decisions, 0 unsafe clearances, and a confusion matrix with a clean diagonal">
+</p>
+<p align="center"><em>Left: all 819 dev hits, counts only (no labels). Right: Fire Drill, 122/122, used as a regression test while fixing the engine.</em></p>
+
 ## Results (measured, honest)
 
 | What | Result | Caveat |
@@ -87,6 +136,8 @@ python system\mirror\main.py demo-data\firedrill out.jsonl
 The scored entry point is `system/run <data folder> <output file>`. On Windows, or anywhere without `sh`, use `python system\mirror\main.py <data folder> <output file>`.
 
 Architecture, evidence, determinism, three worked cases and limits are in [`system/README.md`](system/README.md).
+
+The live site is at https://namesake-pearl.vercel.app (synthetic data only). A demo video is coming soon.
 
 ## Verify it yourself
 
@@ -127,6 +178,7 @@ The rules come from the bank's identity SOP (`POLICY.md`, supplied with the even
 - template reasons with exact citations
 - deterministic output
 - tools to prove all of this: repro, practice scoring, leak check, final check, the synthetic Fire Drill generator and a decision comparer
+- a public site that shows the rule path on synthetic cases
 
 ## Repo map
 
@@ -141,6 +193,7 @@ The rules come from the bank's identity SOP (`POLICY.md`, supplied with the even
 | `demo-data/firedrill/` | synthetic data with expected answers (invented names) |
 | `web/` | product site (Vite + React, HashRouter). In `web/`, run `npm ci` then `npm run build`. |
 | `docs/` | architecture notes and data contracts |
+| `docs/images/` | screenshots of the live site, used in this README |
 | `data/` | git-ignored; put the event data here locally |
 
 ## Honest limits
@@ -155,7 +208,12 @@ The rules come from the bank's identity SOP (`POLICY.md`, supplied with the even
 
 - Event data is for participants only and is never committed. `data/`, `.env*` and any stray `*.jsonl` are git-ignored.
 - `output/dev.jsonl` is the only event-derived file, and the brief requires it. Its reasons hold derived facts (years, countries, record IDs), not names or quoted text.
+- The public site and the screenshots in `docs/images/` show synthetic Fire Drill cases only.
 - `tools/leakcheck.py` checks this before every push.
+
+## Team
+
+Iyad Zuberi ([@IyadZuberi](https://github.com/IyadZuberi)).
 
 ## Licence
 
