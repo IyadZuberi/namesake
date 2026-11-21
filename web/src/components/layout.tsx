@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { Menu } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { NavLink } from "react-router-dom";
 import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -32,6 +33,7 @@ function Item({ to, end, onClick }: { to: string; end?: boolean; onClick?: () =>
 }
 
 export function Shell({ children }: { children: ReactNode }) {
+  const { theme, setTheme } = useTheme();
   return (
     <div className="min-h-screen">
       <button
@@ -51,7 +53,16 @@ export function Shell({ children }: { children: ReactNode }) {
               <Item key={l.to} to={l.to} end={l.end} />
             ))}
           </nav>
-          <span className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-dashed border-amber-800/50 bg-amber-50 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-950">
+          <button
+            type="button"
+            className="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-md border"
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <Sun className="hidden h-4 w-4 dark:block" />
+            <Moon className="h-4 w-4 dark:hidden" />
+          </button>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-amber-700/60 bg-amber-500/10 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-amber-800 dark:text-amber-200">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-700" aria-hidden="true" />
             Synthetic data
           </span>

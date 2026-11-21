@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { evidenceRows } from "@/lib/graph";
+import { compareSides, evidenceRows } from "@/lib/graph";
 import { formatFact, gate, gateMeaning, oneFact, RULES } from "@/lib/rules";
 import type { CaseFile, GateName } from "@/lib/types";
 import { RuleMap } from "@/components/rule-map";
@@ -35,7 +35,28 @@ export function CasePanel({ item }: { item: CaseFile }) {
           <TabsTrigger value="raw">Raw</TabsTrigger>
         </TabsList>
         <TabsContent value="summary">
-          <p className="text-sm leading-relaxed">{item.decision.reason}</p>
+          <table className="w-full text-sm">
+            <caption className="mb-2 text-left text-muted-foreground">Customer against the listed person. Match, conflict, or missing comes from this hit's gates.</caption>
+            <thead>
+              <tr className="border-b text-left">
+                <th className="py-1 pr-2 font-medium" scope="col">Fact</th>
+                <th className="py-1 pr-2 font-medium" scope="col">Customer</th>
+                <th className="py-1 pr-2 font-medium" scope="col">Hit</th>
+                <th className="py-1 font-medium" scope="col">Mark</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compareSides(item).map((row) => (
+                <tr key={row.label} className="border-b">
+                  <th className="py-1.5 pr-2 text-left font-medium" scope="row">{row.label}</th>
+                  <td className="py-1.5 pr-2">{row.customer}</td>
+                  <td className="py-1.5 pr-2">{row.hit}</td>
+                  <td className="py-1.5 capitalize">{row.mark}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="mt-3 text-sm leading-relaxed">{item.decision.reason}</p>
           <ul className="mt-3 space-y-1">
             {rows.map((r) => (
               <li key={r.id} className="text-sm"><span className="font-mono text-[12px]">{r.id}</span> · {r.kind} · {r.value}</li>
@@ -68,7 +89,7 @@ export function CasePanel({ item }: { item: CaseFile }) {
         </TabsContent>
         <TabsContent value="graph">
           <Suspense fallback={<p className="text-sm text-muted-foreground">Loading the graph…</p>}>
-            <KnowledgeGraph item={item} startCollapsed />
+            <KnowledgeGraph item={item} />
           </Suspense>
         </TabsContent>
         <TabsContent value="rules">

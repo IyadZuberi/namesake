@@ -10,21 +10,24 @@ import {
 import "@xyflow/react/dist/style.css";
 import { useEffect, useMemo, useState } from "react";
 import { buildGraph, type NodeData } from "@/lib/graph";
-import { gateMeaning, RULES } from "@/lib/rules";
+import { RULES } from "@/lib/rules";
 import type { CaseFile } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 function CardNode({ data }: NodeProps) {
   const d = data as NodeData;
   return (
-    <div
-      className={cn(
-        "w-[188px] rounded-lg border bg-white px-2.5 py-2 shadow-sm",
-        d.decisive && "border-rose-800 ring-2 ring-rose-800/40",
-        d.highlighted && "ring-2 ring-emerald-800",
-        d.missing && "border-dashed border-amber-800",
-        !d.decisive && d.result === "agreement" && "border-emerald-700",
-        !d.decisive && d.result === "contradiction" && "border-rose-800",
+      <div
+        className={cn(
+          "w-[188px] rounded-lg border px-2.5 py-2 shadow-sm",
+        "bg-card text-card-foreground",
+        d.decisive && "border-rose-500 ring-2 ring-rose-500/50",
+        d.highlighted && "ring-2 ring-emerald-500",
+        d.missing && "border-dashed border-amber-500",
+        d.result === "agreement" && "border-emerald-500",
+        d.result === "contradiction" && "border-rose-500",
+        d.result === "blocked" && "border-amber-500",
+        d.result === "unknown" && "border-zinc-500",
       )}
     >
       <Handle type="target" position={Position.Left} className="!h-2 !w-2 !border-0 !bg-zinc-400" />
@@ -38,7 +41,7 @@ function CardNode({ data }: NodeProps) {
 
 const nodeTypes: NodeTypes = { card: CardNode };
 
-export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapsed = true }: { item: CaseFile; highlightIds?: string[]; focusId?: string; startCollapsed?: boolean }) {
+export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: CaseFile; highlightIds?: string[]; focusId?: string }) {
   const animate = useMemo(
     () => typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     [],
@@ -48,26 +51,11 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapse
   useEffect(() => {
     if (focusId && model.nodes.some((n) => n.id === focusId)) setSelected(focusId);
   }, [focusId, model]);
-  const [expanded, setExpanded] = useState(!startCollapsed);
   const nodes = model.nodes.map((n) => ({
     ...n,
     data: { ...n.data, highlighted: highlightIds.includes(n.id) },
   }));
-  const view = useMemo(() => {
-    if (expanded) return { nodes, edges: model.edges };
-    const order = ["alert", "customer", model.decisiveId, "decision"].filter((id, i, all) => nodes.some((n) => n.id === id) && all.indexOf(id) === i);
-    const kept = nodes.filter((n) => order.includes(n.id)).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id)).map((n, i) => ({ ...n, position: { x: i * 220, y: 24 } }));
-    const edges: typeof model.edges = order.slice(0, -1).map((id, i) => ({
-      id: `path-${id}`,
-      source: id,
-      target: order[i + 1],
-      animated: animate,
-      style: { stroke: "#9f1239", strokeWidth: 2.4 },
-      markerEnd: { type: "arrowclosed" as const, color: "#9f1239", width: 16, height: 16 },
-    }));
-    return { nodes: kept, edges };
-  }, [expanded, nodes, model, animate]);
-  const node = view.nodes.find((n) => n.id === selected) ?? view.nodes[0];
+  const node = nodes.find((n) => n.id === selected) ?? nodes[0];
   const ruleText = RULES.find((r) => r.name === node?.data.rule || r.id === node?.data.rule)?.text;
 
   return (
@@ -75,16 +63,14 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapse
       <div className="flex flex-wrap items-center gap-3 text-[12px] text-muted-foreground" aria-hidden="false">
         <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-6 bg-rose-800" /> Contradiction</span>
         <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-6 bg-emerald-700" /> Agreement</span>
-        <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-6 bg-zinc-400" /> Link</span>
-        <span>The rose ring is the decisive step. Tab to a node and press Enter.</span>
-        <button type="button" className="rounded-md border bg-card px-2 py-1 text-[12px] text-foreground" onClick={() => setExpanded((v) => !v)}>
-          {expanded ? "Show the decisive path" : "Expand all"}
-        </button>
+        <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-6 bg-amber-500" /> Blocked</span>
+        <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-6 bg-zinc-400" /> Unknown or link</span>
+        <span>Sources fan into the customer and the listed person. The seven gates run side by side. Tab to a node and press Enter.</span>
       </div>
-      <div className="h-[560px] overflow-hidden rounded-xl border bg-[#fbfaf7]" role="group" aria-label={`Entity graph for ${item.case_id}`}>
+      <div className="h-[640px] overflow-hidden rounded-xl border bg-card/40" role="group" aria-label={`Entity graph for ${item.case_id}`}>
         <ReactFlow
-          nodes={view.nodes}
-          edges={view.edges}
+          nodes={nodes}
+          edges={model.edges}
           nodeTypes={nodeTypes}
           fitView
           fitViewOptions={{ padding: 0.12 }}
@@ -101,7 +87,7 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapse
             if (nodes[0]) setSelected(nodes[0].id);
           }}
         >
-          <Background gap={18} size={1} color="#e4e0d6" />
+          <Background gap={18} size={1} />
           <Controls showInteractive={false} />
         </ReactFlow>
       </div>
@@ -109,22 +95,11 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapse
         <div id="node-detail" aria-live="polite" className="rounded-xl border bg-card p-4">
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{node.data.kind}</p>
           <h3 className="text-base font-semibold">{node.data.label}</h3>
-          <p className="mt-2 text-sm">
-            {node.data.kind === "Gate" ? gateMeaning(node.data.result) : node.data.lines.map((l) => `${l.label}: ${l.value}`).join(". ")}
-          </p>
-          <dl className="mt-3 grid gap-x-6 gap-y-1 sm:grid-cols-2">
-            {node.data.lines.map((line) => (
-              <div key={line.label} className="flex gap-2 text-sm">
-                <dt className="w-36 shrink-0 text-muted-foreground">{line.label}</dt>
-                <dd className="font-mono text-[12px]">{line.value}</dd>
-              </div>
-            ))}
-            {ruleText ? (
-              <div className="flex gap-2 text-sm sm:col-span-2">
-                <dt className="w-36 shrink-0 text-muted-foreground">Rule</dt>
-                <dd>{ruleText}</dd>
-              </div>
-            ) : null}
+          <dl className="mt-3 space-y-2 text-sm">
+            <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Why</dt><dd>{node.data.why}</dd></div>
+            <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Source</dt><dd className="font-mono text-[12px]">{node.data.sourceFile} · {node.data.sourceField}{node.data.sourceId ? " · " + node.data.sourceId : ""}</dd></div>
+            <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Rule</dt><dd>{ruleText || "This node is a source, not a deciding rule."}</dd></div>
+            <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Path</dt><dd>{node.data.path}</dd></div>
           </dl>
         </div>
       ) : null}

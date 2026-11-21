@@ -1,5 +1,7 @@
 import { MotionConfig } from "framer-motion";
-import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useTheme } from "next-themes";
+import { Route, Routes, useSearchParams } from "react-router-dom";
 import { Shell } from "@/components/layout";
 import { CasesPage } from "@/pages/cases";
 import { GraphPage, RulesPage } from "@/pages/graph-page";
@@ -9,9 +11,20 @@ import { SecondPage } from "@/pages/second";
 import { JudgesPage } from "@/pages/judges";
 import { HowPage } from "@/pages/soon";
 
+function ThemeQuery() {
+  const [params] = useSearchParams();
+  const { setTheme } = useTheme();
+  useEffect(() => {
+    const theme = params.get("theme");
+    if (theme === "light" || theme === "dark") setTheme(theme);
+  }, [params, setTheme]);
+  return null;
+}
+
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
+      <ThemeQuery />
       <Shell>
         <Routes>
           <Route path="/" element={<Overview />} />
