@@ -20,8 +20,8 @@ The code decides every verdict. Nothing is guessed: a missing or unreadable fact
 1. Follow the alert's link: account, login handle or email. A link can lead to several people (joint holders); the screened name, date of birth, country and city then pick between them. If they still fit more than one person and the decisions differ, the result is REVIEW with `AMBIGUOUS_CUSTOMER_RECORD`.
 2. With no link, filter the customer records by the screened date of birth (every part both give) and country first, then compare names. This keeps the search fast.
 3. Records of one person merge when they share a phone number and the same full date of birth (dates are compared after parsing, so `19/07/1982` equals `1982-07-19`), or the same document number on approved checks. A phone number or address alone never merges.
-4. The most recent **approved** identity check (from the KYC provider file, or written only in a KYC note) gives the verified name, date of birth and document country. Rejected, expired or failed checks are ignored.
-5. Customer countries come from residence and nationality on all the person's records, the approved document, and any country named in a non-KYC note. These notes only ever **block** a clear.
+4. The most recent **approved** identity check (from the KYC provider file, or written only in a KYC note) gives the verified name, date of birth and document country. Rejected, expired or failed checks are ignored, and a KYC note counts only when it states a positive outcome (verified, passed, approved, ...); a pending or inconclusive note is not evidence.
+5. Customer countries come from residence and nationality on all the person's records, the approved document, and any country named in a non-KYC note. These notes only ever **block** a clear. A note that talks about living or working somewhere without a country we can read (for example only a city) marks the customer's places as not fully known: the location rule then cannot clear, and the countries we did read can still block a confirmation. The same holds for an unreadable country on a record.
 
 ## How the listed person is resolved
 Date of birth: the `dobs` field, else an age or "born" sentence in the first paragraph of the profile (an age at a date gives two possible years), else a matching web search result (same kind of listing phrase and a country tied to the hit). Countries: every country field, the last part of each address, nationality, citizenship and place of birth; "International" and "Europe" are not countries. Dated reports: only lines in the exact form `According to ...; Month D, YYYY:`. For companies only the `dobs` field is an incorporation date.
@@ -43,13 +43,17 @@ None. The scored engine makes no model calls. Notes are read with plain pattern 
 - Practice labels: 50 right decisions, 0 unsafe clearances, decision score 100.0, reason code 100%, customer record 100%.
 - All 819 dev hits: 461 DIFFERENT_ENTITY, 122 SAME_ENTITY, 236 REVIEW (counts only; there are no labels for these).
 - Fire Drill (our own synthetic trap set, 122 hits, expected answers written separately from the policy text): 122 of 122 match, 0 unsafe clearances. This was used to fix two bugs, so it is a regression test, not an independent score.
-- 114 unit tests pass (`python -m unittest discover -s tests`).
+- 154 unit tests pass, 4 skipped (`python -m unittest discover -s tests`).
 The score on the unseen set is **not measured**.
 
 ## Three worked cases (synthetic Fire Drill cases, same code path as real data)
 1. **A clear mismatch (`H-93BD04`).** The customer was found through the alert's account link. The customer's date of birth is 1985-03-14; the hit's only birth information is the year 1952, and no other date of birth for the customer or source for the hit agrees. Decision: `DIFFERENT_ENTITY`, `DOB_MISMATCH`, evidence: the customer record.
 2. **A match (`H-6A56AA`).** The customer's date of birth 1971-09-12 agrees with the hit's year 1970 or 1971, the names agree, both are linked to Italy and nothing contradicts. Decision: `SAME_ENTITY`, `NAME_DOB_LOCATION_MATCH`.
 3. **Left for review (`H-1E239E`).** The names agree but the hit gives no usable date of birth, and its only countries are "Europe" and "International", which are not countries. Nothing contradicts and not enough agrees. Decision: `REVIEW`, `INSUFFICIENT_DATA`; the reason says what would settle it: a full date of birth for the hit.
+
+## Robustness
+- A missing optional file (search results, notes, accounts, onboarding, KYC checks, name variants) is read as empty, never as a reason to clear: without `name_variants.json` no hit clears on name and name doubts block location clears; without notes no hit clears on location.
+- Reasons are capped at four sentences; a DOB mismatch reason names the hit's own date (and which part differs when the year is the same).
 
 ## Honest limits
 - The unseen-set score is unknown. The location rule carries much of the saving, and it depends on finding the customer's countries in notes; reworded notes that hide a country are the main risk of a wrong clear.

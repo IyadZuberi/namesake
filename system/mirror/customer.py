@@ -12,9 +12,18 @@ import dates
 import names
 
 FAILURE_RX = re.compile(r"reject|fail|declin|expire|unsuccess|denied|refus|not (?:approved|verified|passed)|could not", re.I)
+# an approved check must SAY it passed: a note with no positive outcome (pending, awaiting, on hold,
+# inconclusive...) is not evidence (POLICY 4: only approved checks count)
+SUCCESS_RX = re.compile(r"\b(?:verifi\w*|success\w*|confirm\w*|clear(?:ed|s)?|pass(?:ed|es)?|approv\w*|complet\w*|"
+                        r"validat\w*|match(?:ed|es)?|processed|accepted|authenticat\w*)\b", re.I)
 TOKEN_RX = re.compile(r"[^\s,;:()\"]+")
 BORN_CUE_RX = re.compile(r"(?:DOB|date of birth|born|birth)\D{0,30}$", re.I)
 BORN_YEAR_RX = re.compile(r"(?:DOB|born|birth)\D{0,25}(\d{4})\b", re.I)
+# a non-KYC note that talks about living or working somewhere: if no country can be read from it,
+# the customer's places are not fully known, so the location rule may not clear (POLICY 6, unknown stays unknown)
+LIVED_RX = re.compile(r"\b(?:liv(?:e|ed|es|ing)|moved|mov(?:e|es|ing) (?:to|from)|relocat\w*|resid\w*|domicil\w*|settled|"
+                      r"based (?:in|at|out)|grew up|raised in|stay(?:ed|ing) in|work(?:ed|s|ing)? (?:in|abroad)|"
+                      r"employ\w* (?:in|abroad)|home (?:in|country|town)|from (?:abroad|overseas)|emigrat\w*|immigrat\w*)\b", re.I)
 STOP_CAPS = {"DOB", "ID", "KYC", "UK", "US", "USA", "UAE", "OK"}
 
 
@@ -45,6 +54,7 @@ class Person:
         self.alt_ver_names = []         # [(name, source_id)] older approved verified names (blocking)
         self.countries = {}             # code -> [(kind, source_id)]
         self.country_unparsed = False
+        self.place_unparsed = False     # a note mentions living/working somewhere we could not read as a country
         self.lived_notes = []
         self.is_company = False
         self.dob_conflict = False
@@ -110,7 +120,7 @@ def parse_kyc_note(note):
             run = [tok] if m and tok.isupper() and len(tok) >= 2 and tok not in STOP_CAPS else []
         last_end = m.end() if m else last_end
     return {
-        "ok": not FAILURE_RX.search(text),
+        "ok": bool(SUCCESS_RX.search(text)) and not FAILURE_RX.search(text),
         "name": runs[0] if len(runs) == 1 else None,
         "dob": dob,
         "countries": sorted(countries.scan_text(text, codes=False)),
@@ -206,6 +216,9 @@ class Resolver:
                         facts.append(Fact(n["note_id"], "kyc_note", _when(n.get("created_at")), info["name"], info["dob"], info["countries"]))
                 else:
                     found = countries.scan_text(n.get("text"))
+                    if not found and LIVED_RX.search(n.get("text") or ""):
+                        p.place_unparsed = True
+                        p.lived_notes.append(n["note_id"])
                     if found:
                         p.lived_notes.append(n["note_id"])
                         for code in sorted(found):

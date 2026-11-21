@@ -72,7 +72,7 @@ def dob_gate(person, hit):
         return _gate("DOB", "unknown", {"hit_source": hit.dob_source})
     years = sorted({d.y for d in hit.dobs})
     facts = {"customer_dob": dates.iso(person.dob), "dob_source": person.dob_source,
-             "hit_years": years, "hit_source": hit.dob_source, "sr_ids": list(hit.sr_ids), "hit_has_full": any(dates.is_full(d) for d in hit.dobs)}
+             "hit_years": years, "hit_dobs": sorted({dates.iso(d) for d in hit.dobs}), "hit_source": hit.dob_source, "sr_ids": list(hit.sr_ids), "hit_has_full": any(dates.is_full(d) for d in hit.dobs)}
     cite = [person.dob_source] + (hit.sr_ids if hit.dob_source == "search_result" else [])
     if dates.any_agree(person.dob, hit.dobs):
         return _gate("DOB", "agreement", facts, cite)
@@ -104,6 +104,8 @@ def name_agreement(person, hit, data):
 
 
 def name_gate(person, hit, data):
+    if "name_variants" in getattr(data, "missing", ()):
+        return _gate("NAME", "unknown", {"missing": "name_variants.json"})
     ver = person.ver
     if person.is_company or hit.company or ver is None or not ver.name or not hit.names:
         return _gate("NAME", "not_applicable" if person.is_company else "unknown")
@@ -120,14 +122,20 @@ def name_gate(person, hit, data):
     return _gate("NAME", "contradiction", facts, [ver.source_id])
 
 
-def location_gate(person, hit, name_dob_agree):
+def location_gate(person, hit, name_dob_agree, missing=frozenset()):
     mine = sorted(person.countries)
     theirs = sorted(hit.countries)
-    if not mine or person.country_unparsed or not theirs or hit.countries_unparsed:
+    if not mine or not theirs or hit.countries_unparsed or "notes" in missing:
         return _gate("LOCATION", "unknown", {"customer": mine, "hit": theirs})
     facts = {"customer": mine, "hit": theirs}
     if set(mine) & set(theirs):
         return _gate("LOCATION", "agreement", facts)
+    if person.country_unparsed or getattr(person, "place_unparsed", False):
+        # some customer place could not be read: the countries we did read may only block, never clear
+        facts["unread_place"] = True
+        if name_dob_agree:
+            return _gate("LOCATION", "blocked", facts, [], "name and date of birth agree")
+        return _gate("LOCATION", "unknown", facts)
     cite = list(person.record_ids)
     for code in mine:
         for kind, src in person.countries[code]:
@@ -148,7 +156,9 @@ def evaluate(person, hit, screened, data):
     g["NAME"] = name_gate(person, hit, data)
     name_ok = name_agreement(person, hit, data)
     dob_ok = dob_agreement(person, hit)
-    g["LOCATION"] = location_gate(person, hit, name_ok and dob_ok)
+    missing = getattr(data, "missing", frozenset())
+    nv_missing = "name_variants" in missing  # names might agree through a variant we cannot see: block, never clear
+    g["LOCATION"] = location_gate(person, hit, (name_ok or nv_missing) and dob_ok, missing)
     country_ok = bool(set(person.countries) & hit.countries) and not hit.countries_unparsed
     agreement = {"name": name_ok, "dob": dob_ok, "country": country_ok}
     g["AGREEMENT"] = _gate("AGREEMENT", "agreement" if name_ok and dob_ok else "unknown", agreement)

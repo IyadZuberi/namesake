@@ -5,7 +5,10 @@ Show why it's a different person.
 Namesake is an open, rules-based engine that decides whether a sanctions/PEP screening hit is the customer, with a short reason and the records that decided it. A second mode compares any other system's decisions against the written policy.
 
 > Status: work in progress, built at the Grok Bot London Financial Crime Hackathon (21 Nov 2026), Track 2.
-> Nothing here is measured yet. Measured results are added by the tools in `tools/` once they have been run.
+> Measured on the development set (the 50 practice labels were used while building, so this is not a held-out score):
+> `validate.py` 819 lines, 0 problems; practice labels 50 of 50 right, 0 unsafe clearances, decision score 100.0, reason code and customer record 100%.
+> Fire Drill (our own synthetic trap set, 122 hits): 122 of 122, 0 unsafe clearances (a regression test, not an independent score).
+> Output is byte-identical across runs. The score on the unseen set is not measured. Details: `system/README.md`.
 
 ## What it does
 - Reads a bank's alerts, hits, customer records, KYC checks and notes (JSON Lines).
