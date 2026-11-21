@@ -6,7 +6,7 @@ Namesake is an open, rules-based engine for watchlist screening. For each screen
 
 > Built solo at the Grok Bot London Financial Crime Hackathon (21 Nov 2026), Track 2 "Same Person or Not?".
 >
-> **Live demo:** https://namesake.vercel.app
+> **Live demo:** https://namesake-pearl.vercel.app
 > **Demo video:** to be added.
 
 ---
