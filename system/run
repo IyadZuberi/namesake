@@ -1,0 +1,11 @@
+#!/bin/sh
+# Usage: system/run <data folder> <output file>
+# Tries python3, then python (python3 can be a Windows Store stub that does not run).
+here="$(cd "$(dirname "$0")" && pwd)"
+for py in python3 python; do
+  if "$py" -c '' >/dev/null 2>&1; then
+    exec "$py" "$here/mirror/main.py" "$1" "$2"
+  fi
+done
+echo "no working python found" >&2
+exit 1

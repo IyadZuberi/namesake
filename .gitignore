@@ -1,0 +1,41 @@
+# Event data is for participants only. NEVER commit it.
+data/*
+!data/.gitkeep
+!data/README.md
+*.zip
+*.xlsx
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Run artefacts that can hold dev quotes
+system/cache/
+system/receipts/
+system/graphs/
+*.receipt.json
+
+# Python / OS / editor
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db
+node_modules/
+.vercel/
+
+# Internal notes, scratch, logs
+internal/
+tmp/
+scratch/
+*.log
+web/.next/
+
+# Any jsonl is event-like data unless explicitly allowed
+*.jsonl
+!output/dev.jsonl
+!demo-data/**/*.jsonl
+
+# Event material must never be published
+demo-data/**/POLICY.md

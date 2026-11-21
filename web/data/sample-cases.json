@@ -1,0 +1,4457 @@
+[
+ {
+  "case_id": "S-0001",
+  "title": "Two Mohammed Alis",
+  "alert": {
+   "alert_id": "A-000001",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Mohammed Ali Rahimi",
+    "entity_type": "Individual",
+    "dob": "1988-03-14",
+    "country": "GB",
+    "city": "London"
+   },
+   "account_ref": "ACC-000001",
+   "login_handle": null,
+   "email": null,
+   "hit_ids": [
+    "H-000001"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000001",
+    "full_name": "Mohammed Ali Rahimi",
+    "dob": "1988-03-14",
+    "nationality": "Egypt",
+    "residence_country": "GB",
+    "phone": "+44 7700 900101",
+    "email": "m.rahimi@mail.example",
+    "city": "London",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "London (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000001",
+    "verified_name": "Mohammed Ali Rahimi",
+    "verified_dob": "1988-03-14",
+    "result": "approved",
+    "document_country": "EG",
+    "checked_at": "2025-02-11",
+    "applicant_id": "APP-000001",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000001"
+   }
+  ],
+  "notes": [
+   {
+    "note_id": "NOTE-000001",
+    "text": "Onboarding: identity document checked in branch. Customer reports no other names.",
+    "requester_email": "onboarding@bank.example",
+    "created_at": "2025-01-01",
+    "channel": "support"
+   }
+  ],
+  "accounts": [
+   {
+    "account_id": "ACC-000001",
+    "customer_id": "CUS-000001",
+    "login_handle": null,
+    "phone": "+44 7700 900101"
+   }
+  ],
+  "onboarding": [
+   {
+    "account_id": "ACC-000001",
+    "customer_id": "CUS-000001",
+    "kyc_applicant_id": "APP-000001"
+   }
+  ],
+  "hit": {
+   "hit_id": "H-000001",
+   "name": "Mohammed Ali Hadid",
+   "aliases": [
+    "Mohamed Ali Hadid"
+   ],
+   "dobs": [
+    "1952"
+   ],
+   "countries": [
+    "Egypt"
+   ],
+   "nationality": [
+    "Egypt"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "PEP",
+   "profile_notes": "Mohammed Ali Hadid (born 1952) is a former deputy minister of the fictional Ministry of Ports. He is listed as a politically exposed person.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Egypt"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "PEP"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000001",
+   "alert_id": "A-000001",
+   "decision": "DIFFERENT_ENTITY",
+   "reason_code": "DOB_MISMATCH",
+   "customer_record_id": "CUS-000001",
+   "reason": "Verified date of birth 1988-03-14 (KYC-000001) is 36 years from the hit's only birth year, 1952 (H-000001).",
+   "evidence": [
+    "KYC-000001",
+    "H-000001#dobs"
+   ]
+  },
+  "trace": {
+   "linked_via": "account_ref",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000001"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Mohammed Ali Rahimi",
+      "dob": "1988-03-14",
+      "source_id": "KYC-000001",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "GB",
+       "source_id": "CUS-000001",
+       "kind": "residence"
+      },
+      {
+       "value": "EG",
+       "source_id": "CUS-000001",
+       "kind": "nationality"
+      }
+     ],
+     "decision": "DIFFERENT_ENTITY",
+     "reason_code": "DOB_MISMATCH"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [
+     1952
+    ],
+    "dob_source": "dobs",
+    "countries": [
+     "EG"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Two name parts match (mohammed, ali): same name, different people.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Mohammed Ali Rahimi",
+       "source_id": "KYC-000001"
+      },
+      {
+       "label": "hit name",
+       "value": "Mohammed Ali Hadid",
+       "source_id": "H-000001"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Customer nationality Egypt equals the hit's country.",
+     "facts": [
+      {
+       "label": "customer nationality",
+       "value": "EG",
+       "source_id": "CUS-000001"
+      },
+      {
+       "label": "hit country",
+       "value": "EG",
+       "source_id": "H-000001"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "contradiction",
+     "blocked_by": null,
+     "explain": "Customer born 1988; the hit's only birth date is 1952, 36 years apart.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "1988-03-14",
+       "source_id": "KYC-000001"
+      },
+      {
+       "label": "hit DOB",
+       "value": "1952",
+       "source_id": "H-000001",
+       "quote": "(born 1952)"
+      }
+     ]
+    }
+   ],
+   "one_fact": "Only a different birth year for the hit (1987 to 1989) would reopen this case.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000001",
+      "type": "Alert",
+      "label": "Alert A-000001 · Mohammed Ali Rahimi"
+     },
+     {
+      "id": "CUS-000001",
+      "type": "CustomerRecord",
+      "label": "CUS-000001"
+     },
+     {
+      "id": "KYC-000001",
+      "type": "KycCheck",
+      "label": "KYC-000001"
+     },
+     {
+      "id": "H-000001",
+      "type": "Hit",
+      "label": "Hit H-000001 · Mohammed Ali Hadid"
+     },
+     {
+      "id": "G0-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "verified name: Mohammed Ali Rahimi",
+      "side": "customer",
+      "value": "Mohammed Ali Rahimi",
+      "source_id": "KYC-000001",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit name: Mohammed Ali Hadid",
+      "side": "hit",
+      "value": "Mohammed Ali Hadid",
+      "source_id": "H-000001",
+      "quote": null
+     },
+     {
+      "id": "G1-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "customer nationality: EG",
+      "side": "customer",
+      "value": "EG",
+      "source_id": "CUS-000001",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit country: EG",
+      "side": "hit",
+      "value": "EG",
+      "source_id": "H-000001",
+      "quote": null
+     },
+     {
+      "id": "G2-DOB",
+      "type": "Gate",
+      "label": "DOB gate · contradiction"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer DOB: 1988-03-14",
+      "side": "customer",
+      "value": "1988-03-14",
+      "source_id": "KYC-000001",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit DOB: 1952",
+      "side": "hit",
+      "value": "1952",
+      "source_id": "H-000001",
+      "quote": "(born 1952)"
+     },
+     {
+      "id": "D-H-000001",
+      "type": "Decision",
+      "label": "DIFFERENT_ENTITY · DOB_MISMATCH"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000001",
+      "dst": "CUS-000001",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000001",
+      "dst": "KYC-000001",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000001",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000001",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-NAME",
+      "dst": "D-H-000001",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000001",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000001",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-LOCATION",
+      "dst": "D-H-000001",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000001",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-DOB",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "H-000001",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-DOB",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "G2-DOB",
+      "dst": "D-H-000001",
+      "type": "DECIDED_BY",
+      "verdict": "contradicts"
+     }
+    ],
+    "decisive_path": [
+     "A-000001",
+     "CUS-000001",
+     "KYC-000001",
+     "H-000001",
+     "G2-DOB",
+     "F2c",
+     "F2h",
+     "D-H-000001"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0002",
+  "title": "Born too late",
+  "alert": {
+   "alert_id": "A-000002",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Tobias Hart",
+    "entity_type": "Individual",
+    "dob": "2006-05-02",
+    "country": "AU",
+    "city": "Perth"
+   },
+   "account_ref": null,
+   "login_handle": null,
+   "email": "tobias.hart@mail.example",
+   "hit_ids": [
+    "H-000002"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000002",
+    "full_name": "Tobias Hart",
+    "dob": "2006-05-02",
+    "nationality": "Australia",
+    "residence_country": "AU",
+    "phone": "+61 400 000 202",
+    "email": "tobias.hart@mail.example",
+    "city": "Perth",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Perth (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000002",
+    "verified_name": "Tobias Wendell Hart",
+    "verified_dob": "2006-05-02",
+    "result": "approved",
+    "document_country": "AU",
+    "checked_at": "2025-06-03",
+    "applicant_id": "APP-000002",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000002"
+   }
+  ],
+  "notes": [],
+  "accounts": [],
+  "onboarding": [],
+  "hit": {
+   "hit_id": "H-000002",
+   "name": "Tobias Wendell Hart",
+   "aliases": [
+    "Tobias Hart"
+   ],
+   "dobs": [],
+   "countries": [
+    "Australia"
+   ],
+   "nationality": [
+    "Australia"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "PEP",
+   "profile_notes": "Tobias Hart is a former harbour board member. According to Valdoria Official Gazette; September 10, 2015: Tobias Hart was appointed to the Harbour Board. He is listed as a politically exposed person.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Australia"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "PEP"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000002",
+   "alert_id": "A-000002",
+   "decision": "DIFFERENT_ENTITY",
+   "reason_code": "TEMPORAL_IMPOSSIBILITY",
+   "customer_record_id": "CUS-000002",
+   "reason": "Customer born 2006-05-02 (KYC-000002) was 9 at the earliest dated report, 2015-09-10 (H-000002), younger than 16.",
+   "evidence": [
+    "KYC-000002",
+    "H-000002#profile_notes"
+   ]
+  },
+  "trace": {
+   "linked_via": "email",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000002"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Tobias Wendell Hart",
+      "dob": "2006-05-02",
+      "source_id": "KYC-000002",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "AU",
+       "source_id": "CUS-000002",
+       "kind": "residence"
+      },
+      {
+       "value": "AU",
+       "source_id": "CUS-000002",
+       "kind": "nationality"
+      }
+     ],
+     "decision": "DIFFERENT_ENTITY",
+     "reason_code": "TEMPORAL_IMPOSSIBILITY"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [],
+    "dob_source": "none",
+    "countries": [
+     "AU"
+    ],
+    "dated_reports": [
+     {
+      "date": "2015-09-10",
+      "line_ref": "profile_notes"
+     }
+    ],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Every part of the shorter name matches the hit's alias.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Tobias Wendell Hart",
+       "source_id": "KYC-000002"
+      },
+      {
+       "label": "hit alias",
+       "value": "Tobias Hart",
+       "source_id": "H-000002"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Residence Australia equals the hit's country.",
+     "facts": [
+      {
+       "label": "customer residence",
+       "value": "AU",
+       "source_id": "CUS-000002"
+      },
+      {
+       "label": "hit country",
+       "value": "AU",
+       "source_id": "H-000002"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "unknown",
+     "blocked_by": null,
+     "explain": "The hit gives no birth date and no search result is about it.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "2006-05-02",
+       "source_id": "KYC-000002"
+      }
+     ]
+    },
+    {
+     "gate": "TIME",
+     "result": "contradiction",
+     "blocked_by": null,
+     "explain": "Customer was 9 at the earliest dated report (2015-09-10); the rule needs 16.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "2006-05-02",
+       "source_id": "KYC-000002"
+      },
+      {
+       "label": "earliest dated report",
+       "value": "2015-09-10",
+       "source_id": "H-000002",
+       "quote": "According to Valdoria Official Gazette; September 10, 2015: Tobias Hart was appointed to the Harbour Board."
+      }
+     ]
+    }
+   ],
+   "one_fact": "A dated report from 2022 or later would no longer rule the customer out; the case would go to a human.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000002",
+      "type": "Alert",
+      "label": "Alert A-000002 · Tobias Hart"
+     },
+     {
+      "id": "CUS-000002",
+      "type": "CustomerRecord",
+      "label": "CUS-000002"
+     },
+     {
+      "id": "KYC-000002",
+      "type": "KycCheck",
+      "label": "KYC-000002"
+     },
+     {
+      "id": "H-000002",
+      "type": "Hit",
+      "label": "Hit H-000002 · Tobias Wendell Hart"
+     },
+     {
+      "id": "G0-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "verified name: Tobias Wendell Hart",
+      "side": "customer",
+      "value": "Tobias Wendell Hart",
+      "source_id": "KYC-000002",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit alias: Tobias Hart",
+      "side": "hit",
+      "value": "Tobias Hart",
+      "source_id": "H-000002",
+      "quote": null
+     },
+     {
+      "id": "G1-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "customer residence: AU",
+      "side": "customer",
+      "value": "AU",
+      "source_id": "CUS-000002",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit country: AU",
+      "side": "hit",
+      "value": "AU",
+      "source_id": "H-000002",
+      "quote": null
+     },
+     {
+      "id": "G2-DOB",
+      "type": "Gate",
+      "label": "DOB gate · unknown"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer DOB: 2006-05-02",
+      "side": "customer",
+      "value": "2006-05-02",
+      "source_id": "KYC-000002",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "Hit DOB: not given",
+      "side": "hit",
+      "missing": true,
+      "value": null,
+      "source_id": null,
+      "quote": null
+     },
+     {
+      "id": "G3-TIME",
+      "type": "Gate",
+      "label": "TIME gate · contradiction"
+     },
+     {
+      "id": "F3c",
+      "type": "Fact",
+      "label": "customer DOB: 2006-05-02",
+      "side": "customer",
+      "value": "2006-05-02",
+      "source_id": "KYC-000002",
+      "quote": null
+     },
+     {
+      "id": "F3h",
+      "type": "Fact",
+      "label": "earliest dated report: 2015-09-10",
+      "side": "hit",
+      "value": "2015-09-10",
+      "source_id": "H-000002",
+      "quote": "According to Valdoria Official Gazette; September 10, 2015: Tobias Hart was appointed to the Harbour Board."
+     },
+     {
+      "id": "D-H-000002",
+      "type": "Decision",
+      "label": "DIFFERENT_ENTITY · TEMPORAL_IMPOSSIBILITY"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000002",
+      "dst": "CUS-000002",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000002",
+      "dst": "KYC-000002",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000002",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000002",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-NAME",
+      "dst": "D-H-000002",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000002",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000002",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-LOCATION",
+      "dst": "D-H-000002",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000002",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "H-000002",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "G2-DOB",
+      "dst": "D-H-000002",
+      "type": "DECIDED_BY",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000002",
+      "dst": "F3c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F3c",
+      "dst": "G3-TIME",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "H-000002",
+      "dst": "F3h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F3h",
+      "dst": "G3-TIME",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "G3-TIME",
+      "dst": "D-H-000002",
+      "type": "DECIDED_BY",
+      "verdict": "contradicts"
+     }
+    ],
+    "decisive_path": [
+     "A-000002",
+     "CUS-000002",
+     "KYC-000002",
+     "H-000002",
+     "G3-TIME",
+     "F3c",
+     "F3h",
+     "D-H-000002"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0003",
+  "title": "The wrong country",
+  "alert": {
+   "alert_id": "A-000003",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Camila Rojas Ferreira",
+    "entity_type": "Individual",
+    "dob": "1991-08-30",
+    "country": "CA",
+    "city": "Toronto"
+   },
+   "account_ref": null,
+   "login_handle": "camila.rf91",
+   "email": null,
+   "hit_ids": [
+    "H-000003"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000003",
+    "full_name": "Camila Rojas Ferreira",
+    "dob": "1991-08-30",
+    "nationality": "Canada",
+    "residence_country": "CA",
+    "phone": "+1 416 555 0303",
+    "email": "camila.rf@mail.example",
+    "city": "Toronto",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Toronto (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000003",
+    "verified_name": "Camila Rojas Ferreira",
+    "verified_dob": "1991-08-30",
+    "result": "approved",
+    "document_country": "CA",
+    "checked_at": "2024-11-20",
+    "applicant_id": "APP-000003",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000003"
+   }
+  ],
+  "notes": [
+   {
+    "note_id": "NOTE-000003",
+    "text": "Support call: Born and raised in Toronto; has never lived outside Canada. Asked about card limits.",
+    "requester_email": "onboarding@bank.example",
+    "created_at": "2025-01-01",
+    "channel": "support"
+   }
+  ],
+  "accounts": [],
+  "onboarding": [],
+  "hit": {
+   "hit_id": "H-000003",
+   "name": "Camila Rojas Ferreira",
+   "aliases": [],
+   "dobs": [],
+   "countries": [
+    "Venezuela"
+   ],
+   "nationality": [
+    "Venezuela"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "Sanctions",
+   "profile_notes": "Camila Rojas Ferreira is a Venezuelan businesswoman. She is listed as a sanctioned individual.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Venezuela"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "Sanctions"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [
+   {
+    "result_id": "SR-000003",
+    "snippet": "Camila Rojas Ferreira, a politically exposed person in Chile, born 1991.",
+    "query": "Camila Rojas Ferreira",
+    "title": "Search result (synthetic)",
+    "source": "synthetic.example"
+   }
+  ],
+  "decision": {
+   "hit_id": "H-000003",
+   "alert_id": "A-000003",
+   "decision": "DIFFERENT_ENTITY",
+   "reason_code": "LOCATION_MISMATCH",
+   "customer_record_id": "CUS-000003",
+   "reason": "All customer countries are Canada (CUS-000003, KYC-000003, NOTE-000003); the hit is tied only to Venezuela (H-000003); the hit gives no birth date to agree on.",
+   "evidence": [
+    "CUS-000003",
+    "KYC-000003",
+    "NOTE-000003",
+    "H-000003#countries"
+   ]
+  },
+  "trace": {
+   "linked_via": "login_handle",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000003"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Camila Rojas Ferreira",
+      "dob": "1991-08-30",
+      "source_id": "KYC-000003",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "CA",
+       "source_id": "CUS-000003",
+       "kind": "residence"
+      },
+      {
+       "value": "CA",
+       "source_id": "CUS-000003",
+       "kind": "nationality"
+      },
+      {
+       "value": "CA",
+       "source_id": "NOTE-000003",
+       "kind": "note_lived"
+      }
+     ],
+     "decision": "DIFFERENT_ENTITY",
+     "reason_code": "LOCATION_MISMATCH"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [],
+    "dob_source": "none",
+    "countries": [
+     "VE"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Verified name equals the hit's name.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Camila Rojas Ferreira",
+       "source_id": "KYC-000003"
+      },
+      {
+       "label": "hit name",
+       "value": "Camila Rojas Ferreira",
+       "source_id": "H-000003"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "unknown",
+     "blocked_by": null,
+     "explain": "SR-000003 is a PEP in Chile; the hit is a sanctioned individual tied to Venezuela, so the result is about someone else and is ignored.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "1991-08-30",
+       "source_id": "KYC-000003"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "contradiction",
+     "blocked_by": null,
+     "explain": "Every customer country (Canada) differs from every hit country (Venezuela).",
+     "facts": [
+      {
+       "label": "customer countries",
+       "value": "CA",
+       "source_id": "NOTE-000003",
+       "quote": "Born and raised in Toronto; has never lived outside Canada."
+      },
+      {
+       "label": "hit country",
+       "value": "VE",
+       "source_id": "H-000003"
+      }
+     ]
+    }
+   ],
+   "one_fact": "A Venezuelan residence, nationality or document for the customer would turn this into a human review.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000003",
+      "type": "Alert",
+      "label": "Alert A-000003 · Camila Rojas Ferreira"
+     },
+     {
+      "id": "CUS-000003",
+      "type": "CustomerRecord",
+      "label": "CUS-000003"
+     },
+     {
+      "id": "KYC-000003",
+      "type": "KycCheck",
+      "label": "KYC-000003"
+     },
+     {
+      "id": "H-000003",
+      "type": "Hit",
+      "label": "Hit H-000003 · Camila Rojas Ferreira"
+     },
+     {
+      "id": "G0-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "verified name: Camila Rojas Ferreira",
+      "side": "customer",
+      "value": "Camila Rojas Ferreira",
+      "source_id": "KYC-000003",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit name: Camila Rojas Ferreira",
+      "side": "hit",
+      "value": "Camila Rojas Ferreira",
+      "source_id": "H-000003",
+      "quote": null
+     },
+     {
+      "id": "G1-DOB",
+      "type": "Gate",
+      "label": "DOB gate · unknown"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "customer DOB: 1991-08-30",
+      "side": "customer",
+      "value": "1991-08-30",
+      "source_id": "KYC-000003",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "Hit DOB: not given",
+      "side": "hit",
+      "missing": true,
+      "value": null,
+      "source_id": null,
+      "quote": null
+     },
+     {
+      "id": "G2-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · contradiction"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer countries: CA",
+      "side": "customer",
+      "value": "CA",
+      "source_id": "NOTE-000003",
+      "quote": "Born and raised in Toronto; has never lived outside Canada."
+     },
+     {
+      "id": "NOTE-000003",
+      "type": "Note",
+      "label": "NOTE-000003"
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit country: VE",
+      "side": "hit",
+      "value": "VE",
+      "source_id": "H-000003",
+      "quote": null
+     },
+     {
+      "id": "D-H-000003",
+      "type": "Decision",
+      "label": "DIFFERENT_ENTITY · LOCATION_MISMATCH"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000003",
+      "dst": "CUS-000003",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000003",
+      "dst": "KYC-000003",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000003",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000003",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-NAME",
+      "dst": "D-H-000003",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000003",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "H-000003",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "G1-DOB",
+      "dst": "D-H-000003",
+      "type": "DECIDED_BY",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000003",
+      "dst": "NOTE-000003",
+      "type": "FILED_NOTE",
+      "verdict": "neutral"
+     },
+     {
+      "src": "NOTE-000003",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-LOCATION",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "H-000003",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-LOCATION",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "G2-LOCATION",
+      "dst": "D-H-000003",
+      "type": "DECIDED_BY",
+      "verdict": "contradicts"
+     }
+    ],
+    "decisive_path": [
+     "A-000003",
+     "CUS-000003",
+     "H-000003",
+     "G2-LOCATION",
+     "F2c",
+     "NOTE-000003",
+     "F2h",
+     "D-H-000003"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0004",
+  "title": "The Deceased Who Wasn't",
+  "alert": {
+   "alert_id": "A-000004",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Harriet Voss Kellner",
+    "entity_type": "Individual",
+    "dob": "1966-04-09",
+    "country": "DE",
+    "city": "Leipzig"
+   },
+   "account_ref": "ACC-000004",
+   "login_handle": null,
+   "email": null,
+   "hit_ids": [
+    "H-000004"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000004",
+    "full_name": "Harriet Voss Kellner",
+    "dob": "1966-04-09",
+    "nationality": "Germany",
+    "residence_country": "DE",
+    "phone": "+49 151 5550404",
+    "email": "h.kellner@mail.example",
+    "city": "Leipzig",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Leipzig (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000004",
+    "verified_name": "Harriet Voss Kellner",
+    "verified_dob": "1966-04-09",
+    "result": "approved",
+    "document_country": "DE",
+    "checked_at": "2025-03-14",
+    "applicant_id": "APP-000004",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000004"
+   }
+  ],
+  "notes": [],
+  "accounts": [
+   {
+    "account_id": "ACC-000004",
+    "customer_id": "CUS-000004",
+    "login_handle": null,
+    "phone": "+49 151 5550404"
+   }
+  ],
+  "onboarding": [
+   {
+    "account_id": "ACC-000004",
+    "customer_id": "CUS-000004",
+    "kyc_applicant_id": "APP-000004"
+   }
+  ],
+  "hit": {
+   "hit_id": "H-000004",
+   "name": "Harriet Voss Kellner",
+   "aliases": [],
+   "dobs": [
+    "1966-04-09"
+   ],
+   "countries": [
+    "Germany"
+   ],
+   "nationality": [
+    "Germany"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "PEP",
+   "profile_notes": "Harriet Voss Kellner (born April 9, 1966) is a regional councillor. Her father, Anton Kellner, died on February 1, 2009. She is listed as a politically exposed person.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Germany"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "PEP"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000004",
+   "alert_id": "A-000004",
+   "decision": "SAME_ENTITY",
+   "reason_code": "NAME_DOB_LOCATION_MATCH",
+   "customer_record_id": "CUS-000004",
+   "reason": "Name, full date of birth (1966-04-09) and country (Germany) agree and nothing contradicts them. The death in the profile is the hit's father, not the hit.",
+   "evidence": [
+    "CUS-000004",
+    "KYC-000004",
+    "H-000004#name",
+    "H-000004#dobs",
+    "H-000004#countries"
+   ]
+  },
+  "trace": {
+   "linked_via": "account_ref",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000004"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Harriet Voss Kellner",
+      "dob": "1966-04-09",
+      "source_id": "KYC-000004",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "DE",
+       "source_id": "CUS-000004",
+       "kind": "residence"
+      },
+      {
+       "value": "DE",
+       "source_id": "CUS-000004",
+       "kind": "nationality"
+      }
+     ],
+     "decision": "SAME_ENTITY",
+     "reason_code": "NAME_DOB_LOCATION_MATCH"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [
+     1966
+    ],
+    "dob_source": "dobs",
+    "countries": [
+     "DE"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "DECEASED",
+     "result": "not_applicable",
+     "blocked_by": null,
+     "explain": "The profile mentions a death, but it is the hit's father (Anton Kellner). No date of death for the hit, so this gate does not apply.",
+     "facts": [
+      {
+       "label": "death mentioned",
+       "value": "2009-02-01 (father)",
+       "source_id": "H-000004",
+       "quote": "Her father, Anton Kellner, died on February 1, 2009."
+      }
+     ]
+    },
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Verified name equals the hit's name.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Harriet Voss Kellner",
+       "source_id": "KYC-000004"
+      },
+      {
+       "label": "hit name",
+       "value": "Harriet Voss Kellner",
+       "source_id": "H-000004"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Full dates of birth are equal.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "1966-04-09",
+       "source_id": "KYC-000004"
+      },
+      {
+       "label": "hit DOB",
+       "value": "1966-04-09",
+       "source_id": "H-000004",
+       "quote": "(born April 9, 1966)"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Residence and nationality Germany equal the hit's country.",
+     "facts": [
+      {
+       "label": "customer residence",
+       "value": "DE",
+       "source_id": "CUS-000004"
+      },
+      {
+       "label": "hit country",
+       "value": "DE",
+       "source_id": "H-000004"
+      }
+     ]
+    }
+   ],
+   "one_fact": "A date of death for the hit itself, earlier than 2026-11-11, would clear it as DECEASED.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000004",
+      "type": "Alert",
+      "label": "Alert A-000004 · Harriet Voss Kellner"
+     },
+     {
+      "id": "CUS-000004",
+      "type": "CustomerRecord",
+      "label": "CUS-000004"
+     },
+     {
+      "id": "KYC-000004",
+      "type": "KycCheck",
+      "label": "KYC-000004"
+     },
+     {
+      "id": "H-000004",
+      "type": "Hit",
+      "label": "Hit H-000004 · Harriet Voss Kellner"
+     },
+     {
+      "id": "G1-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "verified name: Harriet Voss Kellner",
+      "side": "customer",
+      "value": "Harriet Voss Kellner",
+      "source_id": "KYC-000004",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit name: Harriet Voss Kellner",
+      "side": "hit",
+      "value": "Harriet Voss Kellner",
+      "source_id": "H-000004",
+      "quote": null
+     },
+     {
+      "id": "G2-DOB",
+      "type": "Gate",
+      "label": "DOB gate · agreement"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer DOB: 1966-04-09",
+      "side": "customer",
+      "value": "1966-04-09",
+      "source_id": "KYC-000004",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit DOB: 1966-04-09",
+      "side": "hit",
+      "value": "1966-04-09",
+      "source_id": "H-000004",
+      "quote": "(born April 9, 1966)"
+     },
+     {
+      "id": "G3-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · agreement"
+     },
+     {
+      "id": "F3c",
+      "type": "Fact",
+      "label": "customer residence: DE",
+      "side": "customer",
+      "value": "DE",
+      "source_id": "CUS-000004",
+      "quote": null
+     },
+     {
+      "id": "F3h",
+      "type": "Fact",
+      "label": "hit country: DE",
+      "side": "hit",
+      "value": "DE",
+      "source_id": "H-000004",
+      "quote": null
+     },
+     {
+      "id": "D-H-000004",
+      "type": "Decision",
+      "label": "SAME_ENTITY · NAME_DOB_LOCATION_MATCH"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000004",
+      "dst": "CUS-000004",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000004",
+      "dst": "KYC-000004",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000004",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000004",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-NAME",
+      "dst": "D-H-000004",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000004",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000004",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G2-DOB",
+      "dst": "D-H-000004",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000004",
+      "dst": "F3c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F3c",
+      "dst": "G3-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000004",
+      "dst": "F3h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F3h",
+      "dst": "G3-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G3-LOCATION",
+      "dst": "D-H-000004",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     }
+    ],
+    "decisive_path": [
+     "A-000004",
+     "CUS-000004",
+     "KYC-000004",
+     "H-000004",
+     "G1-NAME",
+     "F1c",
+     "F1h",
+     "G2-DOB",
+     "F2c",
+     "F2h",
+     "G3-LOCATION",
+     "F3c",
+     "F3h",
+     "D-H-000004"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0005",
+  "title": "Joint account, two people",
+  "alert": {
+   "alert_id": "A-000005",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Samir Lindqvist",
+    "entity_type": "Individual",
+    "dob": null,
+    "country": "SE",
+    "city": "Malmö"
+   },
+   "account_ref": "ACC-000005",
+   "login_handle": null,
+   "email": null,
+   "hit_ids": [
+    "H-000005"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000005",
+    "full_name": "Samira Lindqvist",
+    "dob": "1974-11-02",
+    "nationality": "Sweden",
+    "residence_country": "SE",
+    "phone": "+46 70 555 0105",
+    "email": "samira.l@mail.example",
+    "city": "Malmö",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Malmö (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   },
+   {
+    "record_id": "CUS-000006",
+    "full_name": "Samir Lindqvist",
+    "dob": "1971-02-19",
+    "nationality": "Sweden",
+    "residence_country": "SE",
+    "phone": "+46 70 555 0106",
+    "email": "samir.l@mail.example",
+    "city": "Malmö",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Malmö (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000005",
+    "verified_name": "Samira Lindqvist",
+    "verified_dob": "1974-11-02",
+    "result": "approved",
+    "document_country": "SE",
+    "checked_at": "2024-09-02",
+    "applicant_id": "APP-000005",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000005"
+   },
+   {
+    "check_id": "KYC-000006",
+    "verified_name": "Samir Lindqvist",
+    "verified_dob": "1971-02-19",
+    "result": "approved",
+    "document_country": "SE",
+    "checked_at": "2024-09-02",
+    "applicant_id": "APP-000006",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000006"
+   }
+  ],
+  "notes": [],
+  "accounts": [
+   {
+    "account_id": "ACC-000005",
+    "customer_id": "CUS-000005",
+    "login_handle": null,
+    "phone": "+46 70 555 0105"
+   },
+   {
+    "account_id": "ACC-000005",
+    "customer_id": "CUS-000006",
+    "login_handle": null,
+    "phone": "+46 70 555 0106"
+   }
+  ],
+  "onboarding": [
+   {
+    "account_id": "ACC-000005",
+    "customer_id": "CUS-000005",
+    "kyc_applicant_id": "APP-000005"
+   },
+   {
+    "account_id": "ACC-000005",
+    "customer_id": "CUS-000006",
+    "kyc_applicant_id": "APP-000006"
+   }
+  ],
+  "hit": {
+   "hit_id": "H-000005",
+   "name": "Samira Lindqvist",
+   "aliases": [],
+   "dobs": [
+    "1974-11-02"
+   ],
+   "countries": [
+    "Sweden"
+   ],
+   "nationality": [
+    "Sweden"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "PEP",
+   "profile_notes": "Samira Lindqvist (born November 2, 1974) is a municipal official. She is listed as a politically exposed person.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Sweden"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "PEP"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000005",
+   "alert_id": "A-000005",
+   "decision": "REVIEW",
+   "reason_code": "AMBIGUOUS_CUSTOMER_RECORD",
+   "customer_record_id": "AMBIGUOUS",
+   "reason": "The joint account leads to two people who both fit the screened name. One would be confirmed (CUS-000005), the other cleared (CUS-000006), so a person must decide.",
+   "evidence": [
+    "CUS-000005",
+    "KYC-000005",
+    "CUS-000006",
+    "KYC-000006",
+    "H-000005#dobs"
+   ]
+  },
+  "trace": {
+   "linked_via": "account_ref",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000005"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Samira Lindqvist",
+      "dob": "1974-11-02",
+      "source_id": "KYC-000005",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "SE",
+       "source_id": "CUS-000005",
+       "kind": "residence"
+      }
+     ],
+     "decision": "SAME_ENTITY",
+     "reason_code": "NAME_DOB_LOCATION_MATCH"
+    },
+    {
+     "record_ids": [
+      "CUS-000006"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Samir Lindqvist",
+      "dob": "1971-02-19",
+      "source_id": "KYC-000006",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "SE",
+       "source_id": "CUS-000006",
+       "kind": "residence"
+      }
+     ],
+     "decision": "DIFFERENT_ENTITY",
+     "reason_code": "DOB_MISMATCH"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [
+     1974
+    ],
+    "dob_source": "dobs",
+    "countries": [
+     "SE"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Samir and Samira differ by 1 edit; both holders agree with the hit's name.",
+     "facts": [
+      {
+       "label": "screened name",
+       "value": "Samir Lindqvist",
+       "source_id": "CUS-000006"
+      },
+      {
+       "label": "hit name",
+       "value": "Samira Lindqvist",
+       "source_id": "H-000005"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Person A: full dates of birth are equal. Alone this would confirm.",
+     "facts": [
+      {
+       "label": "person A DOB",
+       "value": "1974-11-02",
+       "source_id": "KYC-000005"
+      },
+      {
+       "label": "hit DOB",
+       "value": "1974-11-02",
+       "source_id": "H-000005",
+       "quote": "(born November 2, 1974)"
+      }
+     ],
+     "person": "Person A"
+    },
+    {
+     "gate": "DOB",
+     "result": "contradiction",
+     "blocked_by": null,
+     "explain": "Person B: born 1971, three years from the hit's 1974. Alone this would clear.",
+     "facts": [
+      {
+       "label": "person B DOB",
+       "value": "1971-02-19",
+       "source_id": "KYC-000006"
+      },
+      {
+       "label": "hit DOB",
+       "value": "1974-11-02",
+       "source_id": "H-000005",
+       "quote": "(born November 2, 1974)"
+      }
+     ],
+     "person": "Person B"
+    }
+   ],
+   "one_fact": "A date of birth in the screening request, or a note naming which holder was screened, would pick one person.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000005",
+      "type": "Alert",
+      "label": "Alert A-000005 · Samir Lindqvist"
+     },
+     {
+      "id": "CUS-000005",
+      "type": "CustomerRecord",
+      "label": "CUS-000005"
+     },
+     {
+      "id": "KYC-000005",
+      "type": "KycCheck",
+      "label": "KYC-000005"
+     },
+     {
+      "id": "CUS-000006",
+      "type": "CustomerRecord",
+      "label": "CUS-000006"
+     },
+     {
+      "id": "KYC-000006",
+      "type": "KycCheck",
+      "label": "KYC-000006"
+     },
+     {
+      "id": "H-000005",
+      "type": "Hit",
+      "label": "Hit H-000005 · Samira Lindqvist"
+     },
+     {
+      "id": "G0-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "screened name: Samir Lindqvist",
+      "side": "customer",
+      "value": "Samir Lindqvist",
+      "source_id": "CUS-000006",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit name: Samira Lindqvist",
+      "side": "hit",
+      "value": "Samira Lindqvist",
+      "source_id": "H-000005",
+      "quote": null
+     },
+     {
+      "id": "G1-DOB",
+      "type": "Gate",
+      "label": "DOB (Person A) gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "person A DOB: 1974-11-02",
+      "side": "customer",
+      "value": "1974-11-02",
+      "source_id": "KYC-000005",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit DOB: 1974-11-02",
+      "side": "hit",
+      "value": "1974-11-02",
+      "source_id": "H-000005",
+      "quote": "(born November 2, 1974)"
+     },
+     {
+      "id": "G2-DOB",
+      "type": "Gate",
+      "label": "DOB (Person B) gate · contradiction"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "person B DOB: 1971-02-19",
+      "side": "customer",
+      "value": "1971-02-19",
+      "source_id": "KYC-000006",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit DOB: 1974-11-02",
+      "side": "hit",
+      "value": "1974-11-02",
+      "source_id": "H-000005",
+      "quote": "(born November 2, 1974)"
+     },
+     {
+      "id": "D-H-000005",
+      "type": "Decision",
+      "label": "REVIEW · AMBIGUOUS_CUSTOMER_RECORD"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000005",
+      "dst": "CUS-000005",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000005",
+      "dst": "KYC-000005",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "A-000005",
+      "dst": "CUS-000006",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000006",
+      "dst": "KYC-000006",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000006",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000005",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-NAME",
+      "dst": "D-H-000005",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000005",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000005",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-DOB",
+      "dst": "D-H-000005",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000006",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-DOB",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "H-000005",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-DOB",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "G2-DOB",
+      "dst": "D-H-000005",
+      "type": "DECIDED_BY",
+      "verdict": "contradicts"
+     }
+    ],
+    "decisive_path": [
+     "A-000005",
+     "CUS-000005",
+     "KYC-000005",
+     "CUS-000006",
+     "KYC-000006",
+     "H-000005",
+     "G1-DOB",
+     "F1c",
+     "F1h",
+     "G2-DOB",
+     "F2c",
+     "F2h",
+     "D-H-000005"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0006",
+  "title": "No date of birth: ask a human",
+  "alert": {
+   "alert_id": "A-000006",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Olumide Bankole Reeves",
+    "entity_type": "Individual",
+    "dob": "1983-12-01",
+    "country": "GB",
+    "city": "Leeds"
+   },
+   "account_ref": "ACC-000016",
+   "login_handle": null,
+   "email": null,
+   "hit_ids": [
+    "H-000007"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000016",
+    "full_name": "Olumide Bankole Reeves",
+    "dob": "1983-12-01",
+    "nationality": "United Kingdom",
+    "residence_country": "GB",
+    "phone": "+44 7700 900606",
+    "email": "o.reeves@mail.example",
+    "city": "Leeds",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Leeds (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000016",
+    "verified_name": "Olumide Bankole Reeves",
+    "verified_dob": "1983-12-01",
+    "result": "approved",
+    "document_country": "GB",
+    "checked_at": "2025-01-09",
+    "applicant_id": "APP-000016",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000016"
+   }
+  ],
+  "notes": [],
+  "accounts": [
+   {
+    "account_id": "ACC-000016",
+    "customer_id": "CUS-000016",
+    "login_handle": null,
+    "phone": "+44 7700 900606"
+   }
+  ],
+  "onboarding": [
+   {
+    "account_id": "ACC-000016",
+    "customer_id": "CUS-000016",
+    "kyc_applicant_id": "APP-000016"
+   }
+  ],
+  "hit": {
+   "hit_id": "H-000007",
+   "name": "Olumide Reeves",
+   "aliases": [],
+   "dobs": [],
+   "countries": [
+    "United Kingdom"
+   ],
+   "nationality": [
+    "United Kingdom"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "Enforcement",
+   "profile_notes": "Olumide Reeves is a former regional transport official. He is listed as the subject of enforcement action.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "United Kingdom"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "Enforcement"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [
+   {
+    "result_id": "SR-000007",
+    "snippet": "Olumide Reeves, a politically exposed person in Ghana, aged 61.",
+    "query": "Olumide Reeves",
+    "title": "Search result (synthetic)",
+    "source": "synthetic.example"
+   }
+  ],
+  "decision": {
+   "hit_id": "H-000007",
+   "alert_id": "A-000006",
+   "decision": "REVIEW",
+   "reason_code": "INSUFFICIENT_DATA",
+   "customer_record_id": "CUS-000016",
+   "reason": "Name and country agree, but nothing contradicts and no birth date for the hit exists to confirm or clear.",
+   "evidence": [
+    "CUS-000016",
+    "KYC-000016",
+    "H-000007#countries"
+   ]
+  },
+  "trace": {
+   "linked_via": "account_ref",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000016"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Olumide Bankole Reeves",
+      "dob": "1983-12-01",
+      "source_id": "KYC-000016",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "GB",
+       "source_id": "CUS-000016",
+       "kind": "residence"
+      },
+      {
+       "value": "GB",
+       "source_id": "CUS-000016",
+       "kind": "nationality"
+      }
+     ],
+     "decision": "REVIEW",
+     "reason_code": "INSUFFICIENT_DATA"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [],
+    "dob_source": "none",
+    "countries": [
+     "GB"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Every part of the hit's name matches the customer's verified name.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Olumide Bankole Reeves",
+       "source_id": "KYC-000016"
+      },
+      {
+       "label": "hit name",
+       "value": "Olumide Reeves",
+       "source_id": "H-000007"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Residence United Kingdom equals the hit's country.",
+     "facts": [
+      {
+       "label": "customer residence",
+       "value": "GB",
+       "source_id": "CUS-000016"
+      },
+      {
+       "label": "hit country",
+       "value": "GB",
+       "source_id": "H-000007"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "unknown",
+     "blocked_by": null,
+     "explain": "The hit gives no birth date. SR-000007 is a PEP in Ghana, not an enforcement subject tied to the hit's country, so it is ignored.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "1983-12-01",
+       "source_id": "KYC-000016"
+      }
+     ]
+    }
+   ],
+   "one_fact": "A birth date or age for the hit would settle this: outside 1982 to 1984 it clears, a match confirms.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000006",
+      "type": "Alert",
+      "label": "Alert A-000006 · Olumide Bankole Reeves"
+     },
+     {
+      "id": "CUS-000016",
+      "type": "CustomerRecord",
+      "label": "CUS-000016"
+     },
+     {
+      "id": "KYC-000016",
+      "type": "KycCheck",
+      "label": "KYC-000016"
+     },
+     {
+      "id": "H-000007",
+      "type": "Hit",
+      "label": "Hit H-000007 · Olumide Reeves"
+     },
+     {
+      "id": "G0-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "verified name: Olumide Bankole Reeves",
+      "side": "customer",
+      "value": "Olumide Bankole Reeves",
+      "source_id": "KYC-000016",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit name: Olumide Reeves",
+      "side": "hit",
+      "value": "Olumide Reeves",
+      "source_id": "H-000007",
+      "quote": null
+     },
+     {
+      "id": "G1-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "customer residence: GB",
+      "side": "customer",
+      "value": "GB",
+      "source_id": "CUS-000016",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit country: GB",
+      "side": "hit",
+      "value": "GB",
+      "source_id": "H-000007",
+      "quote": null
+     },
+     {
+      "id": "G2-DOB",
+      "type": "Gate",
+      "label": "DOB gate · unknown"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer DOB: 1983-12-01",
+      "side": "customer",
+      "value": "1983-12-01",
+      "source_id": "KYC-000016",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "Hit DOB: not given",
+      "side": "hit",
+      "missing": true,
+      "value": null,
+      "source_id": null,
+      "quote": null
+     },
+     {
+      "id": "D-H-000007",
+      "type": "Decision",
+      "label": "REVIEW · INSUFFICIENT_DATA"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000006",
+      "dst": "CUS-000016",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000016",
+      "dst": "KYC-000016",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000016",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000007",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-NAME",
+      "dst": "D-H-000007",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000016",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000007",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-LOCATION",
+      "dst": "D-H-000007",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000016",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "H-000007",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "G2-DOB",
+      "dst": "D-H-000007",
+      "type": "DECIDED_BY",
+      "verdict": "neutral"
+     }
+    ],
+    "decisive_path": [
+     "A-000006",
+     "CUS-000016",
+     "KYC-000016",
+     "H-000007",
+     "G2-DOB",
+     "F2c",
+     "F2h",
+     "D-H-000007"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0007",
+  "title": "Everything agrees",
+  "alert": {
+   "alert_id": "A-000007",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Marta Zielinska-Lund",
+    "entity_type": "Individual",
+    "dob": "1979-06-23",
+    "country": "PL",
+    "city": "Gdańsk"
+   },
+   "account_ref": null,
+   "login_handle": null,
+   "email": null,
+   "hit_ids": [
+    "H-000008"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000007",
+    "full_name": "Marta Zielinska-Lund",
+    "dob": "1979-06-23",
+    "nationality": "Poland",
+    "residence_country": "PL",
+    "phone": "+48 600 555 007",
+    "email": "marta.zl@mail.example",
+    "city": "Gdańsk",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Gdańsk (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000007",
+    "verified_name": "Marta Zielinska-Lund",
+    "verified_dob": "1979-06-23",
+    "result": "approved",
+    "document_country": "PL",
+    "checked_at": "2025-04-22",
+    "applicant_id": "APP-000007",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000007"
+   }
+  ],
+  "notes": [],
+  "accounts": [],
+  "onboarding": [],
+  "hit": {
+   "hit_id": "H-000008",
+   "name": "Marta Zielinska Lund",
+   "aliases": [],
+   "dobs": [
+    "1979-06-23"
+   ],
+   "countries": [
+    "Poland"
+   ],
+   "nationality": [
+    "Poland"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "Enforcement",
+   "profile_notes": "Marta Zielinska-Lund (born June 23, 1979) is a former customs inspector. She is listed as the subject of enforcement action.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Poland"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "Enforcement"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000008",
+   "alert_id": "A-000007",
+   "decision": "SAME_ENTITY",
+   "reason_code": "NAME_DOB_LOCATION_MATCH",
+   "customer_record_id": "CUS-000007",
+   "reason": "Name, full date of birth (1979-06-23) and country (Poland) agree and nothing contradicts them.",
+   "evidence": [
+    "CUS-000007",
+    "KYC-000007",
+    "H-000008#name",
+    "H-000008#dobs",
+    "H-000008#countries"
+   ]
+  },
+  "trace": {
+   "linked_via": "fit_search",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000007"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Marta Zielinska-Lund",
+      "dob": "1979-06-23",
+      "source_id": "KYC-000007",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "PL",
+       "source_id": "CUS-000007",
+       "kind": "residence"
+      },
+      {
+       "value": "PL",
+       "source_id": "CUS-000007",
+       "kind": "nationality"
+      }
+     ],
+     "decision": "SAME_ENTITY",
+     "reason_code": "NAME_DOB_LOCATION_MATCH"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [
+     1979
+    ],
+    "dob_source": "dobs",
+    "countries": [
+     "PL"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Parts match once case, accents and the hyphen are ignored.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Marta Zielinska-Lund",
+       "source_id": "KYC-000007"
+      },
+      {
+       "label": "hit name",
+       "value": "Marta Zielinska Lund",
+       "source_id": "H-000008"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Full dates of birth are equal.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "1979-06-23",
+       "source_id": "KYC-000007"
+      },
+      {
+       "label": "hit DOB",
+       "value": "1979-06-23",
+       "source_id": "H-000008",
+       "quote": "(born June 23, 1979)"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Residence and nationality Poland equal the hit's country.",
+     "facts": [
+      {
+       "label": "customer residence",
+       "value": "PL",
+       "source_id": "CUS-000007"
+      },
+      {
+       "label": "hit country",
+       "value": "PL",
+       "source_id": "H-000008"
+      }
+     ]
+    }
+   ],
+   "one_fact": "A date of death for the hit before 2026-11-11, or a different verified date of birth, would change this.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000007",
+      "type": "Alert",
+      "label": "Alert A-000007 · Marta Zielinska-Lund"
+     },
+     {
+      "id": "CUS-000007",
+      "type": "CustomerRecord",
+      "label": "CUS-000007"
+     },
+     {
+      "id": "KYC-000007",
+      "type": "KycCheck",
+      "label": "KYC-000007"
+     },
+     {
+      "id": "H-000008",
+      "type": "Hit",
+      "label": "Hit H-000008 · Marta Zielinska Lund"
+     },
+     {
+      "id": "G0-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "verified name: Marta Zielinska-Lund",
+      "side": "customer",
+      "value": "Marta Zielinska-Lund",
+      "source_id": "KYC-000007",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit name: Marta Zielinska Lund",
+      "side": "hit",
+      "value": "Marta Zielinska Lund",
+      "source_id": "H-000008",
+      "quote": null
+     },
+     {
+      "id": "G1-DOB",
+      "type": "Gate",
+      "label": "DOB gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "customer DOB: 1979-06-23",
+      "side": "customer",
+      "value": "1979-06-23",
+      "source_id": "KYC-000007",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit DOB: 1979-06-23",
+      "side": "hit",
+      "value": "1979-06-23",
+      "source_id": "H-000008",
+      "quote": "(born June 23, 1979)"
+     },
+     {
+      "id": "G2-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · agreement"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer residence: PL",
+      "side": "customer",
+      "value": "PL",
+      "source_id": "CUS-000007",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit country: PL",
+      "side": "hit",
+      "value": "PL",
+      "source_id": "H-000008",
+      "quote": null
+     },
+     {
+      "id": "D-H-000008",
+      "type": "Decision",
+      "label": "SAME_ENTITY · NAME_DOB_LOCATION_MATCH"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000007",
+      "dst": "CUS-000007",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000007",
+      "dst": "KYC-000007",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000007",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000008",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-NAME",
+      "dst": "D-H-000008",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000007",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000008",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-DOB",
+      "dst": "D-H-000008",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000007",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000008",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G2-LOCATION",
+      "dst": "D-H-000008",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     }
+    ],
+    "decisive_path": [
+     "A-000007",
+     "CUS-000007",
+     "KYC-000007",
+     "H-000008",
+     "G0-NAME",
+     "F0c",
+     "F0h",
+     "G1-DOB",
+     "F1c",
+     "F1h",
+     "G2-LOCATION",
+     "F2c",
+     "F2h",
+     "D-H-000008"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0008",
+  "title": "The name on the card",
+  "alert": {
+   "alert_id": "A-000008",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Ricky Tan",
+    "entity_type": "Individual",
+    "dob": "1990-01-17",
+    "country": "MY",
+    "city": "Penang"
+   },
+   "account_ref": null,
+   "login_handle": "rickytan90",
+   "email": null,
+   "hit_ids": [
+    "H-000009"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000008",
+    "full_name": "Ricky Tan",
+    "dob": "1990-01-17",
+    "nationality": "Malaysia",
+    "residence_country": "MY",
+    "phone": "+60 12 555 0808",
+    "email": "rickytan@mail.example",
+    "city": "Penang",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Penang (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000008",
+    "verified_name": "Wei Jian Lim",
+    "verified_dob": "1990-01-17",
+    "result": "approved",
+    "document_country": "MY",
+    "checked_at": "2025-05-30",
+    "applicant_id": "APP-000008",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000008"
+   }
+  ],
+  "notes": [
+   {
+    "note_id": "NOTE-000008",
+    "text": "Customer signed up with a nickname; legal name is on the approved identity check.",
+    "requester_email": "onboarding@bank.example",
+    "created_at": "2025-01-01",
+    "channel": "support"
+   }
+  ],
+  "accounts": [],
+  "onboarding": [],
+  "hit": {
+   "hit_id": "H-000009",
+   "name": "Ricky Tan",
+   "aliases": [],
+   "dobs": [],
+   "countries": [
+    "Malaysia"
+   ],
+   "nationality": [
+    "Malaysia"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "PEP",
+   "profile_notes": "Ricky Tan is a former state-company director. He is listed as a politically exposed person.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Malaysia"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "PEP"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000009",
+   "alert_id": "A-000008",
+   "decision": "DIFFERENT_ENTITY",
+   "reason_code": "NAME_MISMATCH_VERIFIED",
+   "customer_record_id": "CUS-000008",
+   "reason": "The approved identity check gives the legal name Wei Jian Lim (KYC-000008), which agrees with no name of the hit (H-000009). Ricky Tan is a nickname on the record.",
+   "evidence": [
+    "KYC-000008",
+    "H-000009#name"
+   ]
+  },
+  "trace": {
+   "linked_via": "login_handle",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000008"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Wei Jian Lim",
+      "dob": "1990-01-17",
+      "source_id": "KYC-000008",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "MY",
+       "source_id": "CUS-000008",
+       "kind": "residence"
+      },
+      {
+       "value": "MY",
+       "source_id": "CUS-000008",
+       "kind": "nationality"
+      }
+     ],
+     "decision": "DIFFERENT_ENTITY",
+     "reason_code": "NAME_MISMATCH_VERIFIED"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [],
+    "dob_source": "none",
+    "countries": [
+     "MY"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "LOCATION",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Residence Malaysia equals the hit's country.",
+     "facts": [
+      {
+       "label": "customer residence",
+       "value": "MY",
+       "source_id": "CUS-000008"
+      },
+      {
+       "label": "hit country",
+       "value": "MY",
+       "source_id": "H-000009"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "unknown",
+     "blocked_by": null,
+     "explain": "The hit gives no birth date.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "1990-01-17",
+       "source_id": "KYC-000008"
+      }
+     ]
+    },
+    {
+     "gate": "NAME",
+     "result": "contradiction",
+     "blocked_by": null,
+     "explain": "The record name Ricky Tan agrees with the hit, but the approved identity check says the legal name is Wei Jian Lim, which agrees with none of the hit's names. Verified beats declared.",
+     "facts": [
+      {
+       "label": "verified legal name",
+       "value": "Wei Jian Lim",
+       "source_id": "KYC-000008"
+      },
+      {
+       "label": "record name (outranked)",
+       "value": "Ricky Tan",
+       "source_id": "CUS-000008"
+      },
+      {
+       "label": "hit name",
+       "value": "Ricky Tan",
+       "source_id": "H-000009"
+      }
+     ]
+    }
+   ],
+   "one_fact": "If the identity check were rejected or expired, the nickname would count again and this would go to a human.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000008",
+      "type": "Alert",
+      "label": "Alert A-000008 · Ricky Tan"
+     },
+     {
+      "id": "CUS-000008",
+      "type": "CustomerRecord",
+      "label": "CUS-000008"
+     },
+     {
+      "id": "KYC-000008",
+      "type": "KycCheck",
+      "label": "KYC-000008"
+     },
+     {
+      "id": "H-000009",
+      "type": "Hit",
+      "label": "Hit H-000009 · Ricky Tan"
+     },
+     {
+      "id": "G0-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "customer residence: MY",
+      "side": "customer",
+      "value": "MY",
+      "source_id": "CUS-000008",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit country: MY",
+      "side": "hit",
+      "value": "MY",
+      "source_id": "H-000009",
+      "quote": null
+     },
+     {
+      "id": "G1-DOB",
+      "type": "Gate",
+      "label": "DOB gate · unknown"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "customer DOB: 1990-01-17",
+      "side": "customer",
+      "value": "1990-01-17",
+      "source_id": "KYC-000008",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "Hit DOB: not given",
+      "side": "hit",
+      "missing": true,
+      "value": null,
+      "source_id": null,
+      "quote": null
+     },
+     {
+      "id": "G2-NAME",
+      "type": "Gate",
+      "label": "NAME gate · contradiction"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "verified legal name: Wei Jian Lim",
+      "side": "customer",
+      "value": "Wei Jian Lim",
+      "source_id": "KYC-000008",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit name: Ricky Tan",
+      "side": "hit",
+      "value": "Ricky Tan",
+      "source_id": "H-000009",
+      "quote": null
+     },
+     {
+      "id": "D-H-000009",
+      "type": "Decision",
+      "label": "DIFFERENT_ENTITY · NAME_MISMATCH_VERIFIED"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000008",
+      "dst": "CUS-000008",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000008",
+      "dst": "KYC-000008",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000008",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000009",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-LOCATION",
+      "dst": "D-H-000009",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000008",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "H-000009",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-DOB",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "G1-DOB",
+      "dst": "D-H-000009",
+      "type": "DECIDED_BY",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000008",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000008",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-NAME",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "H-000009",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-NAME",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "G2-NAME",
+      "dst": "D-H-000009",
+      "type": "DECIDED_BY",
+      "verdict": "contradicts"
+     }
+    ],
+    "decisive_path": [
+     "A-000008",
+     "CUS-000008",
+     "KYC-000008",
+     "H-000009",
+     "G2-NAME",
+     "F2c",
+     "F2h",
+     "D-H-000009"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0009",
+  "title": "A company, not a person",
+  "alert": {
+   "alert_id": "A-000009",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Nadia Brook",
+    "entity_type": "Individual",
+    "dob": "1995-09-09",
+    "country": "IE",
+    "city": "Cork"
+   },
+   "account_ref": null,
+   "login_handle": null,
+   "email": "nadia.brook@mail.example",
+   "hit_ids": [
+    "H-000010"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000009",
+    "full_name": "Nadia Brook",
+    "dob": "1995-09-09",
+    "nationality": "Ireland",
+    "residence_country": "IE",
+    "phone": "+353 85 555 0909",
+    "email": "nadia.brook@mail.example",
+    "city": "Cork",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Cork (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000009",
+    "verified_name": "Nadia Brook",
+    "verified_dob": "1995-09-09",
+    "result": "approved",
+    "document_country": "IE",
+    "checked_at": "2025-07-01",
+    "applicant_id": "APP-000009",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000009"
+   }
+  ],
+  "notes": [],
+  "accounts": [],
+  "onboarding": [],
+  "hit": {
+   "hit_id": "H-000010",
+   "name": "Nadia Brook Trading Ltd",
+   "aliases": [],
+   "dobs": [
+    "2011"
+   ],
+   "countries": [
+    "Ireland"
+   ],
+   "nationality": [],
+   "entity_type": "Company",
+   "primary_category": "Sanctions",
+   "profile_notes": "Nadia Brook Trading Ltd was incorporated in 2011. It is listed as a sanctioned entity.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "Sanctions"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000010",
+   "alert_id": "A-000009",
+   "decision": "DIFFERENT_ENTITY",
+   "reason_code": "ENTITY_TYPE_MISMATCH",
+   "customer_record_id": "CUS-000009",
+   "reason": "The customer is an individual (CUS-000009); the hit is a company (H-000010).",
+   "evidence": [
+    "CUS-000009",
+    "H-000010#name"
+   ]
+  },
+  "trace": {
+   "linked_via": "email",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000009"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Nadia Brook",
+      "dob": "1995-09-09",
+      "source_id": "KYC-000009",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "IE",
+       "source_id": "CUS-000009",
+       "kind": "residence"
+      }
+     ],
+     "decision": "DIFFERENT_ENTITY",
+     "reason_code": "ENTITY_TYPE_MISMATCH"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [
+     2011
+    ],
+    "dob_source": "dobs",
+    "countries": [
+     "IE"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "DOB",
+     "result": "not_applicable",
+     "blocked_by": null,
+     "explain": "One side is a company; the hit's 2011 is an incorporation date, not a birth date.",
+     "facts": []
+    },
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Legal form (Ltd) is not a name part; Nadia and Brook match.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Nadia Brook",
+       "source_id": "KYC-000009"
+      },
+      {
+       "label": "hit name",
+       "value": "Nadia Brook Trading Ltd",
+       "source_id": "H-000010"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Residence Ireland equals the hit's country.",
+     "facts": [
+      {
+       "label": "customer residence",
+       "value": "IE",
+       "source_id": "CUS-000009"
+      },
+      {
+       "label": "hit country",
+       "value": "IE",
+       "source_id": "H-000010"
+      }
+     ]
+    },
+    {
+     "gate": "TYPE",
+     "result": "contradiction",
+     "blocked_by": null,
+     "explain": "The customer is a person; the hit is a company.",
+     "facts": [
+      {
+       "label": "customer type",
+       "value": "Individual",
+       "source_id": "CUS-000009"
+      },
+      {
+       "label": "hit type",
+       "value": "Company",
+       "source_id": "H-000010"
+      }
+     ]
+    }
+   ],
+   "one_fact": "Only a different entity type on the customer or the hit would change this.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000009",
+      "type": "Alert",
+      "label": "Alert A-000009 · Nadia Brook"
+     },
+     {
+      "id": "CUS-000009",
+      "type": "CustomerRecord",
+      "label": "CUS-000009"
+     },
+     {
+      "id": "KYC-000009",
+      "type": "KycCheck",
+      "label": "KYC-000009"
+     },
+     {
+      "id": "H-000010",
+      "type": "Hit",
+      "label": "Hit H-000010 · Nadia Brook Trading Ltd"
+     },
+     {
+      "id": "G1-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "verified name: Nadia Brook",
+      "side": "customer",
+      "value": "Nadia Brook",
+      "source_id": "KYC-000009",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit name: Nadia Brook Trading Ltd",
+      "side": "hit",
+      "value": "Nadia Brook Trading Ltd",
+      "source_id": "H-000010",
+      "quote": null
+     },
+     {
+      "id": "G2-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · agreement"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer residence: IE",
+      "side": "customer",
+      "value": "IE",
+      "source_id": "CUS-000009",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit country: IE",
+      "side": "hit",
+      "value": "IE",
+      "source_id": "H-000010",
+      "quote": null
+     },
+     {
+      "id": "G3-TYPE",
+      "type": "Gate",
+      "label": "TYPE gate · contradiction"
+     },
+     {
+      "id": "F3c",
+      "type": "Fact",
+      "label": "customer type: Individual",
+      "side": "customer",
+      "value": "Individual",
+      "source_id": "CUS-000009",
+      "quote": null
+     },
+     {
+      "id": "F3h",
+      "type": "Fact",
+      "label": "hit type: Company",
+      "side": "hit",
+      "value": "Company",
+      "source_id": "H-000010",
+      "quote": null
+     },
+     {
+      "id": "D-H-000010",
+      "type": "Decision",
+      "label": "DIFFERENT_ENTITY · ENTITY_TYPE_MISMATCH"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000009",
+      "dst": "CUS-000009",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000009",
+      "dst": "KYC-000009",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000009",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000010",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-NAME",
+      "dst": "D-H-000010",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000009",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000010",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-LOCATION",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G2-LOCATION",
+      "dst": "D-H-000010",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000009",
+      "dst": "F3c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F3c",
+      "dst": "G3-TYPE",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "H-000010",
+      "dst": "F3h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F3h",
+      "dst": "G3-TYPE",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "G3-TYPE",
+      "dst": "D-H-000010",
+      "type": "DECIDED_BY",
+      "verdict": "contradicts"
+     }
+    ],
+    "decisive_path": [
+     "A-000009",
+     "CUS-000009",
+     "H-000010",
+     "G3-TYPE",
+     "F3c",
+     "F3h",
+     "D-H-000010"
+    ]
+   }
+  }
+ },
+ {
+  "case_id": "S-0010",
+  "title": "Same name, same birthday, other country",
+  "alert": {
+   "alert_id": "A-000010",
+   "screened_at": "2026-11-11",
+   "customer": {
+    "name": "Rafael Alvarenga Costa",
+    "entity_type": "Individual",
+    "dob": "1971-03-30",
+    "country": "PT",
+    "city": "Porto"
+   },
+   "account_ref": "ACC-000011",
+   "login_handle": null,
+   "email": null,
+   "hit_ids": [
+    "H-000011"
+   ]
+  },
+  "customer_records": [
+   {
+    "record_id": "CUS-000011",
+    "full_name": "Rafael Alvarenga Costa",
+    "dob": "1971-03-30",
+    "nationality": "Portugal",
+    "residence_country": "PT",
+    "phone": "+351 91 555 0110",
+    "email": "rafael.ac@mail.example",
+    "city": "Porto",
+    "entity_type": "Individual",
+    "preferred_name": null,
+    "login_name": null,
+    "address": "Porto (synthetic)",
+    "registration_number": null,
+    "status": "active"
+   }
+  ],
+  "kyc_checks": [
+   {
+    "check_id": "KYC-000011",
+    "verified_name": "Rafael Alvarenga Costa",
+    "verified_dob": "1971-03-30",
+    "result": "approved",
+    "document_country": "PT",
+    "checked_at": "2025-08-18",
+    "applicant_id": "APP-000011",
+    "provider": "SynthKYC",
+    "document_type": "passport",
+    "document_number": "SYN000011"
+   }
+  ],
+  "notes": [],
+  "accounts": [
+   {
+    "account_id": "ACC-000011",
+    "customer_id": "CUS-000011",
+    "login_handle": null,
+    "phone": "+351 91 555 0110"
+   }
+  ],
+  "onboarding": [
+   {
+    "account_id": "ACC-000011",
+    "customer_id": "CUS-000011",
+    "kyc_applicant_id": "APP-000011"
+   }
+  ],
+  "hit": {
+   "hit_id": "H-000011",
+   "name": "Rafael Alvarenga Costa",
+   "aliases": [],
+   "dobs": [
+    "1971-03-30"
+   ],
+   "countries": [
+    "Brazil"
+   ],
+   "nationality": [
+    "Brazil"
+   ],
+   "entity_type": "Individual",
+   "primary_category": "Enforcement",
+   "profile_notes": "Rafael Alvarenga Costa (born March 30, 1971) is a former port authority officer. He is listed as the subject of enforcement action.",
+   "first_name": null,
+   "middle_name": null,
+   "last_name": null,
+   "gender": null,
+   "place_of_birth": null,
+   "life_status": "unknown",
+   "deceased_date": null,
+   "citizenship": [
+    "Brazil"
+   ],
+   "addresses": [],
+   "identifiers": [],
+   "categories": [
+    "Enforcement"
+   ],
+   "subcategories": [],
+   "details": {}
+  },
+  "search_results": [],
+  "decision": {
+   "hit_id": "H-000011",
+   "alert_id": "A-000010",
+   "decision": "REVIEW",
+   "reason_code": "INSUFFICIENT_DATA",
+   "customer_record_id": "CUS-000011",
+   "reason": "Name and full date of birth agree, but the countries differ (Portugal vs Brazil). A country difference cannot clear this, and it cannot be confirmed either.",
+   "evidence": [
+    "CUS-000011",
+    "KYC-000011",
+    "H-000011#dobs",
+    "H-000011#countries"
+   ]
+  },
+  "trace": {
+   "linked_via": "account_ref",
+   "persons": [
+    {
+     "record_ids": [
+      "CUS-000011"
+     ],
+     "merged_by": "none",
+     "verified": {
+      "name": "Rafael Alvarenga Costa",
+      "dob": "1971-03-30",
+      "source_id": "KYC-000011",
+      "how": "kyc_check"
+     },
+     "countries": [
+      {
+       "value": "PT",
+       "source_id": "CUS-000011",
+       "kind": "residence"
+      },
+      {
+       "value": "PT",
+       "source_id": "CUS-000011",
+       "kind": "nationality"
+      }
+     ],
+     "decision": "REVIEW",
+     "reason_code": "INSUFFICIENT_DATA"
+    }
+   ],
+   "hit_facts": {
+    "dob_years": [
+     1971
+    ],
+    "dob_source": "dobs",
+    "countries": [
+     "BR"
+    ],
+    "dated_reports": [],
+    "death_date": null
+   },
+   "gates": [
+    {
+     "gate": "NAME",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Verified name equals the hit's name.",
+     "facts": [
+      {
+       "label": "verified name",
+       "value": "Rafael Alvarenga Costa",
+       "source_id": "KYC-000011"
+      },
+      {
+       "label": "hit name",
+       "value": "Rafael Alvarenga Costa",
+       "source_id": "H-000011"
+      }
+     ]
+    },
+    {
+     "gate": "DOB",
+     "result": "agreement",
+     "blocked_by": null,
+     "explain": "Full dates of birth are equal.",
+     "facts": [
+      {
+       "label": "customer DOB",
+       "value": "1971-03-30",
+       "source_id": "KYC-000011"
+      },
+      {
+       "label": "hit DOB",
+       "value": "1971-03-30",
+       "source_id": "H-000011",
+       "quote": "(born March 30, 1971)"
+      }
+     ]
+    },
+    {
+     "gate": "LOCATION",
+     "result": "blocked",
+     "blocked_by": "NAME+DOB agreement",
+     "explain": "Portugal differs from Brazil, but a country difference never clears a hit whose name and birth date agree, so the clear is blocked.",
+     "facts": [
+      {
+       "label": "customer countries",
+       "value": "PT",
+       "source_id": "CUS-000011"
+      },
+      {
+       "label": "hit country",
+       "value": "BR",
+       "source_id": "H-000011"
+      }
+     ]
+    }
+   ],
+   "one_fact": "Evidence that the customer or the hit has a tie to the other's country would point to the same person; a different birth date would clear it.",
+   "graph": {
+    "nodes": [
+     {
+      "id": "A-000010",
+      "type": "Alert",
+      "label": "Alert A-000010 · Rafael Alvarenga Costa"
+     },
+     {
+      "id": "CUS-000011",
+      "type": "CustomerRecord",
+      "label": "CUS-000011"
+     },
+     {
+      "id": "KYC-000011",
+      "type": "KycCheck",
+      "label": "KYC-000011"
+     },
+     {
+      "id": "H-000011",
+      "type": "Hit",
+      "label": "Hit H-000011 · Rafael Alvarenga Costa"
+     },
+     {
+      "id": "G0-NAME",
+      "type": "Gate",
+      "label": "NAME gate · agreement"
+     },
+     {
+      "id": "F0c",
+      "type": "Fact",
+      "label": "verified name: Rafael Alvarenga Costa",
+      "side": "customer",
+      "value": "Rafael Alvarenga Costa",
+      "source_id": "KYC-000011",
+      "quote": null
+     },
+     {
+      "id": "F0h",
+      "type": "Fact",
+      "label": "hit name: Rafael Alvarenga Costa",
+      "side": "hit",
+      "value": "Rafael Alvarenga Costa",
+      "source_id": "H-000011",
+      "quote": null
+     },
+     {
+      "id": "G1-DOB",
+      "type": "Gate",
+      "label": "DOB gate · agreement"
+     },
+     {
+      "id": "F1c",
+      "type": "Fact",
+      "label": "customer DOB: 1971-03-30",
+      "side": "customer",
+      "value": "1971-03-30",
+      "source_id": "KYC-000011",
+      "quote": null
+     },
+     {
+      "id": "F1h",
+      "type": "Fact",
+      "label": "hit DOB: 1971-03-30",
+      "side": "hit",
+      "value": "1971-03-30",
+      "source_id": "H-000011",
+      "quote": "(born March 30, 1971)"
+     },
+     {
+      "id": "G2-LOCATION",
+      "type": "Gate",
+      "label": "LOCATION gate · blocked"
+     },
+     {
+      "id": "F2c",
+      "type": "Fact",
+      "label": "customer countries: PT",
+      "side": "customer",
+      "value": "PT",
+      "source_id": "CUS-000011",
+      "quote": null
+     },
+     {
+      "id": "F2h",
+      "type": "Fact",
+      "label": "hit country: BR",
+      "side": "hit",
+      "value": "BR",
+      "source_id": "H-000011",
+      "quote": null
+     },
+     {
+      "id": "D-H-000011",
+      "type": "Decision",
+      "label": "REVIEW · INSUFFICIENT_DATA"
+     }
+    ],
+    "edges": [
+     {
+      "src": "A-000010",
+      "dst": "CUS-000011",
+      "type": "LINKS_VIA",
+      "verdict": "neutral"
+     },
+     {
+      "src": "CUS-000011",
+      "dst": "KYC-000011",
+      "type": "HAS_CHECK",
+      "verdict": "neutral"
+     },
+     {
+      "src": "KYC-000011",
+      "dst": "F0c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0c",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000011",
+      "dst": "F0h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F0h",
+      "dst": "G0-NAME",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G0-NAME",
+      "dst": "D-H-000011",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "KYC-000011",
+      "dst": "F1c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1c",
+      "dst": "G1-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "H-000011",
+      "dst": "F1h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F1h",
+      "dst": "G1-DOB",
+      "type": "AGREES",
+      "verdict": "agrees"
+     },
+     {
+      "src": "G1-DOB",
+      "dst": "D-H-000011",
+      "type": "DECIDED_BY",
+      "verdict": "agrees"
+     },
+     {
+      "src": "CUS-000011",
+      "dst": "F2c",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2c",
+      "dst": "G2-LOCATION",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "H-000011",
+      "dst": "F2h",
+      "type": "USES",
+      "verdict": "neutral"
+     },
+     {
+      "src": "F2h",
+      "dst": "G2-LOCATION",
+      "type": "CONTRADICTS",
+      "verdict": "contradicts"
+     },
+     {
+      "src": "G2-LOCATION",
+      "dst": "D-H-000011",
+      "type": "DECIDED_BY",
+      "verdict": "contradicts"
+     }
+    ],
+    "decisive_path": [
+     "A-000010",
+     "CUS-000011",
+     "KYC-000011",
+     "H-000011",
+     "G0-NAME",
+     "F0c",
+     "F0h",
+     "G1-DOB",
+     "F1c",
+     "F1h",
+     "G2-LOCATION",
+     "F2c",
+     "F2h",
+     "D-H-000011"
+    ]
+   }
+  }
+ }
+]
