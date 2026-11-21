@@ -38,7 +38,7 @@ function CardNode({ data }: NodeProps) {
 
 const nodeTypes: NodeTypes = { card: CardNode };
 
-export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: CaseFile; highlightIds?: string[]; focusId?: string }) {
+export function KnowledgeGraph({ item, highlightIds = [], focusId, startCollapsed = false }: { item: CaseFile; highlightIds?: string[]; focusId?: string; startCollapsed?: boolean }) {
   const animate = useMemo(
     () => typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     [],
@@ -48,11 +48,26 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: Cas
   useEffect(() => {
     if (focusId && model.nodes.some((n) => n.id === focusId)) setSelected(focusId);
   }, [focusId, model]);
+  const [expanded, setExpanded] = useState(!startCollapsed);
   const nodes = model.nodes.map((n) => ({
     ...n,
     data: { ...n.data, highlighted: highlightIds.includes(n.id) },
   }));
-  const node = nodes.find((n) => n.id === selected) ?? nodes[0];
+  const view = useMemo(() => {
+    if (expanded) return { nodes, edges: model.edges };
+    const order = ["alert", "customer", model.decisiveId, "decision"].filter((id, i, all) => nodes.some((n) => n.id === id) && all.indexOf(id) === i);
+    const kept = nodes.filter((n) => order.includes(n.id)).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id)).map((n, i) => ({ ...n, position: { x: i * 220, y: 24 } }));
+    const edges: typeof model.edges = order.slice(0, -1).map((id, i) => ({
+      id: `path-${id}`,
+      source: id,
+      target: order[i + 1],
+      animated: animate,
+      style: { stroke: "#9f1239", strokeWidth: 2.4 },
+      markerEnd: { type: "arrowclosed" as const, color: "#9f1239", width: 16, height: 16 },
+    }));
+    return { nodes: kept, edges };
+  }, [expanded, nodes, model, animate]);
+  const node = view.nodes.find((n) => n.id === selected) ?? view.nodes[0];
   const ruleText = RULES.find((r) => r.name === node?.data.rule || r.id === node?.data.rule)?.text;
 
   return (
@@ -62,11 +77,14 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: Cas
         <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-6 bg-emerald-700" /> Agreement</span>
         <span className="inline-flex items-center gap-1.5"><i className="h-0.5 w-6 bg-zinc-400" /> Link</span>
         <span>The rose ring is the decisive step. Tab to a node and press Enter.</span>
+        <button type="button" className="rounded-md border bg-card px-2 py-1 text-[12px] text-foreground" onClick={() => setExpanded((v) => !v)}>
+          {expanded ? "Show the decisive path" : "Expand all"}
+        </button>
       </div>
       <div className="h-[560px] overflow-hidden rounded-xl border bg-[#fbfaf7]" role="group" aria-label={`Entity graph for ${item.case_id}`}>
         <ReactFlow
-          nodes={nodes}
-          edges={model.edges}
+          nodes={view.nodes}
+          edges={view.edges}
           nodeTypes={nodeTypes}
           fitView
           fitViewOptions={{ padding: 0.12 }}

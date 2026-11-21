@@ -12,18 +12,18 @@ export function Overview() {
       <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div initial={{ opacity: 1, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }}>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900">Sanctions and PEP screening</p>
-          <h1 className="mt-3 max-w-xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-            Show why it's a different person.
+          <h1 className="mt-3 max-w-xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl">
+            Is this sanctions hit really your customer?
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Namesake decides whether a screening hit is the same person as the bank customer. A clear happens only when a written rule finds a contradiction. The reason names the records that decided it.
+            Namesake checks every screening hit against the bank's own records and clears it only when a written rule proves it's a different person.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild size="lg">
-              <Link to="/graph">Open the case graph</Link>
+              <Link to="/cases/S-0072">Walk through a case</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link to="/results">Read the results</Link>
+              <Link to="/results">See results</Link>
             </Button>
           </div>
         </motion.div>

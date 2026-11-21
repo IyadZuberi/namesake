@@ -1,7 +1,6 @@
 import { MotionConfig } from "framer-motion";
 import { Route, Routes } from "react-router-dom";
 import { Shell } from "@/components/layout";
-import { CasePage } from "@/pages/case";
 import { CasesPage } from "@/pages/cases";
 import { GraphPage, RulesPage } from "@/pages/graph-page";
 import { Overview } from "@/pages/overview";
@@ -18,7 +17,7 @@ export default function App() {
           <Route path="/" element={<Overview />} />
           <Route path="/how" element={<HowPage />} />
           <Route path="/cases" element={<CasesPage />} />
-          <Route path="/cases/:id" element={<CasePage />} />
+          <Route path="/cases/:id" element={<CasesPage />} />
           <Route path="/graph" element={<GraphPage />} />
           <Route path="/graph/:id" element={<GraphPage />} />
           <Route path="/rules" element={<RulesPage />} />

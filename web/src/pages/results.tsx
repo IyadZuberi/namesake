@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { scoreboard } from "@/data/stats";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const MixChart = lazy(() => import("@/components/mix-chart").then((m) => ({ default: m.MixChart })));
 
@@ -17,6 +18,14 @@ export function Results() {
         </p>
       </header>
 
+      <Tabs defaultValue="practice">
+        <TabsList>
+          <TabsTrigger value="practice">Practice</TabsTrigger>
+          <TabsTrigger value="dev">Dev</TabsTrigger>
+          <TabsTrigger value="drill">Fire Drill</TabsTrigger>
+          <TabsTrigger value="repro">Reproducibility</TabsTrigger>
+        </TabsList>
+        <TabsContent value="practice" className="space-y-4">
       <section className="grid gap-3 sm:grid-cols-3">
         <Stat k={scoreboard.decision_score.toFixed(1)} label="Practice decision score" note={`${scoreboard.labelled} correct. Reason code ${scoreboard.reason_code_pct}%. Customer record ${scoreboard.customer_record_pct}%. Not recomputed here.`} />
         <Stat k={String(scoreboard.unsafe_clearances)} label="Unsafe clears on the 50" note="Wrongly clearing a real match costs 60. None were cleared." />
@@ -40,6 +49,8 @@ export function Results() {
         </div>
       </section>
 
+        </TabsContent>
+        <TabsContent value="drill" className="space-y-4">
       <section className="rounded-xl border bg-card p-5">
         <h2 className="text-lg font-semibold">Fire Drill confusion</h2>
         <p className="mt-1 text-sm text-muted-foreground">{fd.label}. {fd.note}</p>
@@ -74,6 +85,8 @@ export function Results() {
         <p className="mt-3 text-sm text-muted-foreground">{scoreboard.confusion_note}</p>
       </section>
 
+        </TabsContent>
+        <TabsContent value="dev" className="space-y-4">
       <section className="rounded-xl border bg-card p-5">
         <h2 className="text-lg font-semibold">Dev output, counts only</h2>
         <p className="mt-1 text-sm text-muted-foreground">{scoreboard.dev_decisions_note}</p>
@@ -93,13 +106,20 @@ export function Results() {
           <Mini k={String(scoreboard.dev_decisions.REVIEW)} l="REVIEW" />
           <Mini k={String(scoreboard.dev_decisions.SAME_ENTITY)} l="SAME" />
         </dl>
+      </section>
+        </TabsContent>
+        <TabsContent value="repro">
+      <section className="rounded-xl border bg-card p-5">
+        <h2 className="text-lg font-semibold">Reproducibility</h2>
         <p className="mt-3 font-mono text-[12px] text-muted-foreground">sha256 {scoreboard.repro.fingerprint}</p>
         <p className="mt-2 text-sm text-muted-foreground">{scoreboard.repro.note}</p>
-        <p className="mt-2 text-sm text-muted-foreground">{scoreboard.run_seconds_note} Recorded validate.py result: {scoreboard.lines} lines, {scoreboard.problems} problems.</p>
+        <p className="mt-2 text-sm text-muted-foreground">{scoreboard.run_seconds_note} Recorded validate.py result: {scoreboard.lines} lines, {scoreboard.problems} problems. {scoreboard.unit_tests} unit tests pass.</p>
         <p className="mt-2 text-sm text-muted-foreground">
           Fire Drill output sha256 {fd.sha256}. The two hash seeds matched: {fd.identical_across_seeds ? "yes" : "no"}. Run times {fd.run_seconds.map((n) => `${n}s`).join(" and ")}.
         </p>
       </section>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
