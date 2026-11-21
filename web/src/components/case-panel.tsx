@@ -60,7 +60,16 @@ export function CasePanel({ item }: { item: CaseFile }) {
               ))}
             </tbody>
           </table>
-          <p className="mt-3 text-sm font-medium">{fired.length} of {RULES.length} rules fired, {decided.length} decided.</p>
+          <h3 className="mt-4 text-sm font-semibold">Rules that affected this case</h3>
+          <p className="mt-1 text-sm">{fired.length} of {RULES.length} rules fired, {decided.length} decided.</p>
+          <ul className="mt-1 space-y-1">
+            {RULES.map((rule) => (
+              <li key={rule.id} className="text-[12px]">
+                <span className="font-mono">{rule.name}</span>
+                <span className="text-muted-foreground"> · {rule.fires(item) ? (rule.decisive(item) ? "decided" : "fired") : "not fired"}</span>
+              </li>
+            ))}
+          </ul>
           <p className="mt-2 text-sm leading-relaxed">{item.decision.reason}</p>
           <ul className="mt-3 space-y-1">
             {rows.map((r) => (

@@ -120,6 +120,15 @@ export function Results() {
       </section>
         </TabsContent>
       </Tabs>
+      <section className="rounded-xl border bg-card p-5">
+        <h2 className="text-lg font-semibold">Will it generalise?</h2>
+        <ul className="mt-2 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
+          <li>The 50 practice labels were used while building. The score of 100.0 is not a held-out score.</li>
+          <li>Fire Drill is our own synthetic regression set: {fd.correct}/{fd.total}, {fd.unsafe} unsafe clears. It is not an independent test.</li>
+          <li>No customer name or hit id is hard-coded in system/. Checked by searching every Python file under system/ for CUS-, NOTE-, KYC-, and H- tokens, and for two-word capitalised names. The only id shape is the evidence format check in explain.py. countries.py is a country list. Indexes are built from the data folder at run time.</li>
+          <li>An unknown fact stays unknown. Unknown never clears a hit. The result is REVIEW.</li>
+        </ul>
+      </section>
     </div>
   );
 }

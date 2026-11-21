@@ -9,6 +9,7 @@ import { Overview } from "@/pages/overview";
 import { Results } from "@/pages/results";
 import { SecondPage } from "@/pages/second";
 import { JudgesPage } from "@/pages/judges";
+import { PolicyPage } from "@/pages/policy";
 import { HowPage } from "@/pages/soon";
 
 function ThemeQuery() {
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/graph/:id" element={<GraphPage />} />
           <Route path="/rules" element={<RulesPage />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/policy" element={<PolicyPage />} />
           <Route path="/judges" element={<JudgesPage />} />
           <Route path="/second-opinion" element={<SecondPage />} />
         </Routes>

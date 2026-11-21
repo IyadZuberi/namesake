@@ -10,7 +10,9 @@ import {
 import "@xyflow/react/dist/style.css";
 import { useEffect, useMemo, useState } from "react";
 import { buildGraph, type NodeData } from "@/lib/graph";
+import { GH, principleForKind } from "@/lib/policy";
 import { RULES } from "@/lib/rules";
+import { Link } from "react-router-dom";
 import type { CaseFile } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -57,6 +59,7 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: Cas
   }));
   const node = nodes.find((n) => n.id === selected) ?? nodes[0];
   const ruleText = RULES.find((r) => r.name === node?.data.rule || r.id === node?.data.rule)?.text;
+  const principle = node ? principleForKind(node.data.kind, node.data.label) : undefined;
 
   return (
     <div className="space-y-3">
@@ -97,8 +100,24 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: Cas
           <h3 className="text-base font-semibold">{node.data.label}</h3>
           <dl className="mt-3 space-y-2 text-sm">
             <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Why</dt><dd>{node.data.why}</dd></div>
-            <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Source</dt><dd className="font-mono text-[12px]">{node.data.sourceFile} · {node.data.sourceField}{node.data.sourceId ? " · " + node.data.sourceId : ""}</dd></div>
-            <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Rule</dt><dd>{ruleText || "This node is a source, not a deciding rule."}</dd></div>
+            <div>
+              <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Source</dt>
+              <dd className="font-mono text-[12px]">
+                {node.data.sourceFile.endsWith(".jsonl") ? (
+                  <a className="underline" href={GH + "demo-data/firedrill/" + node.data.sourceFile}>{node.data.sourceFile}</a>
+                ) : (
+                  node.data.sourceFile
+                )}
+                {" · "}{node.data.sourceField}{node.data.sourceId ? " · " + node.data.sourceId : ""}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Rule</dt>
+              <dd>
+                {principle ? <Link className="underline" to={"/policy#p-" + principle.n}>Principle {principle.n}. {principle.title}.</Link> : null}
+                {" "}{ruleText || "This node is a source, not a deciding rule."}
+              </dd>
+            </div>
             <div><dt className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Path</dt><dd>{node.data.path}</dd></div>
           </dl>
         </div>

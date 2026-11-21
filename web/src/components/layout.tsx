@@ -10,6 +10,7 @@ const LINKS = [
   { to: "/how", label: "How it works" },
   { to: "/cases", label: "Cases" },
   { to: "/results", label: "Results" },
+  { to: "/policy", label: "Policy" },
   { to: "/judges", label: "For judges" },
 ];
 
