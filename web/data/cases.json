@@ -173,6 +173,10 @@
           "facts": {
             "customer_dob": "1971-07-14",
             "dob_source": "CUS-228867",
+            "hit_dobs": [
+              "1971",
+              "1972"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -419,6 +423,9 @@
           "facts": {
             "customer_dob": "1955-06-12",
             "dob_source": "NOTE-6BFA15",
+            "hit_dobs": [
+              "1990"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -859,7 +866,7 @@
       "decision": "REVIEW",
       "reason_code": "INSUFFICIENT_DATA",
       "customer_record_id": "CUS-328965",
-      "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree). Name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-328965.",
+      "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree); name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-328965.",
       "evidence": [
         "CUS-328965"
       ]
@@ -873,7 +880,7 @@
           "CUS-328965"
         ],
         "hit_id": "H-10C5AB",
-        "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree). Name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-328965.",
+        "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree); name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-328965.",
         "reason_code": "INSUFFICIENT_DATA"
       },
       "gates": [
@@ -927,6 +934,10 @@
           "facts": {
             "customer_dob": "1977-08-08",
             "dob_source": "CUS-328965",
+            "hit_dobs": [
+              "1976",
+              "1977"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -1208,6 +1219,9 @@
           "facts": {
             "customer_dob": "1988-04-17",
             "dob_source": "CUS-759822",
+            "hit_dobs": [
+              "1958"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -1701,6 +1715,10 @@
           "facts": {
             "customer_dob": "1981-11-28",
             "dob_source": "CUS-016195",
+            "hit_dobs": [
+              "1981",
+              "1982"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -1949,6 +1967,9 @@
           "facts": {
             "customer_dob": "1977-05-20",
             "dob_source": "CUS-297071",
+            "hit_dobs": [
+              "1977"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -2928,6 +2949,10 @@
           "facts": {
             "customer_dob": "1983-06-20",
             "dob_source": "CUS-059481",
+            "hit_dobs": [
+              "1983",
+              "1984"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -3820,7 +3845,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-914463",
-      "reason": "The customer's date of birth 1972-03-05 (CUS-914463) agrees with the hit's date of birth, the year 1971 or 1972, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Finland. No gate contradicts them. The customer was found through the alert's account link as CUS-914463.",
+      "reason": "The customer's date of birth 1972-03-05 (CUS-914463) agrees with the hit's date of birth, the year 1971 or 1972, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Finland; no gate contradicts them. The customer was found through the alert's account link as CUS-914463.",
       "evidence": [
         "CUS-914463",
         "SR-FEACBA"
@@ -3836,7 +3861,7 @@
           "SR-FEACBA"
         ],
         "hit_id": "H-222578",
-        "reason": "The customer's date of birth 1972-03-05 (CUS-914463) agrees with the hit's date of birth, the year 1971 or 1972, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Finland. No gate contradicts them. The customer was found through the alert's account link as CUS-914463.",
+        "reason": "The customer's date of birth 1972-03-05 (CUS-914463) agrees with the hit's date of birth, the year 1971 or 1972, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Finland; no gate contradicts them. The customer was found through the alert's account link as CUS-914463.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -3889,6 +3914,10 @@
           "facts": {
             "customer_dob": "1972-03-05",
             "dob_source": "CUS-914463",
+            "hit_dobs": [
+              "1971",
+              "1972"
+            ],
             "hit_has_full": false,
             "hit_source": "search_result",
             "hit_years": [
@@ -4140,6 +4169,9 @@
           "facts": {
             "customer_dob": "1981-12-24",
             "dob_source": "CUS-230364",
+            "hit_dobs": [
+              "1950"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -4402,6 +4434,10 @@
           "facts": {
             "customer_dob": "1990-01-31",
             "dob_source": "CUS-963120",
+            "hit_dobs": [
+              "1949",
+              "1950"
+            ],
             "hit_has_full": false,
             "hit_source": "search_result",
             "hit_years": [
@@ -4638,7 +4674,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-840420",
-      "reason": "The customer's date of birth 1982-02-14 (KYC-520086) agrees with the hit's date of birth, the year 1982 or 1983, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria. No gate contradicts them. The customer was found through the alert's login handle as CUS-817728, CUS-840420.",
+      "reason": "The customer's date of birth 1982-02-14 (KYC-520086) agrees with the hit's date of birth, the year 1982 or 1983, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria; no gate contradicts them. The customer was found through the alert's login handle as CUS-817728, CUS-840420.",
       "evidence": [
         "CUS-817728",
         "CUS-840420",
@@ -4656,7 +4692,7 @@
           "KYC-520086"
         ],
         "hit_id": "H-271AD4",
-        "reason": "The customer's date of birth 1982-02-14 (KYC-520086) agrees with the hit's date of birth, the year 1982 or 1983, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria. No gate contradicts them. The customer was found through the alert's login handle as CUS-817728, CUS-840420.",
+        "reason": "The customer's date of birth 1982-02-14 (KYC-520086) agrees with the hit's date of birth, the year 1982 or 1983, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria; no gate contradicts them. The customer was found through the alert's login handle as CUS-817728, CUS-840420.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -4709,6 +4745,10 @@
           "facts": {
             "customer_dob": "1982-02-14",
             "dob_source": "KYC-520086",
+            "hit_dobs": [
+              "1982",
+              "1983"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -5156,7 +5196,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-286274",
-      "reason": "The customer's date of birth 1966-02-18 (CUS-286274) agrees with the hit's date of birth, the year 1966 or 1967, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France. No gate contradicts them. The customer was found through the alert's email as CUS-286274.",
+      "reason": "The customer's date of birth 1966-02-18 (CUS-286274) agrees with the hit's date of birth, the year 1966 or 1967, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France; no gate contradicts them. The customer was found through the alert's email as CUS-286274.",
       "evidence": [
         "CUS-286274"
       ]
@@ -5170,7 +5210,7 @@
           "CUS-286274"
         ],
         "hit_id": "H-2A1113",
-        "reason": "The customer's date of birth 1966-02-18 (CUS-286274) agrees with the hit's date of birth, the year 1966 or 1967, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France. No gate contradicts them. The customer was found through the alert's email as CUS-286274.",
+        "reason": "The customer's date of birth 1966-02-18 (CUS-286274) agrees with the hit's date of birth, the year 1966 or 1967, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France; no gate contradicts them. The customer was found through the alert's email as CUS-286274.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -5222,6 +5262,10 @@
           "facts": {
             "customer_dob": "1966-02-18",
             "dob_source": "CUS-286274",
+            "hit_dobs": [
+              "1966",
+              "1967"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -5917,7 +5961,7 @@
       "decision": "DIFFERENT_ENTITY",
       "reason_code": "TEMPORAL_IMPOSSIBILITY",
       "customer_record_id": "CUS-658261",
-      "reason": "The customer was incorporated on 2015-04-01 (KYC-BEE806), after the hit's earliest dated report on 2012-06-05. No other known date of birth for the customer allows an adult at that report. The customer was found through the alert's account link as CUS-658261.",
+      "reason": "The customer company was incorporated on 2015-04-01 (KYC-BEE806), after the hit's earliest dated report on 2012-06-05. No other known incorporation date for the customer comes before that report, so the company did not yet exist. The customer was found through the alert's account link as CUS-658261.",
       "evidence": [
         "KYC-BEE806"
       ]
@@ -5931,7 +5975,7 @@
           "KYC-BEE806"
         ],
         "hit_id": "H-3B1185",
-        "reason": "The customer was incorporated on 2015-04-01 (KYC-BEE806), after the hit's earliest dated report on 2012-06-05. No other known date of birth for the customer allows an adult at that report. The customer was found through the alert's account link as CUS-658261.",
+        "reason": "The customer company was incorporated on 2015-04-01 (KYC-BEE806), after the hit's earliest dated report on 2012-06-05. No other known incorporation date for the customer comes before that report, so the company did not yet exist. The customer was found through the alert's account link as CUS-658261.",
         "reason_code": "TEMPORAL_IMPOSSIBILITY"
       },
       "gates": [
@@ -6450,7 +6494,7 @@
       "decision": "REVIEW",
       "reason_code": "INSUFFICIENT_DATA",
       "customer_record_id": "CUS-964593",
-      "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree). Name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's email as CUS-964593.",
+      "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree); name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's email as CUS-964593.",
       "evidence": [
         "CUS-964593",
         "KYC-2B32AD"
@@ -6466,7 +6510,7 @@
           "KYC-2B32AD"
         ],
         "hit_id": "H-408524",
-        "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree). Name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's email as CUS-964593.",
+        "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree); name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's email as CUS-964593.",
         "reason_code": "INSUFFICIENT_DATA"
       },
       "gates": [
@@ -6521,6 +6565,9 @@
           "facts": {
             "customer_dob": "1962-02-26",
             "dob_source": "KYC-2B32AD",
+            "hit_dobs": [
+              "1962"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -7283,6 +7330,10 @@
           "facts": {
             "customer_dob": "1978-02-28",
             "dob_source": "CUS-538248",
+            "hit_dobs": [
+              "1978",
+              "1979"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -7521,6 +7572,9 @@
           "facts": {
             "customer_dob": "1979-11-02",
             "dob_source": "CUS-671640",
+            "hit_dobs": [
+              "1951"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -7734,7 +7788,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-446498",
-      "reason": "The customer's date of birth 1990-04-18 (CUS-446498) agrees with the hit's date of birth, the year 1990, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany. No gate contradicts them. The customer was found through the alert's account link as CUS-446498.",
+      "reason": "The customer's date of birth 1990-04-18 (CUS-446498) agrees with the hit's date of birth, the year 1990, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany; no gate contradicts them. The customer was found through the alert's account link as CUS-446498.",
       "evidence": [
         "CUS-446498"
       ]
@@ -7748,7 +7802,7 @@
           "CUS-446498"
         ],
         "hit_id": "H-48BE1F",
-        "reason": "The customer's date of birth 1990-04-18 (CUS-446498) agrees with the hit's date of birth, the year 1990, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany. No gate contradicts them. The customer was found through the alert's account link as CUS-446498.",
+        "reason": "The customer's date of birth 1990-04-18 (CUS-446498) agrees with the hit's date of birth, the year 1990, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany; no gate contradicts them. The customer was found through the alert's account link as CUS-446498.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -7800,6 +7854,9 @@
           "facts": {
             "customer_dob": "1990-04-18",
             "dob_source": "CUS-446498",
+            "hit_dobs": [
+              "1990"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -7991,7 +8048,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-146178",
-      "reason": "The customer's date of birth 1987-09-13 (CUS-146178) agrees with the hit's date of birth, the year 1987 or 1988, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Spain. No gate contradicts them. The customer was found through the alert's login handle as CUS-146178.",
+      "reason": "The customer's date of birth 1987-09-13 (CUS-146178) agrees with the hit's date of birth, the year 1987 or 1988, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Spain; no gate contradicts them. The customer was found through the alert's login handle as CUS-146178.",
       "evidence": [
         "CUS-146178"
       ]
@@ -8005,7 +8062,7 @@
           "CUS-146178"
         ],
         "hit_id": "H-499B18",
-        "reason": "The customer's date of birth 1987-09-13 (CUS-146178) agrees with the hit's date of birth, the year 1987 or 1988, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Spain. No gate contradicts them. The customer was found through the alert's login handle as CUS-146178.",
+        "reason": "The customer's date of birth 1987-09-13 (CUS-146178) agrees with the hit's date of birth, the year 1987 or 1988, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Spain; no gate contradicts them. The customer was found through the alert's login handle as CUS-146178.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -8057,6 +8114,10 @@
           "facts": {
             "customer_dob": "1987-09-13",
             "dob_source": "CUS-146178",
+            "hit_dobs": [
+              "1987",
+              "1988"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -8247,7 +8308,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-815315",
-      "reason": "The customer's date of birth 1974-06-27 (CUS-815315) agrees with the hit's date of birth, the year 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found through the alert's account link as CUS-815315.",
+      "reason": "The customer's date of birth 1974-06-27 (CUS-815315) agrees with the hit's date of birth, the year 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found through the alert's account link as CUS-815315.",
       "evidence": [
         "CUS-815315"
       ]
@@ -8261,7 +8322,7 @@
           "CUS-815315"
         ],
         "hit_id": "H-4B2BAB",
-        "reason": "The customer's date of birth 1974-06-27 (CUS-815315) agrees with the hit's date of birth, the year 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found through the alert's account link as CUS-815315.",
+        "reason": "The customer's date of birth 1974-06-27 (CUS-815315) agrees with the hit's date of birth, the year 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found through the alert's account link as CUS-815315.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -8313,6 +8374,9 @@
           "facts": {
             "customer_dob": "1974-06-27",
             "dob_source": "CUS-815315",
+            "hit_dobs": [
+              "1974"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -8492,7 +8556,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-062899",
-      "reason": "The customer's date of birth 1968-02-14 (CUS-062899) agrees with the hit's date of birth, the year 1967 or 1968, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's login handle as CUS-062899.",
+      "reason": "The customer's date of birth 1968-02-14 (CUS-062899) agrees with the hit's date of birth, the year 1967 or 1968, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's login handle as CUS-062899.",
       "evidence": [
         "CUS-062899"
       ]
@@ -8506,7 +8570,7 @@
           "CUS-062899"
         ],
         "hit_id": "H-4C67E5",
-        "reason": "The customer's date of birth 1968-02-14 (CUS-062899) agrees with the hit's date of birth, the year 1967 or 1968, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's login handle as CUS-062899.",
+        "reason": "The customer's date of birth 1968-02-14 (CUS-062899) agrees with the hit's date of birth, the year 1967 or 1968, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's login handle as CUS-062899.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -8558,6 +8622,10 @@
           "facts": {
             "customer_dob": "1968-02-14",
             "dob_source": "CUS-062899",
+            "hit_dobs": [
+              "1967",
+              "1968"
+            ],
             "hit_has_full": false,
             "hit_source": "first_paragraph",
             "hit_years": [
@@ -9081,6 +9149,10 @@
           "facts": {
             "customer_dob": "1989-09-23",
             "dob_source": "CUS-670289",
+            "hit_dobs": [
+              "1961",
+              "1962"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -10078,6 +10150,9 @@
           "facts": {
             "customer_dob": "1986-08-30",
             "dob_source": "CUS-209971",
+            "hit_dobs": [
+              "1950"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -10337,6 +10412,9 @@
           "facts": {
             "customer_dob": "1955-06-19",
             "dob_source": "NOTE-5C6985",
+            "hit_dobs": [
+              "1985"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -10843,6 +10921,9 @@
           "facts": {
             "customer_dob": "1990-03-29",
             "dob_source": "CUS-201655",
+            "hit_dobs": [
+              "1950"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -11023,7 +11104,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-354993",
-      "reason": "The customer's date of birth 1993-07-14 (CUS-354993) agrees with the hit's date of birth, the year 1993 or 1994, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany. No gate contradicts them. The customer was found through the alert's account link as CUS-354993.",
+      "reason": "The customer's date of birth 1993-07-14 (CUS-354993) agrees with the hit's date of birth, the year 1993 or 1994, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany; no gate contradicts them. The customer was found through the alert's account link as CUS-354993.",
       "evidence": [
         "CUS-354993"
       ]
@@ -11037,7 +11118,7 @@
           "CUS-354993"
         ],
         "hit_id": "H-5D4B69",
-        "reason": "The customer's date of birth 1993-07-14 (CUS-354993) agrees with the hit's date of birth, the year 1993 or 1994, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany. No gate contradicts them. The customer was found through the alert's account link as CUS-354993.",
+        "reason": "The customer's date of birth 1993-07-14 (CUS-354993) agrees with the hit's date of birth, the year 1993 or 1994, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Germany; no gate contradicts them. The customer was found through the alert's account link as CUS-354993.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -11089,6 +11170,10 @@
           "facts": {
             "customer_dob": "1993-07-14",
             "dob_source": "CUS-354993",
+            "hit_dobs": [
+              "1993",
+              "1994"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -11849,6 +11934,9 @@
           "facts": {
             "customer_dob": "1971-07-16",
             "dob_source": "KYC-1F5252",
+            "hit_dobs": [
+              "1971"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -12269,7 +12357,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-083160",
-      "reason": "The customer's date of birth 1973-08-21 (CUS-083160) agrees with the hit's date of birth, the year 1973 or 1974, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Peru. No gate contradicts them. The customer was found through the alert's account link as CUS-083160.",
+      "reason": "The customer's date of birth 1973-08-21 (CUS-083160) agrees with the hit's date of birth, the year 1973 or 1974, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Peru; no gate contradicts them. The customer was found through the alert's account link as CUS-083160.",
       "evidence": [
         "CUS-083160"
       ]
@@ -12283,7 +12371,7 @@
           "CUS-083160"
         ],
         "hit_id": "H-67C2E9",
-        "reason": "The customer's date of birth 1973-08-21 (CUS-083160) agrees with the hit's date of birth, the year 1973 or 1974, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Peru. No gate contradicts them. The customer was found through the alert's account link as CUS-083160.",
+        "reason": "The customer's date of birth 1973-08-21 (CUS-083160) agrees with the hit's date of birth, the year 1973 or 1974, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Peru; no gate contradicts them. The customer was found through the alert's account link as CUS-083160.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -12335,6 +12423,10 @@
           "facts": {
             "customer_dob": "1973-08-21",
             "dob_source": "CUS-083160",
+            "hit_dobs": [
+              "1973",
+              "1974"
+            ],
             "hit_has_full": false,
             "hit_source": "first_paragraph",
             "hit_years": [
@@ -12515,7 +12607,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-326857",
-      "reason": "The customer's date of birth 1971-09-12 (CUS-326857) agrees with the hit's date of birth, the year 1970 or 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found through the alert's account link as CUS-326857.",
+      "reason": "The customer's date of birth 1971-09-12 (CUS-326857) agrees with the hit's date of birth, the year 1970 or 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found through the alert's account link as CUS-326857.",
       "evidence": [
         "CUS-326857"
       ]
@@ -12529,7 +12621,7 @@
           "CUS-326857"
         ],
         "hit_id": "H-6A56AA",
-        "reason": "The customer's date of birth 1971-09-12 (CUS-326857) agrees with the hit's date of birth, the year 1970 or 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found through the alert's account link as CUS-326857.",
+        "reason": "The customer's date of birth 1971-09-12 (CUS-326857) agrees with the hit's date of birth, the year 1970 or 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found through the alert's account link as CUS-326857.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -12581,6 +12673,10 @@
           "facts": {
             "customer_dob": "1971-09-12",
             "dob_source": "CUS-326857",
+            "hit_dobs": [
+              "1970",
+              "1971"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -13317,6 +13413,10 @@
           "facts": {
             "customer_dob": "1985-02-09",
             "dob_source": "CUS-626887",
+            "hit_dobs": [
+              "1973",
+              "1974"
+            ],
             "hit_has_full": false,
             "hit_source": "first_paragraph",
             "hit_years": [
@@ -13497,7 +13597,7 @@
       "decision": "REVIEW",
       "reason_code": "INSUFFICIENT_DATA",
       "customer_record_id": "CUS-408118",
-      "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree). Name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-408118.",
+      "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree); name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-408118.",
       "evidence": [
         "CUS-408118"
       ]
@@ -13511,7 +13611,7 @@
           "CUS-408118"
         ],
         "hit_id": "H-6E3BBC",
-        "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree). Name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-408118.",
+        "reason": "A clear was prevented: LOCATION clear blocked (name and date of birth agree); name and date of birth agree, but the countries differ. The countries of the customer and the hit differ, so the hit is neither cleared nor confirmed. A documented place of residence or nationality for the listed person would settle it. The customer was found through the alert's account link as CUS-408118.",
         "reason_code": "INSUFFICIENT_DATA"
       },
       "gates": [
@@ -13565,6 +13665,9 @@
           "facts": {
             "customer_dob": "1969-05-23",
             "dob_source": "CUS-408118",
+            "hit_dobs": [
+              "1969-05-23"
+            ],
             "hit_has_full": true,
             "hit_source": "dobs",
             "hit_years": [
@@ -13980,7 +14083,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-517358",
-      "reason": "The customer's date of birth 1968-09-25 (CUS-517358) agrees with the hit's date of birth, the year 1968 or 1969, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found by searching the system of record for the screened name, date of birth, country and city as CUS-517358.",
+      "reason": "The customer's date of birth 1968-09-25 (CUS-517358) agrees with the hit's date of birth, the year 1968 or 1969, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found by searching the system of record for the screened name, date of birth, country and city as CUS-517358.",
       "evidence": [
         "CUS-517358"
       ]
@@ -13994,7 +14097,7 @@
           "CUS-517358"
         ],
         "hit_id": "H-709933",
-        "reason": "The customer's date of birth 1968-09-25 (CUS-517358) agrees with the hit's date of birth, the year 1968 or 1969, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found by searching the system of record for the screened name, date of birth, country and city as CUS-517358.",
+        "reason": "The customer's date of birth 1968-09-25 (CUS-517358) agrees with the hit's date of birth, the year 1968 or 1969, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found by searching the system of record for the screened name, date of birth, country and city as CUS-517358.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -14046,6 +14149,10 @@
           "facts": {
             "customer_dob": "1968-09-25",
             "dob_source": "CUS-517358",
+            "hit_dobs": [
+              "1968",
+              "1969"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -14496,7 +14603,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-250040",
-      "reason": "The customer's date of birth 1983-07-18 (CUS-250040) agrees with the hit's date of birth, the year 1983 or 1984, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil. No gate contradicts them. The customer was found through the alert's email as CUS-250040.",
+      "reason": "The customer's date of birth 1983-07-18 (CUS-250040) agrees with the hit's date of birth, the year 1983 or 1984, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil; no gate contradicts them. The customer was found through the alert's email as CUS-250040.",
       "evidence": [
         "CUS-250040"
       ]
@@ -14510,7 +14617,7 @@
           "CUS-250040"
         ],
         "hit_id": "H-73CC26",
-        "reason": "The customer's date of birth 1983-07-18 (CUS-250040) agrees with the hit's date of birth, the year 1983 or 1984, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil. No gate contradicts them. The customer was found through the alert's email as CUS-250040.",
+        "reason": "The customer's date of birth 1983-07-18 (CUS-250040) agrees with the hit's date of birth, the year 1983 or 1984, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil; no gate contradicts them. The customer was found through the alert's email as CUS-250040.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -14562,6 +14669,10 @@
           "facts": {
             "customer_dob": "1983-07-18",
             "dob_source": "CUS-250040",
+            "hit_dobs": [
+              "1983",
+              "1984"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -14741,7 +14852,7 @@
       "decision": "DIFFERENT_ENTITY",
       "reason_code": "DOB_MISMATCH",
       "customer_record_id": "CUS-271699",
-      "reason": "The customer's date of birth is 1960-06-15 (CUS-271699), but the hit's date of birth, taken from its profile notes, gives only the year 1960. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-271699.",
+      "reason": "The customer's date of birth is 1960-06-15 (CUS-271699), but the hit's date of birth, taken from its profile notes, gives the date 1960-04-10: the same year, but the month differs. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-271699.",
       "evidence": [
         "CUS-271699"
       ]
@@ -14755,7 +14866,7 @@
           "CUS-271699"
         ],
         "hit_id": "H-75C90B",
-        "reason": "The customer's date of birth is 1960-06-15 (CUS-271699), but the hit's date of birth, taken from its profile notes, gives only the year 1960. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-271699.",
+        "reason": "The customer's date of birth is 1960-06-15 (CUS-271699), but the hit's date of birth, taken from its profile notes, gives the date 1960-04-10: the same year, but the month differs. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-271699.",
         "reason_code": "DOB_MISMATCH"
       },
       "gates": [
@@ -14807,6 +14918,9 @@
           "facts": {
             "customer_dob": "1960-06-15",
             "dob_source": "CUS-271699",
+            "hit_dobs": [
+              "1960-04-10"
+            ],
             "hit_has_full": true,
             "hit_source": "first_paragraph",
             "hit_years": [
@@ -15471,7 +15585,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-250705",
-      "reason": "The customer's date of birth 1966-11-09 (CUS-250705) agrees with the hit's date of birth, the year 1965 or 1966, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Spain. No gate contradicts them. The customer was found through the alert's account link as CUS-250705.",
+      "reason": "The customer's date of birth 1966-11-09 (CUS-250705) agrees with the hit's date of birth, the year 1965 or 1966, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Spain; no gate contradicts them. The customer was found through the alert's account link as CUS-250705.",
       "evidence": [
         "CUS-250705",
         "SR-AF5264"
@@ -15487,7 +15601,7 @@
           "SR-AF5264"
         ],
         "hit_id": "H-8297D4",
-        "reason": "The customer's date of birth 1966-11-09 (CUS-250705) agrees with the hit's date of birth, the year 1965 or 1966, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Spain. No gate contradicts them. The customer was found through the alert's account link as CUS-250705.",
+        "reason": "The customer's date of birth 1966-11-09 (CUS-250705) agrees with the hit's date of birth, the year 1965 or 1966, taken from its matching web search results. The customer's name agrees with a name or alias of the hit. Both are linked to Spain; no gate contradicts them. The customer was found through the alert's account link as CUS-250705.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -15540,6 +15654,10 @@
           "facts": {
             "customer_dob": "1966-11-09",
             "dob_source": "CUS-250705",
+            "hit_dobs": [
+              "1965",
+              "1966"
+            ],
             "hit_has_full": false,
             "hit_source": "search_result",
             "hit_years": [
@@ -15724,7 +15842,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-791518",
-      "reason": "The customer's date of birth 1995-05-16 (CUS-791518) agrees with the hit's date of birth, the year 1995 or 1996, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil. No gate contradicts them. The customer was found through the alert's login handle as CUS-791518.",
+      "reason": "The customer's date of birth 1995-05-16 (CUS-791518) agrees with the hit's date of birth, the year 1995 or 1996, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil; no gate contradicts them. The customer was found through the alert's login handle as CUS-791518.",
       "evidence": [
         "CUS-791518"
       ]
@@ -15738,7 +15856,7 @@
           "CUS-791518"
         ],
         "hit_id": "H-82C2C4",
-        "reason": "The customer's date of birth 1995-05-16 (CUS-791518) agrees with the hit's date of birth, the year 1995 or 1996, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil. No gate contradicts them. The customer was found through the alert's login handle as CUS-791518.",
+        "reason": "The customer's date of birth 1995-05-16 (CUS-791518) agrees with the hit's date of birth, the year 1995 or 1996, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Brazil; no gate contradicts them. The customer was found through the alert's login handle as CUS-791518.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -15790,6 +15908,10 @@
           "facts": {
             "customer_dob": "1995-05-16",
             "dob_source": "CUS-791518",
+            "hit_dobs": [
+              "1995",
+              "1996"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -16038,6 +16160,9 @@
           "facts": {
             "customer_dob": "1959-03-30",
             "dob_source": "CUS-792358",
+            "hit_dobs": [
+              "1959"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -17276,6 +17401,10 @@
           "facts": {
             "customer_dob": "1990-05-03",
             "dob_source": "CUS-691641",
+            "hit_dobs": [
+              "1960",
+              "1961"
+            ],
             "hit_has_full": false,
             "hit_source": "search_result",
             "hit_years": [
@@ -18031,6 +18160,9 @@
           "facts": {
             "customer_dob": "1985-03-14",
             "dob_source": "CUS-075954",
+            "hit_dobs": [
+              "1952"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -18212,7 +18344,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-304882",
-      "reason": "The customer's date of birth 1980-03-03 (CUS-304882) agrees with the hit's date of birth, the year 1980, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France. No gate contradicts them. The customer was found through the alert's login handle as CUS-304882.",
+      "reason": "The customer's date of birth 1980-03-03 (CUS-304882) agrees with the hit's date of birth, the year 1980, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France; no gate contradicts them. The customer was found through the alert's login handle as CUS-304882.",
       "evidence": [
         "CUS-304882"
       ]
@@ -18226,7 +18358,7 @@
           "CUS-304882"
         ],
         "hit_id": "H-942B6E",
-        "reason": "The customer's date of birth 1980-03-03 (CUS-304882) agrees with the hit's date of birth, the year 1980, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France. No gate contradicts them. The customer was found through the alert's login handle as CUS-304882.",
+        "reason": "The customer's date of birth 1980-03-03 (CUS-304882) agrees with the hit's date of birth, the year 1980, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France; no gate contradicts them. The customer was found through the alert's login handle as CUS-304882.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -18278,6 +18410,9 @@
           "facts": {
             "customer_dob": "1980-03-03",
             "dob_source": "CUS-304882",
+            "hit_dobs": [
+              "1980"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -18531,6 +18666,9 @@
           "facts": {
             "customer_dob": "1958-05-22",
             "dob_source": "NOTE-12D0EE",
+            "hit_dobs": [
+              "1988"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -19211,7 +19349,7 @@
       "decision": "DIFFERENT_ENTITY",
       "reason_code": "DOB_MISMATCH",
       "customer_record_id": "CUS-917648",
-      "reason": "The customer's date of birth is 1978-06-03 (CUS-917648), but the hit's date of birth, taken from its date-of-birth field, gives only the year 1978. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-917648.",
+      "reason": "The customer's date of birth is 1978-06-03 (CUS-917648), but the hit's date of birth, taken from its date-of-birth field, gives the date 1978-11: the same year, but the month differs. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-917648.",
       "evidence": [
         "CUS-917648"
       ]
@@ -19225,7 +19363,7 @@
           "CUS-917648"
         ],
         "hit_id": "H-98289F",
-        "reason": "The customer's date of birth is 1978-06-03 (CUS-917648), but the hit's date of birth, taken from its date-of-birth field, gives only the year 1978. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-917648.",
+        "reason": "The customer's date of birth is 1978-06-03 (CUS-917648), but the hit's date of birth, taken from its date-of-birth field, gives the date 1978-11: the same year, but the month differs. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-917648.",
         "reason_code": "DOB_MISMATCH"
       },
       "gates": [
@@ -19277,6 +19415,9 @@
           "facts": {
             "customer_dob": "1978-06-03",
             "dob_source": "CUS-917648",
+            "hit_dobs": [
+              "1978-11"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -20459,7 +20600,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-618920",
-      "reason": "The customer's date of birth 1992-05-15 (CUS-618920) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland. No gate contradicts them. The customer was found through the alert's email as CUS-618920.",
+      "reason": "The customer's date of birth 1992-05-15 (CUS-618920) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland; no gate contradicts them. The customer was found through the alert's email as CUS-618920.",
       "evidence": [
         "CUS-618920"
       ]
@@ -20473,7 +20614,7 @@
           "CUS-618920"
         ],
         "hit_id": "H-A67DD1",
-        "reason": "The customer's date of birth 1992-05-15 (CUS-618920) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland. No gate contradicts them. The customer was found through the alert's email as CUS-618920.",
+        "reason": "The customer's date of birth 1992-05-15 (CUS-618920) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland; no gate contradicts them. The customer was found through the alert's email as CUS-618920.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -20525,6 +20666,10 @@
           "facts": {
             "customer_dob": "1992-05-15",
             "dob_source": "CUS-618920",
+            "hit_dobs": [
+              "1992",
+              "1993"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -21264,6 +21409,9 @@
           "facts": {
             "customer_dob": "1950-05-14",
             "dob_source": "NOTE-184F9B",
+            "hit_dobs": [
+              "1980"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -21520,6 +21668,9 @@
           "facts": {
             "customer_dob": "1953-08-17",
             "dob_source": "NOTE-412D9F",
+            "hit_dobs": [
+              "1983"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -21785,6 +21936,9 @@
           "facts": {
             "customer_dob": "1990-04-12",
             "dob_source": "CUS-696206",
+            "hit_dobs": [
+              "1950"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -22209,7 +22363,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-230364",
-      "reason": "The customer's date of birth 1981-12-24 (CUS-230364) agrees with the hit's date of birth, the year 1981, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland. No gate contradicts them. The customer was found through the alert's login handle as CUS-230364.",
+      "reason": "The customer's date of birth 1981-12-24 (CUS-230364) agrees with the hit's date of birth, the year 1981, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland; no gate contradicts them. The customer was found through the alert's login handle as CUS-230364.",
       "evidence": [
         "CUS-230364"
       ]
@@ -22223,7 +22377,7 @@
           "CUS-230364"
         ],
         "hit_id": "H-BCB91F",
-        "reason": "The customer's date of birth 1981-12-24 (CUS-230364) agrees with the hit's date of birth, the year 1981, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland. No gate contradicts them. The customer was found through the alert's login handle as CUS-230364.",
+        "reason": "The customer's date of birth 1981-12-24 (CUS-230364) agrees with the hit's date of birth, the year 1981, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland; no gate contradicts them. The customer was found through the alert's login handle as CUS-230364.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -22275,6 +22429,9 @@
           "facts": {
             "customer_dob": "1981-12-24",
             "dob_source": "CUS-230364",
+            "hit_dobs": [
+              "1981"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -22711,7 +22868,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-388928",
-      "reason": "The customer's date of birth 1992-03-27 (CUS-388928) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Bangladesh. No gate contradicts them. The customer was found through the alert's login handle as CUS-388928.",
+      "reason": "The customer's date of birth 1992-03-27 (CUS-388928) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Bangladesh; no gate contradicts them. The customer was found through the alert's login handle as CUS-388928.",
       "evidence": [
         "CUS-388928"
       ]
@@ -22725,7 +22882,7 @@
           "CUS-388928"
         ],
         "hit_id": "H-C20597",
-        "reason": "The customer's date of birth 1992-03-27 (CUS-388928) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Bangladesh. No gate contradicts them. The customer was found through the alert's login handle as CUS-388928.",
+        "reason": "The customer's date of birth 1992-03-27 (CUS-388928) agrees with the hit's date of birth, the year 1992 or 1993, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Bangladesh; no gate contradicts them. The customer was found through the alert's login handle as CUS-388928.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -22777,6 +22934,10 @@
           "facts": {
             "customer_dob": "1992-03-27",
             "dob_source": "CUS-388928",
+            "hit_dobs": [
+              "1992",
+              "1993"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -22988,7 +23149,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-308763",
-      "reason": "The customer's date of birth 1988-04-17 (CUS-308763) agrees with the hit's date of birth, the year 1988 or 1989, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to United States. No gate contradicts them. The customer was found through the alert's account link as CUS-308763.",
+      "reason": "The customer's date of birth 1988-04-17 (CUS-308763) agrees with the hit's date of birth, the year 1988 or 1989, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to United States; no gate contradicts them. The customer was found through the alert's account link as CUS-308763.",
       "evidence": [
         "CUS-308763"
       ]
@@ -23002,7 +23163,7 @@
           "CUS-308763"
         ],
         "hit_id": "H-C5E506",
-        "reason": "The customer's date of birth 1988-04-17 (CUS-308763) agrees with the hit's date of birth, the year 1988 or 1989, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to United States. No gate contradicts them. The customer was found through the alert's account link as CUS-308763.",
+        "reason": "The customer's date of birth 1988-04-17 (CUS-308763) agrees with the hit's date of birth, the year 1988 or 1989, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to United States; no gate contradicts them. The customer was found through the alert's account link as CUS-308763.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -23054,6 +23215,10 @@
           "facts": {
             "customer_dob": "1988-04-17",
             "dob_source": "CUS-308763",
+            "hit_dobs": [
+              "1988",
+              "1989"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -23304,6 +23469,10 @@
           "facts": {
             "customer_dob": "1990-09-22",
             "dob_source": "CUS-566950",
+            "hit_dobs": [
+              "1961",
+              "1962"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -23801,6 +23970,9 @@
           "facts": {
             "customer_dob": "1954-05-18",
             "dob_source": "NOTE-7BE56B",
+            "hit_dobs": [
+              "1984"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -24057,6 +24229,9 @@
           "facts": {
             "customer_dob": "1951-06-15",
             "dob_source": "NOTE-83E147",
+            "hit_dobs": [
+              "1981"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -24256,7 +24431,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-574919",
-      "reason": "The customer's date of birth 1970-05-21 (CUS-574919) agrees with the hit's date of birth, the year 1970, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's account link as CUS-574919.",
+      "reason": "The customer's date of birth 1970-05-21 (CUS-574919) agrees with the hit's date of birth, the year 1970, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's account link as CUS-574919.",
       "evidence": [
         "CUS-574919"
       ]
@@ -24270,7 +24445,7 @@
           "CUS-574919"
         ],
         "hit_id": "H-D58DCD",
-        "reason": "The customer's date of birth 1970-05-21 (CUS-574919) agrees with the hit's date of birth, the year 1970, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's account link as CUS-574919.",
+        "reason": "The customer's date of birth 1970-05-21 (CUS-574919) agrees with the hit's date of birth, the year 1970, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's account link as CUS-574919.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -24323,6 +24498,9 @@
           "facts": {
             "customer_dob": "1970-05-21",
             "dob_source": "CUS-574919",
+            "hit_dobs": [
+              "1970"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -24529,7 +24707,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-311851",
-      "reason": "The customer's date of birth 1982-07-19 (CUS-310602) agrees with the hit's date of birth, the year 1982, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria. No gate contradicts them. The customer was found through the alert's account link as CUS-310602, CUS-311851.",
+      "reason": "The customer's date of birth 1982-07-19 (CUS-310602) agrees with the hit's date of birth, the year 1982, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria; no gate contradicts them. The customer was found through the alert's account link as CUS-310602, CUS-311851.",
       "evidence": [
         "CUS-310602",
         "CUS-311851"
@@ -24545,7 +24723,7 @@
           "CUS-311851"
         ],
         "hit_id": "H-D89308",
-        "reason": "The customer's date of birth 1982-07-19 (CUS-310602) agrees with the hit's date of birth, the year 1982, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria. No gate contradicts them. The customer was found through the alert's account link as CUS-310602, CUS-311851.",
+        "reason": "The customer's date of birth 1982-07-19 (CUS-310602) agrees with the hit's date of birth, the year 1982, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria; no gate contradicts them. The customer was found through the alert's account link as CUS-310602, CUS-311851.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -24598,6 +24776,9 @@
           "facts": {
             "customer_dob": "1982-07-19",
             "dob_source": "CUS-310602",
+            "hit_dobs": [
+              "1982"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -25537,7 +25718,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-992476",
-      "reason": "The customer's date of birth 1973-05-26 (CUS-992476) agrees with the hit's date of birth, the year 1973 or 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found through the alert's account link as CUS-992476.",
+      "reason": "The customer's date of birth 1973-05-26 (CUS-992476) agrees with the hit's date of birth, the year 1973 or 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found through the alert's account link as CUS-992476.",
       "evidence": [
         "CUS-992476"
       ]
@@ -25551,7 +25732,7 @@
           "CUS-992476"
         ],
         "hit_id": "H-DCEB9E",
-        "reason": "The customer's date of birth 1973-05-26 (CUS-992476) agrees with the hit's date of birth, the year 1973 or 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy. No gate contradicts them. The customer was found through the alert's account link as CUS-992476.",
+        "reason": "The customer's date of birth 1973-05-26 (CUS-992476) agrees with the hit's date of birth, the year 1973 or 1974, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Italy; no gate contradicts them. The customer was found through the alert's account link as CUS-992476.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -25603,6 +25784,10 @@
           "facts": {
             "customer_dob": "1973-05-26",
             "dob_source": "CUS-992476",
+            "hit_dobs": [
+              "1973",
+              "1974"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -25849,6 +26034,9 @@
           "facts": {
             "customer_dob": "1959-06-23",
             "dob_source": "NOTE-3349FD",
+            "hit_dobs": [
+              "1989"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -26384,6 +26572,9 @@
           "facts": {
             "customer_dob": "1957-08-21",
             "dob_source": "NOTE-B44817",
+            "hit_dobs": [
+              "1987"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -26877,6 +27068,9 @@
           "facts": {
             "customer_dob": "1966-08-14",
             "dob_source": "CUS-636378",
+            "hit_dobs": [
+              "1966"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -27048,7 +27242,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-567834",
-      "reason": "The customer's date of birth 1975 (CUS-567834) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's email as CUS-567834.",
+      "reason": "The customer's date of birth 1975 (CUS-567834) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's email as CUS-567834.",
       "evidence": [
         "CUS-567834"
       ]
@@ -27062,7 +27256,7 @@
           "CUS-567834"
         ],
         "hit_id": "H-E6077D",
-        "reason": "The customer's date of birth 1975 (CUS-567834) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's email as CUS-567834.",
+        "reason": "The customer's date of birth 1975 (CUS-567834) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's email as CUS-567834.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -27114,6 +27308,9 @@
           "facts": {
             "customer_dob": "1975",
             "dob_source": "CUS-567834",
+            "hit_dobs": [
+              "1975-04-02"
+            ],
             "hit_has_full": true,
             "hit_source": "dobs",
             "hit_years": [
@@ -27595,6 +27792,9 @@
           "facts": {
             "customer_dob": "1956-07-20",
             "dob_source": "NOTE-F4FB5D",
+            "hit_dobs": [
+              "1986"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -27849,7 +28049,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-658796",
-      "reason": "The customer's date of birth 1975-03-22 (KYC-931665) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria. No gate contradicts them. The customer was found through the alert's account link as CUS-537071, CUS-658796, CUS-937945.",
+      "reason": "The customer's date of birth 1975-03-22 (KYC-931665) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria; no gate contradicts them. The customer was found through the alert's account link as CUS-537071, CUS-658796, CUS-937945.",
       "evidence": [
         "CUS-537071",
         "CUS-658796",
@@ -27869,7 +28069,7 @@
           "KYC-931665"
         ],
         "hit_id": "H-EA59FD",
-        "reason": "The customer's date of birth 1975-03-22 (KYC-931665) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria. No gate contradicts them. The customer was found through the alert's account link as CUS-537071, CUS-658796, CUS-937945.",
+        "reason": "The customer's date of birth 1975-03-22 (KYC-931665) agrees with the hit's date of birth, the year 1975, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Nigeria; no gate contradicts them. The customer was found through the alert's account link as CUS-537071, CUS-658796, CUS-937945.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -27923,6 +28123,9 @@
           "facts": {
             "customer_dob": "1975-03-22",
             "dob_source": "KYC-931665",
+            "hit_dobs": [
+              "1975"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -28203,6 +28406,9 @@
           "facts": {
             "customer_dob": "1985-05-20",
             "dob_source": "CUS-735567",
+            "hit_dobs": [
+              "1986"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -28457,6 +28663,9 @@
           "facts": {
             "customer_dob": "1952-07-16",
             "dob_source": "NOTE-339C02",
+            "hit_dobs": [
+              "1982"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -28643,7 +28852,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-500758",
-      "reason": "The customer's date of birth 1960-04-10 (CUS-500758) agrees with the hit's date of birth, the year 1960, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's email as CUS-500758.",
+      "reason": "The customer's date of birth 1960-04-10 (CUS-500758) agrees with the hit's date of birth, the year 1960, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's email as CUS-500758.",
       "evidence": [
         "CUS-500758"
       ]
@@ -28657,7 +28866,7 @@
           "CUS-500758"
         ],
         "hit_id": "H-EFDBFB",
-        "reason": "The customer's date of birth 1960-04-10 (CUS-500758) agrees with the hit's date of birth, the year 1960, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana. No gate contradicts them. The customer was found through the alert's email as CUS-500758.",
+        "reason": "The customer's date of birth 1960-04-10 (CUS-500758) agrees with the hit's date of birth, the year 1960, taken from its profile notes. The customer's name agrees with a name or alias of the hit. Both are linked to Ghana; no gate contradicts them. The customer was found through the alert's email as CUS-500758.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -28709,6 +28918,9 @@
           "facts": {
             "customer_dob": "1960-04-10",
             "dob_source": "CUS-500758",
+            "hit_dobs": [
+              "1960-04-10"
+            ],
             "hit_has_full": true,
             "hit_source": "first_paragraph",
             "hit_years": [
@@ -28956,6 +29168,9 @@
           "facts": {
             "customer_dob": "1994-11-27",
             "dob_source": "CUS-397730",
+            "hit_dobs": [
+              "1960"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -29146,7 +29361,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-083216",
-      "reason": "The customer's date of birth 1964-12-20 (CUS-083216) agrees with the hit's date of birth, the year 1964, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland. No gate contradicts them. The customer was found through the alert's login handle as CUS-083216.",
+      "reason": "The customer's date of birth 1964-12-20 (CUS-083216) agrees with the hit's date of birth, the year 1964, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland; no gate contradicts them. The customer was found through the alert's login handle as CUS-083216.",
       "evidence": [
         "CUS-083216"
       ]
@@ -29160,7 +29375,7 @@
           "CUS-083216"
         ],
         "hit_id": "H-F6DA7A",
-        "reason": "The customer's date of birth 1964-12-20 (CUS-083216) agrees with the hit's date of birth, the year 1964, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland. No gate contradicts them. The customer was found through the alert's login handle as CUS-083216.",
+        "reason": "The customer's date of birth 1964-12-20 (CUS-083216) agrees with the hit's date of birth, the year 1964, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to Poland; no gate contradicts them. The customer was found through the alert's login handle as CUS-083216.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -29212,6 +29427,9 @@
           "facts": {
             "customer_dob": "1964-12-20",
             "dob_source": "CUS-083216",
+            "hit_dobs": [
+              "1964-12-20"
+            ],
             "hit_has_full": true,
             "hit_source": "dobs",
             "hit_years": [
@@ -29736,6 +29954,10 @@
           "facts": {
             "customer_dob": "1999-10-18",
             "dob_source": "CUS-821007",
+            "hit_dobs": [
+              "1940",
+              "1941"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [
@@ -30442,7 +30664,7 @@
       "decision": "SAME_ENTITY",
       "reason_code": "NAME_DOB_LOCATION_MATCH",
       "customer_record_id": "CUS-963253",
-      "reason": "The customer's date of birth 1971-10-08 (NOTE-026348) agrees with the hit's date of birth, the year 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France. No gate contradicts them. The customer was found through the alert's login handle as CUS-963253.",
+      "reason": "The customer's date of birth 1971-10-08 (NOTE-026348) agrees with the hit's date of birth, the year 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France; no gate contradicts them. The customer was found through the alert's login handle as CUS-963253.",
       "evidence": [
         "CUS-963253",
         "NOTE-026348"
@@ -30458,7 +30680,7 @@
           "NOTE-026348"
         ],
         "hit_id": "H-FC94FA",
-        "reason": "The customer's date of birth 1971-10-08 (NOTE-026348) agrees with the hit's date of birth, the year 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France. No gate contradicts them. The customer was found through the alert's login handle as CUS-963253.",
+        "reason": "The customer's date of birth 1971-10-08 (NOTE-026348) agrees with the hit's date of birth, the year 1971, taken from its date-of-birth field. The customer's name agrees with a name or alias of the hit. Both are linked to France; no gate contradicts them. The customer was found through the alert's login handle as CUS-963253.",
         "reason_code": "NAME_DOB_LOCATION_MATCH"
       },
       "gates": [
@@ -30510,6 +30732,9 @@
           "facts": {
             "customer_dob": "1971-10-08",
             "dob_source": "NOTE-026348",
+            "hit_dobs": [
+              "1971"
+            ],
             "hit_has_full": false,
             "hit_source": "dobs",
             "hit_years": [

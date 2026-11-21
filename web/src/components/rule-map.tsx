@@ -2,7 +2,7 @@ import { GROUPS, RULES } from "@/lib/rules";
 import type { CaseFile } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
-export function RuleMap({ item }: { item: CaseFile }) {
+export function RuleMap({ item, active, onPick }: { item: CaseFile; active?: string; onPick?: (id: string) => void }) {
   return (
     <div className="space-y-4">
       <div>
@@ -20,16 +20,20 @@ export function RuleMap({ item }: { item: CaseFile }) {
               const fired = rule.fires(item);
               const decisive = fired && rule.decisive(item);
               return (
-                <li
-                  key={rule.id}
-                  aria-current={decisive ? "true" : undefined}
-                  className={cn(
-                    "rounded-lg border px-2.5 py-1.5",
-                    decisive && "border-rose-800 bg-rose-50",
-                    fired && !decisive && "border-emerald-800/30 bg-accent",
-                    !fired && "border-transparent bg-secondary/60",
-                  )}
-                >
+                <li key={rule.id}>
+                  <button
+                    type="button"
+                    aria-current={decisive ? "true" : undefined}
+                    aria-pressed={active === rule.id}
+                    onClick={() => onPick?.(rule.id)}
+                    className={cn(
+                      "w-full rounded-lg border px-2.5 py-1.5 text-left",
+                      decisive && "border-rose-800 bg-rose-50",
+                      fired && !decisive && "border-emerald-800/30 bg-accent",
+                      !fired && "border-transparent bg-secondary/60",
+                      active === rule.id && "ring-2 ring-ring",
+                    )}
+                  >
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-mono text-[11px] font-medium text-foreground">{rule.name}</span>
                     {decisive ? (
@@ -41,6 +45,7 @@ export function RuleMap({ item }: { item: CaseFile }) {
                     )}
                   </div>
                   <p className={cn("mt-0.5 text-[12px] leading-snug", fired ? "text-foreground" : "text-muted-foreground")}>{rule.text}</p>
+                  </button>
                 </li>
               );
             })}

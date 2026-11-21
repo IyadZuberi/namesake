@@ -84,7 +84,7 @@ export function Overview() {
       <section aria-label="Trust" className="grid gap-4 sm:grid-cols-4">
         {[
           ["Synthetic data", "Every name on this site comes from the Fire Drill set. It carries a SYNTHETIC marker."],
-          ["Deterministic", "Same files, same decisions. The committed dev output sha256 starts 34ebb22e."],
+          ["Deterministic", "Same files, same decisions. The committed dev output sha256 starts f454c71d."],
           ["No keys in the browser", "The site is a static build. It does not call a model and it does not upload a case."],
           ["Rules decide", "The scored engine is Python. A missing fact stays unknown and goes to a person."],
         ].map(([t, d]) => (

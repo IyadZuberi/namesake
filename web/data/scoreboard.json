@@ -15,11 +15,12 @@
   "confusion_note": "Per-class cells for the 50 practice labels are not in this repository, so no practice confusion grid is drawn.",
   "repro": {
     "identical": true,
-    "fingerprint": "34ebb22ed7e7c2a2cb88fc1c3f5f5e2824d6a39fa97c1e73689fd822c8b3cd66",
-    "note": "sha256 recomputed from the committed output/dev.jsonl. Byte-identical reruns were recorded for that file. The engine was not re-run here; the event data is not in this checkout."
+    "fingerprint": "f454c71daa1f8d34b807fe5863771ccb91052b088d897ec8a4bbbfb33d46bbcd",
+    "note": "sha256 recomputed from output/dev.jsonl after merging main 8b3b573. The engine was not re-run on event data; that data is not in this checkout."
   },
   "run_seconds": null,
-  "run_seconds_note": "About 5–7 seconds per dev run, as recorded. Not re-timed here.",
+  "run_seconds_note": "About 6 seconds per dev run, as recorded in system/README.md. Not re-timed here.",
+  "unit_tests": 154,
   "baseline_name_only": 17.6,
   "baseline_note": "Name-only baseline on the practice labels. Not recomputed in this checkout.",
   "dev_decisions": {
@@ -37,7 +38,7 @@
     "different": 48,
     "review": 44,
     "same": 30,
-    "sha256": "5e791f4f281ca3af52786197d667432ecd1ec2e426533406c0a0756f4e705294",
+    "sha256": "8ba50c0ac59ba3b708139afcae95d9e88733db87a093558dbb8a0e5fe28830e8",
     "identical_across_seeds": true,
     "run_seconds": [0.089, 0.058],
     "stages_ms": {

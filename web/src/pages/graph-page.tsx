@@ -1,15 +1,21 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { lazy, Suspense, useMemo } from "react";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { evidenceRows } from "@/lib/graph";
 import { useCase } from "@/lib/load";
-import { oneFact } from "@/lib/rules";
-import { KnowledgeGraph } from "@/components/knowledge-graph";
+import { GROUPS, nodesForRule, oneFact, RULES } from "@/lib/rules";
 import { RuleMap } from "@/components/rule-map";
 import { Stamp } from "@/components/stamp";
+
+const KnowledgeGraph = lazy(() => import("@/components/knowledge-graph").then((m) => ({ default: m.KnowledgeGraph })));
 
 export function GraphPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [params, setParams] = useSearchParams();
+  const ruleId = params.get("rule") ?? "";
   const { item, cases, error } = useCase(id);
+  const highlightIds = useMemo(() => nodesForRule(ruleId), [ruleId]);
+  const focusId = highlightIds[0];
   if (error) return <p role="alert">Could not load cases ({error}).</p>;
   if (!item) return <p className="text-sm text-muted-foreground">Loading the Fire Drill cases…</p>;
   const rows = evidenceRows(item);
@@ -38,10 +44,20 @@ export function GraphPage() {
       </header>
       <div className="grid items-start gap-6 lg:grid-cols-[300px_minmax(0,1fr)]">
         <aside className="lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-auto lg:pr-1">
-          <RuleMap item={item} />
+          <RuleMap
+            item={item}
+            active={ruleId}
+            onPick={(rid) => {
+              const next = new URLSearchParams(params);
+              next.set("rule", rid);
+              setParams(next);
+            }}
+          />
         </aside>
         <div className="min-w-0 space-y-4">
-          <KnowledgeGraph key={item.case_id} item={item} />
+          <Suspense fallback={<p className="text-sm text-muted-foreground">Loading the graph…</p>}>
+            <KnowledgeGraph key={item.case_id + ruleId} item={item} highlightIds={highlightIds} focusId={focusId} />
+          </Suspense>
           <section className="rounded-xl border bg-card p-4" aria-label="Reason and evidence">
             <h2 className="text-sm font-semibold">Reason</h2>
             <p className="mt-1 text-sm leading-relaxed">{item.decision.reason}</p>
@@ -68,25 +84,29 @@ export function GraphPage() {
 }
 
 export function RulesPage() {
-  const { item, error } = useCase();
-  if (error) return <p role="alert">Could not load cases ({error}).</p>;
-  if (!item) return <p className="text-sm text-muted-foreground">Loading…</p>;
   return (
-    <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Rules</h1>
-        <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-          The same map as the graph, for {item.case_id}. Clear only on a contradiction. Same person needs a name and a date of birth. Same company needs a name and a country. Anything else is a review.
-        </p>
-        <div className="mt-6 max-w-xl">
-          <RuleMap item={item} />
-        </div>
+    <div className="max-w-3xl">
+      <h1 className="text-3xl font-semibold tracking-tight">Rules</h1>
+      <p className="mt-2 text-sm text-muted-foreground">
+        The whole policy, not one case. A clear happens only on a contradiction. Same person needs a name and a date of birth. Same company needs a name and a country. Anything else stays a review. Open a rule on the worked example to see where it sits in the graph.
+      </p>
+      <div className="mt-6 space-y-5">
+        {GROUPS.map((group) => (
+          <section key={group}>
+            <h2 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{group}</h2>
+            <ul className="mt-2 space-y-1">
+              {RULES.filter((r) => r.group === group).map((rule) => (
+                <li key={rule.id}>
+                  <Link to={"/graph/S-0072?rule=" + encodeURIComponent(rule.id)} className="block rounded-lg border bg-card px-3 py-2 hover:bg-accent">
+                    <span className="font-mono text-[12px] font-medium">{rule.name}</span>
+                    <span className="mt-0.5 block text-sm text-muted-foreground">{rule.text}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
       </div>
-      <aside className="h-fit rounded-xl border bg-card p-4">
-        <Stamp decision={item.decision.decision} />
-        <p className="mt-3 text-sm font-medium">{item.title}</p>
-        <p className="mt-2 font-mono text-[12px] text-muted-foreground">{item.decision.reason_code}</p>
-      </aside>
     </div>
   );
 }

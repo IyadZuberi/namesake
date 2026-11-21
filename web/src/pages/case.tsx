@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { Stamp } from "@/components/stamp";
 import { evidenceRows } from "@/lib/graph";
 import { useCase } from "@/lib/load";
-import { gate, oneFact } from "@/lib/rules";
+import { formatFact, gate, gateMeaning, oneFact } from "@/lib/rules";
 import type { GateName } from "@/lib/types";
 
 const ORDER: GateName[] = ["TYPE", "DECEASED", "LOCATION", "TIME", "DOB", "NAME", "AGREEMENT"];
@@ -49,14 +49,18 @@ export function CasePage() {
             <li key={name} className="rounded-xl border bg-card p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{i + 2} · {name}</p>
               <p className="mt-1 text-sm font-medium capitalize">{(g?.result ?? "unknown").replaceAll("_", " ")}</p>
+              <p className="text-sm text-muted-foreground">{gateMeaning(g?.result)}</p>
               {g?.blocked_by ? <p className="text-sm text-muted-foreground">Blocked: {g.blocked_by}</p> : null}
               <dl className="mt-2 space-y-1">
-                {Object.entries(g?.facts ?? {}).map(([k, v]) => (
-                  <div key={k} className="flex gap-3 text-sm">
-                    <dt className="w-32 shrink-0 text-muted-foreground">{k}</dt>
-                    <dd className="font-mono text-[12px]">{Array.isArray(v) ? v.join(", ") : v == null ? "—" : String(v)}</dd>
-                  </div>
-                ))}
+                {Object.entries(g?.facts ?? {}).map(([k, v]) => {
+                  const fact = formatFact(k, v);
+                  return (
+                    <div key={k} className="flex gap-3 text-sm">
+                      <dt className="w-44 shrink-0 text-muted-foreground">{fact.label}</dt>
+                      <dd className="font-mono text-[12px]">{fact.value}</dd>
+                    </div>
+                  );
+                })}
               </dl>
               {g?.evidence?.length ? <p className="mt-2 font-mono text-[12px] text-muted-foreground">Evidence {g.evidence.join(", ")}</p> : null}
             </li>

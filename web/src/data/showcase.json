@@ -170,6 +170,9 @@
         "facts": {
           "customer_dob": "1985-03-14",
           "dob_source": "CUS-075954",
+          "hit_dobs": [
+            "1952"
+          ],
           "hit_has_full": false,
           "hit_source": "dobs",
           "hit_years": [

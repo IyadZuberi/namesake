@@ -6,7 +6,7 @@ let pending: Promise<CaseFile[]> | null = null;
 
 export function loadCases(): Promise<CaseFile[]> {
   if (!pending) {
-    pending = fetch("/data/cases.json").then((r) => {
+    pending = fetch(`${import.meta.env.BASE_URL}data/cases.json`).then((r) => {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json() as Promise<CaseFile[]>;
     });

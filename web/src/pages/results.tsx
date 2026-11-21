@@ -1,4 +1,7 @@
+import { lazy, Suspense } from "react";
 import { scoreboard } from "@/data/stats";
+
+const MixChart = lazy(() => import("@/components/mix-chart").then((m) => ({ default: m.MixChart })));
 
 const SAID = ["DIFFERENT_ENTITY", "SAME_ENTITY", "REVIEW"] as const;
 
@@ -74,6 +77,16 @@ export function Results() {
       <section className="rounded-xl border bg-card p-5">
         <h2 className="text-lg font-semibold">Dev output, counts only</h2>
         <p className="mt-1 text-sm text-muted-foreground">{scoreboard.dev_decisions_note}</p>
+        <Suspense fallback={<p className="mt-4 text-sm text-muted-foreground">Loading the chart…</p>}>
+          <MixChart
+            data={[
+              { name: "Different", n: scoreboard.dev_decisions.DIFFERENT_ENTITY },
+              { name: "Review", n: scoreboard.dev_decisions.REVIEW },
+              { name: "Same", n: scoreboard.dev_decisions.SAME_ENTITY },
+            ]}
+          />
+        </Suspense>
+        <p className="mt-2 text-[12px] text-muted-foreground">{scoreboard.unit_tests} unit tests pass.</p>
         <dl className="mt-4 grid gap-3 sm:grid-cols-4">
           <Mini k={String(scoreboard.lines)} l="Lines" />
           <Mini k={String(scoreboard.dev_decisions.DIFFERENT_ENTITY)} l="DIFFERENT" />

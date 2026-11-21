@@ -184,3 +184,74 @@ export function oneFact(c: CaseFile): string | null {
   const text = c.trace?.one_fact;
   return text && text.trim() ? text : null;
 }
+
+const FACT_LABEL: Record<string, string> = {
+  customer: "Customer side",
+  hit: "Hit side",
+  no_date: "Death date missing",
+  customer_dob: "Customer date of birth",
+  dob_source: "Record that gave the date",
+  hit_has_full: "Hit gives a full date",
+  hit_source: "Where the hit date came from",
+  hit_years: "Hit birth years",
+  sr_ids: "Search results used",
+  name: "Name agrees",
+  dob: "Date of birth agrees",
+  country: "A country is shared",
+  incorporated: "Incorporated on",
+  report: "Earliest dated report",
+  max_age: "Age at that report",
+  death: "Date of death",
+  screened: "Screened on",
+  verified_source: "Verified name from",
+  hit_names: "Listed names on the hit",
+};
+
+const SOURCE_WORD: Record<string, string> = {
+  dobs: "the date-of-birth field",
+  first_paragraph: "the first paragraph of the profile",
+  search_result: "a matching search result",
+  none: "no source",
+};
+
+export function formatFact(key: string, value: unknown): { label: string; value: string } {
+  const label = FACT_LABEL[key] ?? key.replaceAll("_", " ");
+  if (key === "hit_source" && typeof value === "string") return { label, value: SOURCE_WORD[value] ?? value };
+  if (typeof value === "boolean") return { label, value: value ? "yes" : "no" };
+  if (Array.isArray(value)) return { label, value: value.length ? value.join(", ") : "none" };
+  if (value == null || value === "") return { label, value: "none" };
+  return { label, value: String(value) };
+}
+
+export function gateMeaning(result: string | undefined): string {
+  if (result === "contradiction") return "This check found a contradiction. A contradiction is what can clear the hit.";
+  if (result === "agreement") return "This check found agreement. Agreement alone does not clear a hit.";
+  if (result === "blocked") return "This check would have cleared the hit, but another fact stopped that clear.";
+  if (result === "not_applicable") return "This check does not apply to this hit.";
+  return "This check did not have a fact that agrees or contradicts, so it did not decide the hit.";
+}
+
+export function nodesForRule(id: string): string[] {
+  const map: Record<string, string[]> = {
+    account_ref: ["alert", "account", "customer"],
+    login_handle: ["alert", "customer"],
+    email: ["alert", "customer"],
+    fit_search: ["alert", "customer"],
+    "phone+dob": ["customer"],
+    document: ["customer"],
+    kyc_beats_declared: ["customer"],
+    ENTITY_TYPE_MISMATCH: ["gate-TYPE", "fact-type"],
+    DECEASED: ["gate-DECEASED"],
+    LOCATION_MISMATCH: ["gate-LOCATION", "fact-loc"],
+    LOCATION_BLOCKED: ["gate-LOCATION"],
+    TEMPORAL_IMPOSSIBILITY: ["gate-TIME"],
+    DOB_MISMATCH: ["gate-DOB", "fact-cdob", "fact-hdob"],
+    NAME_MISMATCH_VERIFIED: ["gate-NAME"],
+    NAME_DOB_MATCH: ["gate-AGREEMENT", "decision"],
+    NAME_DOB_LOCATION_MATCH: ["gate-AGREEMENT", "decision"],
+    NAME_LOCATION_MATCH: ["gate-AGREEMENT", "decision"],
+    INSUFFICIENT_DATA: ["decision", "missing"],
+    AMBIGUOUS_CUSTOMER_RECORD: ["decision"],
+  };
+  return map[id] ?? [];
+}

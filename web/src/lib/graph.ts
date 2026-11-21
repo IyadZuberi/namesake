@@ -11,6 +11,7 @@ export interface NodeData extends Record<string, unknown> {
   decisive?: boolean;
   missing?: boolean;
   result?: string;
+  highlighted?: boolean;
   lines: { label: string; value: string }[];
 }
 
