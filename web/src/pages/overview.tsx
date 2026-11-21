@@ -27,32 +27,52 @@ export function Overview() {
             </Button>
           </div>
         </motion.div>
-        <motion.div
+        <motion.figure
           initial={{ opacity: 1, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.08, ease }}
           className="rounded-2xl border bg-card/70 p-4 shadow-[0_24px_80px_-36px_rgba(16,185,129,0.35)] backdrop-blur"
         >
-          <div className="flex items-center justify-between border-b pb-3">
-            <div>
-              <p className="font-mono text-[11px] text-muted-foreground">{item.case_id} · {item.hit.hit_id}</p>
-              <p className="text-sm font-medium">{item.title}</p>
+          <figcaption className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Fig. 1 · {item.case_id} · invented name</figcaption>
+          <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_auto_1.2fr_auto_0.8fr] sm:items-stretch">
+            <div className="rounded-xl border bg-background/60 p-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">Hit</p>
+              <p className="mt-2 text-sm font-medium">{item.title}</p>
+              <p className="mt-1 font-mono text-[11px] text-muted-foreground">{item.hit.hit_id}</p>
             </div>
-            <Stamp decision={item.decision.decision} />
+            <div className="hidden items-center text-muted-foreground sm:flex" aria-hidden="true">→</div>
+            <ul className="space-y-1">
+              {(item.trace?.gates ?? []).map((g) => (
+                <li key={g.gate} className="flex items-center justify-between gap-2 rounded-md border bg-background/40 px-2 py-1">
+                  <span className="font-mono text-[10px]">{g.gate}</span>
+                  <span className="text-[11px] capitalize text-muted-foreground">{g.result.replaceAll("_", " ")}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="hidden items-center text-muted-foreground sm:flex" aria-hidden="true">→</div>
+            <div className="flex flex-col justify-between rounded-xl border bg-background/60 p-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">Outcome</p>
+              <Stamp decision={item.decision.decision} />
+              <p className="mt-2 font-mono text-[11px]">{item.decision.reason_code}</p>
+            </div>
           </div>
-          <p className="mt-3 text-sm leading-relaxed">{item.decision.reason}</p>
-          <ul className="mt-4 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
-            {(item.trace?.gates ?? []).slice(0, 7).map((g) => (
-              <li key={g.gate} className="rounded-md border bg-secondary/50 px-2 py-1.5">
-                <div className="font-mono text-[10px] text-muted-foreground">{g.gate}</div>
-                <div className="text-[12px] font-medium capitalize">{g.result.replaceAll("_", " ")}</div>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-3 text-[12px] text-muted-foreground">
-            Fire Drill case, invented name. The reason is the engine's template, filled from this hit's own trace.
-          </p>
-        </motion.div>
+          <p className="mt-3 text-[12px] text-muted-foreground">The reason is the engine's template, filled from this hit's own trace.</p>
+        </motion.figure>
+      </section>
+
+      <section aria-label="Pipeline" className="grid gap-2 sm:grid-cols-4">
+        {[
+          ["01", "Load", "Alerts, customers, KYC, notes"],
+          ["02", "Resolve", "Account, login, or email"],
+          ["03", "Seven gates", "Side by side. One contradiction wins"],
+          ["04", "Proof", "Reason, evidence ids, graph"],
+        ].map(([n, t, d]) => (
+          <div key={n} className="rounded-xl border bg-card/60 p-3">
+            <p className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground">{n}</p>
+            <p className="mt-1 font-medium">{t}</p>
+            <p className="text-[12px] text-muted-foreground">{d}</p>
+          </div>
+        ))}
       </section>
 
       <section aria-label="Problem">

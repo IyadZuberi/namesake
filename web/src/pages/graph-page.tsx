@@ -24,7 +24,7 @@ export function GraphPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <label htmlFor="case-pick" className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Synthetic case</label>
+          <label htmlFor="case-pick" className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Fig. 2 · Knowledge graph</label>
           <select
             id="case-pick"
             className="mt-1 block h-9 max-w-md rounded-md border bg-card px-2 text-sm"
