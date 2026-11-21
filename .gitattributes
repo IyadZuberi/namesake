@@ -4,3 +4,10 @@ system/run text eol=lf
 *.py text eol=lf
 *.json text eol=lf
 *.jsonl text eol=lf
+
+# GitHub language bar (Linguist): count the Python engine, not the tiny launcher or data files
+system/run linguist-detectable=false
+*.py linguist-detectable=true linguist-language=Python
+demo-data/** linguist-generated=true
+output/** linguist-generated=true
+docs/** linguist-documentation=true
