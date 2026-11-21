@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 23% 97%;
+    --foreground: 160 8% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 160 8% 10%;
+    --primary: 162 76% 18%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 40 16% 93%;
+    --secondary-foreground: 160 8% 14%;
+    --muted: 40 14% 93%;
+    --muted-foreground: 160 5% 32%;
+    --accent: 162 32% 93%;
+    --accent-foreground: 162 76% 16%;
+    --border: 40 12% 86%;
+    --ring: 162 76% 18%;
+    --radius: 0.7rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgba(15, 110, 86, 0.08), transparent 50%),
+      linear-gradient(to bottom, transparent, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .react-flow__edge-path,
+  .react-flow__connection-path {
+    animation: none !important;
+  }
+}
+
+.react-flow__node {
+  font-family: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+.react-flow__attribution {
+  background: transparent !important;
+  font-size: 10px !important;
+}

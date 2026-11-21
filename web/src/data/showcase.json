@@ -1,0 +1,245 @@
+{
+  "case_id": "S-0072",
+  "title": "Born 1985, hit born 1952",
+  "alert": {
+    "alert_id": "A-A170B3",
+    "screened_at": "2026-11-02",
+    "customer": {
+      "name": "Jovana Fennstane",
+      "entity_type": "Individual",
+      "dob": null,
+      "country": null,
+      "city": null
+    },
+    "account_ref": "ACC-1738F7",
+    "login_handle": null,
+    "email": null,
+    "hit_ids": [
+      "H-93BD04"
+    ]
+  },
+  "customer_records": [
+    {
+      "record_id": "CUS-075954",
+      "entity_type": "Individual",
+      "full_name": "Jovana Fennstane",
+      "preferred_name": null,
+      "login_name": null,
+      "dob": "1985-03-14",
+      "nationality": "French",
+      "residence_country": "France",
+      "city": "Lyon",
+      "address": "48 Station Road, Lyon",
+      "email": "jovanafennstane9779@inbox.example",
+      "phone": "+33 555007602",
+      "occupation": "Nurse",
+      "employer": "Northgate Retail",
+      "registration_number": null,
+      "onboarded_at": "2021-02-14",
+      "status": "active",
+      "last_kyc_refresh": "2024-02-08"
+    }
+  ],
+  "accounts": [
+    {
+      "account_id": "ACC-1738F7",
+      "customer_id": "CUS-075954",
+      "login_handle": "user577814",
+      "phone": "+33 555007602",
+      "opened_at": "2024-01-27",
+      "status": "active"
+    }
+  ],
+  "onboarding": [],
+  "kyc_checks": [],
+  "notes": [],
+  "hit": {
+    "hit_id": "H-93BD04",
+    "alert_id": "A-A170B3",
+    "match_score": 100,
+    "entity_type": "Individual",
+    "name": "Fennstane, Jovana",
+    "first_name": null,
+    "middle_name": null,
+    "last_name": null,
+    "best_matching_name": null,
+    "aliases": [],
+    "gender": "Female",
+    "dobs": [
+      "1952"
+    ],
+    "place_of_birth": null,
+    "life_status": "Alive",
+    "deceased_date": null,
+    "nationality": [],
+    "citizenship": [],
+    "countries": [
+      "France"
+    ],
+    "addresses": [
+      "Lyon, France [Business]",
+      "France [Associated]"
+    ],
+    "identifiers": [],
+    "categories": [
+      "PEP"
+    ],
+    "primary_category": "PEP",
+    "subcategories": [
+      "Legislature"
+    ],
+    "position_or_allegation": "Member of a regional council.",
+    "details": {},
+    "relationships": [],
+    "profile_notes": null,
+    "sources": [],
+    "source_urls": [
+      "https://news-28977.example/report/763"
+    ]
+  },
+  "search_results": [],
+  "decision": {
+    "hit_id": "H-93BD04",
+    "alert_id": "A-A170B3",
+    "decision": "DIFFERENT_ENTITY",
+    "reason_code": "DOB_MISMATCH",
+    "customer_record_id": "CUS-075954",
+    "reason": "The customer's date of birth is 1985-03-14 (CUS-075954), but the hit's date of birth, taken from its date-of-birth field, gives only the year 1952. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-075954.",
+    "evidence": [
+      "CUS-075954"
+    ]
+  },
+  "trace": {
+    "decision": {
+      "alert_id": "A-A170B3",
+      "customer_record_id": "CUS-075954",
+      "decision": "DIFFERENT_ENTITY",
+      "evidence": [
+        "CUS-075954"
+      ],
+      "hit_id": "H-93BD04",
+      "reason": "The customer's date of birth is 1985-03-14 (CUS-075954), but the hit's date of birth, taken from its date-of-birth field, gives only the year 1952. No other date of birth known for the customer, and no other source of the hit's birth date, agrees. The customer was found through the alert's account link as CUS-075954.",
+      "reason_code": "DOB_MISMATCH"
+    },
+    "gates": [
+      {
+        "blocked_by": null,
+        "evidence": [],
+        "facts": {
+          "customer": "Individual",
+          "hit": "Individual"
+        },
+        "gate": "TYPE",
+        "result": "agreement"
+      },
+      {
+        "blocked_by": null,
+        "evidence": [],
+        "facts": {
+          "no_date": false
+        },
+        "gate": "DECEASED",
+        "result": "unknown"
+      },
+      {
+        "blocked_by": null,
+        "evidence": [],
+        "facts": {
+          "customer": [
+            "FR"
+          ],
+          "hit": [
+            "FR"
+          ]
+        },
+        "gate": "LOCATION",
+        "result": "agreement"
+      },
+      {
+        "blocked_by": null,
+        "evidence": [],
+        "facts": {},
+        "gate": "TIME",
+        "result": "unknown"
+      },
+      {
+        "blocked_by": null,
+        "evidence": [
+          "CUS-075954"
+        ],
+        "facts": {
+          "customer_dob": "1985-03-14",
+          "dob_source": "CUS-075954",
+          "hit_has_full": false,
+          "hit_source": "dobs",
+          "hit_years": [
+            1952
+          ],
+          "sr_ids": []
+        },
+        "gate": "DOB",
+        "result": "contradiction"
+      },
+      {
+        "blocked_by": null,
+        "evidence": [],
+        "facts": {},
+        "gate": "NAME",
+        "result": "unknown"
+      },
+      {
+        "blocked_by": null,
+        "evidence": [],
+        "facts": {
+          "country": true,
+          "dob": false,
+          "name": true
+        },
+        "gate": "AGREEMENT",
+        "result": "unknown"
+      }
+    ],
+    "hit_facts": {
+      "countries": [
+        "FR"
+      ],
+      "dated_reports": [],
+      "death_date": null,
+      "dob_source": "dobs",
+      "dob_years": [
+        1952
+      ]
+    },
+    "hit_id": "H-93BD04",
+    "linked_via": "account_ref",
+    "one_fact": null,
+    "persons": [
+      {
+        "countries": [
+          {
+            "kind": "residence",
+            "source_id": "CUS-075954",
+            "value": "FR"
+          },
+          {
+            "kind": "nationality",
+            "source_id": "CUS-075954",
+            "value": "FR"
+          }
+        ],
+        "decision": "DIFFERENT_ENTITY",
+        "merged_by": "none",
+        "reason_code": "DOB_MISMATCH",
+        "record_ids": [
+          "CUS-075954"
+        ],
+        "verified": {
+          "dob": null,
+          "how": "none",
+          "name": null,
+          "source_id": null
+        }
+      }
+    ]
+  }
+}
