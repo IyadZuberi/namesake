@@ -1,10 +1,13 @@
 import { MotionConfig } from "framer-motion";
 import { Route, Routes } from "react-router-dom";
 import { Shell } from "@/components/layout";
+import { CasePage } from "@/pages/case";
+import { CasesPage } from "@/pages/cases";
 import { GraphPage, RulesPage } from "@/pages/graph-page";
 import { Overview } from "@/pages/overview";
 import { Results } from "@/pages/results";
-import { CasesPage, HowPage, SecondPage } from "@/pages/soon";
+import { SecondPage } from "@/pages/second";
+import { HowPage } from "@/pages/soon";
 
 export default function App() {
   return (
@@ -14,7 +17,9 @@ export default function App() {
           <Route path="/" element={<Overview />} />
           <Route path="/how" element={<HowPage />} />
           <Route path="/cases" element={<CasesPage />} />
+          <Route path="/cases/:id" element={<CasePage />} />
           <Route path="/graph" element={<GraphPage />} />
+          <Route path="/graph/:id" element={<GraphPage />} />
           <Route path="/rules" element={<RulesPage />} />
           <Route path="/results" element={<Results />} />
           <Route path="/second-opinion" element={<SecondPage />} />

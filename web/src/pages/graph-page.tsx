@@ -1,19 +1,35 @@
-import { showcase as item } from "@/data/showcase";
+import { useNavigate, useParams } from "react-router-dom";
 import { evidenceRows } from "@/lib/graph";
+import { useCase } from "@/lib/load";
 import { oneFact } from "@/lib/rules";
 import { KnowledgeGraph } from "@/components/knowledge-graph";
 import { RuleMap } from "@/components/rule-map";
 import { Stamp } from "@/components/stamp";
 
 export function GraphPage() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { item, cases, error } = useCase(id);
+  if (error) return <p role="alert">Could not load cases ({error}).</p>;
+  if (!item) return <p className="text-sm text-muted-foreground">Loading the Fire Drill cases…</p>;
   const rows = evidenceRows(item);
   const fact = oneFact(item);
   return (
     <div className="space-y-6">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">One synthetic case</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">{item.title}</h1>
+          <label htmlFor="case-pick" className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Synthetic case</label>
+          <select
+            id="case-pick"
+            className="mt-1 block h-9 max-w-md rounded-md border bg-card px-2 text-sm"
+            value={item.case_id}
+            onChange={(e) => navigate("/graph/" + e.target.value)}
+          >
+            {(cases ?? [item]).map((c) => (
+              <option key={c.case_id} value={c.case_id}>{c.case_id} · {c.title}</option>
+            ))}
+          </select>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight">{item.title}</h1>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
             {item.case_id} · invented customer. The graph is this hit's trace: the alert, the customer record, the facts, the seven gates, and the decision. Green edges agree. Red edges contradict. The animated edge is the path that decided it.
           </p>
@@ -25,7 +41,7 @@ export function GraphPage() {
           <RuleMap item={item} />
         </aside>
         <div className="min-w-0 space-y-4">
-          <KnowledgeGraph item={item} />
+          <KnowledgeGraph key={item.case_id} item={item} />
           <section className="rounded-xl border bg-card p-4" aria-label="Reason and evidence">
             <h2 className="text-sm font-semibold">Reason</h2>
             <p className="mt-1 text-sm leading-relaxed">{item.decision.reason}</p>
@@ -52,6 +68,9 @@ export function GraphPage() {
 }
 
 export function RulesPage() {
+  const { item, error } = useCase();
+  if (error) return <p role="alert">Could not load cases ({error}).</p>;
+  if (!item) return <p className="text-sm text-muted-foreground">Loading…</p>;
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
       <div>
