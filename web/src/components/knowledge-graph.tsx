@@ -8,6 +8,7 @@ import {
   type NodeTypes,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
+import { useTheme } from "next-themes";
 import { useEffect, useMemo, useState } from "react";
 import { buildGraph, type NodeData } from "@/lib/graph";
 import { GH, principleForKind } from "@/lib/policy";
@@ -44,6 +45,7 @@ function CardNode({ data }: NodeProps) {
 const nodeTypes: NodeTypes = { card: CardNode };
 
 export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: CaseFile; highlightIds?: string[]; focusId?: string }) {
+  const { resolvedTheme } = useTheme();
   const animate = useMemo(
     () => typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
     [],
@@ -72,6 +74,7 @@ export function KnowledgeGraph({ item, highlightIds = [], focusId }: { item: Cas
       </div>
       <div className="h-[640px] overflow-hidden rounded-xl border bg-card/40" role="group" aria-label={`Entity graph for ${item.case_id}`}>
         <ReactFlow
+          colorMode={resolvedTheme === "light" ? "light" : "dark"}
           nodes={nodes}
           edges={model.edges}
           nodeTypes={nodeTypes}
