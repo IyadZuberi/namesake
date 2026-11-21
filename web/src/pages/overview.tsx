@@ -9,7 +9,8 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export function Overview() {
   return (
     <div className="space-y-16">
-      <section className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <section className="relative grid items-center gap-10 overflow-hidden rounded-3xl border bg-gradient-to-br from-emerald-500/10 via-transparent to-sky-500/10 p-6 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+        <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
         <motion.div initial={{ opacity: 1, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease }}>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-700 dark:text-emerald-300">Sanctions and PEP screening</p>
           <h1 className="mt-3 max-w-xl font-display text-5xl leading-[1.02] tracking-tight text-foreground sm:text-6xl">

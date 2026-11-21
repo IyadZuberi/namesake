@@ -51,12 +51,17 @@ export function CasePanel({ item }: { item: CaseFile }) {
                   <th className="py-1.5 pr-2 text-left font-medium" scope="row">{row.label}</th>
                   <td className="py-1.5 pr-2">{row.customer}</td>
                   <td className="py-1.5 pr-2">{row.hit}</td>
-                  <td className="py-1.5 capitalize">{row.mark}</td>
+                  <td className="py-1.5">
+                    <span className={row.mark === "match" ? "text-emerald-700 dark:text-emerald-300" : row.mark === "conflict" ? "text-rose-700 dark:text-rose-300" : "text-amber-800 dark:text-amber-200"}>
+                      {row.mark}
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <p className="mt-3 text-sm leading-relaxed">{item.decision.reason}</p>
+          <p className="mt-3 text-sm font-medium">{fired.length} of {RULES.length} rules fired, {decided.length} decided.</p>
+          <p className="mt-2 text-sm leading-relaxed">{item.decision.reason}</p>
           <ul className="mt-3 space-y-1">
             {rows.map((r) => (
               <li key={r.id} className="text-sm"><span className="font-mono text-[12px]">{r.id}</span> · {r.kind} · {r.value}</li>
