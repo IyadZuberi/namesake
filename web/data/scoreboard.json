@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-11-21T15:05:00Z",
+  "source": "practice labels (used while building, not held out)",
+  "lines": 819,
+  "problems": 0,
+  "decision_score": 100.0,
+  "unsafe_clearances": 0,
+  "reason_code_pct": 100.0,
+  "customer_record_pct": 100.0,
+  "labelled": "50/50",
+  "review_rate": null,
+  "clearance_precision": null,
+  "same_recall": null,
+  "confusion": null,
+  "confusion_note": "Per-class cells for the 50 practice labels are not in this repository, so no practice confusion grid is drawn.",
+  "repro": {
+    "identical": true,
+    "fingerprint": "f454c71daa1f8d34b807fe5863771ccb91052b088d897ec8a4bbbfb33d46bbcd",
+    "note": "sha256 recomputed from output/dev.jsonl after merging main 8b3b573. The engine was not re-run on event data; that data is not in this checkout."
+  },
+  "run_seconds": null,
+  "run_seconds_note": "About 6 seconds per dev run, as recorded in system/README.md. Not re-timed here.",
+  "unit_tests": 154,
+  "baseline_name_only": 17.6,
+  "baseline_note": "Name-only baseline on the practice labels. Not recomputed in this checkout.",
+  "dev_decisions": {
+    "DIFFERENT_ENTITY": 461,
+    "REVIEW": 236,
+    "SAME_ENTITY": 122
+  },
+  "dev_decisions_note": "Recomputed by counting the decision field in output/dev.jsonl. These 819 hits have no practice label, so the split is not a score.",
+  "firedrill": {
+    "label": "a regression set we wrote, not an independent score",
+    "correct": 122,
+    "total": 122,
+    "unsafe": 0,
+    "cost": 0,
+    "different": 48,
+    "review": 44,
+    "same": 30,
+    "sha256": "8ba50c0ac59ba3b708139afcae95d9e88733db87a093558dbb8a0e5fe28830e8",
+    "identical_across_seeds": true,
+    "run_seconds": [0.089, 0.058],
+    "stages_ms": {
+      "load": 3.59,
+      "resolve": 8.27,
+      "hit_facts": 5.42,
+      "decide": 6.88
+    },
+    "files": { "alerts": 120, "customers": 177, "hits": 122 },
+    "confusion": {
+      "DIFFERENT_ENTITY": { "DIFFERENT_ENTITY": 48, "SAME_ENTITY": 0, "REVIEW": 0 },
+      "SAME_ENTITY": { "DIFFERENT_ENTITY": 0, "SAME_ENTITY": 30, "REVIEW": 0 },
+      "REVIEW": { "DIFFERENT_ENTITY": 0, "SAME_ENTITY": 0, "REVIEW": 44 }
+    },
+    "note": "Recomputed on this machine from demo-data/firedrill. Two runs, PYTHONHASHSEED 1 and 2, byte-identical. Expected answers were written from the policy text and were used while fixing the engine."
+  },
+  "cost": {
+    "clear_real_match": 60,
+    "different_called_other": 3,
+    "same_versus_review": 2
+  }
+}

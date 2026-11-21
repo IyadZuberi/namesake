@@ -1,44 +1,42 @@
-# Namesake web (static, synthetic data only)
+# Namesake web
 
-Plain HTML, CSS and vanilla JS (ES modules). No build step, no npm, no framework, no third-party requests (system fonts only).
+Static product site. React, TypeScript, Vite, Tailwind, shadcn-style components, Framer Motion, React Flow. No server. No API keys. Synthetic Fire Drill data only.
 
 ## Run
 
-From this folder, any static server:
+```
+cd web
+npm install
+npm run dev
+```
 
-    python -m http.server 8080
+Open http://127.0.0.1:5173/. `npm run build` writes `dist/`. `npm run preview` serves that build.
 
-Open http://localhost:8080/. Do not open `index.html` from disk: browsers block `fetch` and ES modules on `file://`.
+## Vercel
 
-Deploy: point Vercel (static, no build command) at `web/`. `vercel.json` adds security headers (CSP allows only `self`).
+Set the project **Root Directory** to `web`.
 
-## Routes (hash routing)
+- Framework: Vite
+- Build command: `npm run build`
+- Output directory: `dist`
+- No environment variables
 
-| Route | Screen |
-|---|---|
-| `#/` | Landing + "Two Mohammed Alis" walk |
-| `#/queue` | Cases by risk, counts, filters |
-| `#/case/ID[/tab]` | Case file: `verdict`, `customer`, `why`, `evidence`, `change`, `replay` |
-| `#/second-opinion` | Compare a decisions JSONL with our decisions (in browser) |
-| `#/scoreboard` | Aggregates from `data/scoreboard.json`, else "not yet measured" |
-| `#/lab` | Simplified in-browser demo of the rules (the real engine is Python) |
-| `#/log` | Pipeline steps and owners |
+`vercel.json` rewrites SPA routes to `index.html` and sets a CSP. `style-src` allows inline styles because React Flow and Framer Motion set style attributes. Scripts stay on `'self'`.
 
 ## Data
 
-- `data/cases.json` (optional): engine/`tools/bundle.py` output, same shape as `docs/contracts.md` section 2. Used if present.
-- `data/sample-cases.json`: hand-authored SYNTHETIC cases (invented names, `.example` emails). Fallback.
-- `data/scoreboard.json` (optional): aggregates only (contracts section 5).
+- `data/cases.json` and `public/data/cases.json` — 122 Fire Drill cases from `tools/bundle.py` (engine traces). Gate facts stay the engine's dicts. `one_fact` is copied from the engine reason when that reason already says what would settle it, and left empty otherwise.
+- `data/scoreboard.json` and `public/data/scoreboard.json` — aggregates only.
+- `src/data/showcase.json` — case `S-0072` sliced from that bundle. The screen shows this one case; the other 121 are in the bundle.
+- `web/data/sample-cases.json` — the hand-written contract sample. `python selfcheck.py` still checks it.
 
-Never put event data in this folder.
+Do not put event data in this folder.
 
-## Check
+## Credits
 
-    python selfcheck.py
-
-Validates `data/sample-cases.json` (or a path you pass) against the contract and policy reason codes.
-
-## Notes
-
-- The Replay hash is SHA-256 over canonical JSON of the displayed decision, computed in the browser (`crypto.subtle`: needs https or localhost). Not a live replay.
-- Approve/Override notes live in `localStorage` only.
+- [shadcn/ui](https://ui.shadcn.com) (MIT) — button, card, and badge patterns
+- [React Flow](https://reactflow.dev) / `@xyflow/react` (MIT) — the knowledge graph
+- [Framer Motion](https://www.framer.com/motion/) (MIT) — page motion, ease-out, reduced motion
+- [Geist](https://vercel.com/font) (SIL Open Font License) via Fontsource
+- [JetBrains Mono](https://www.jetbrains.com/lp/mono/) (SIL Open Font License) via Fontsource
+- [Tailwind CSS](https://tailwindcss.com) (MIT), [Radix Slot](https://www.radix-ui.com) (MIT), [Lucide](https://lucide.dev) (ISC)

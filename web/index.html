@@ -1,45 +1,16 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Namesake: show why it's a different person</title>
-  <meta name="description" content="Open rules engine and independent checker for sanctions and PEP screening alerts. Synthetic data only.">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <a class="skip" href="#app">Skip to content</a>
-  <header class="top">
-    <div class="wrap">
-      <a class="brand" href="#/">Namesake<small>engine: Mirror</small></a>
-      <nav aria-label="Main">
-        <ul class="tabs" id="nav">
-          <li><a href="#/" data-r="home">Home</a></li>
-          <li><a href="#/lab" data-r="lab">Lab</a></li>
-          <li><a href="#/queue" data-r="queue">Queue</a></li>
-          <li><a href="#/second-opinion" data-r="second-opinion">Second Opinion</a></li>
-          <li><a href="#/scoreboard" data-r="scoreboard">Scoreboard</a></li>
-          <li><a href="#/log" data-r="log">Run log</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <div class="strip" role="note">
-    <div class="wrap">
-      <span class="badge">Synthetic data</span>
-      <span>Every name, record and quote on this site is invented. Nothing here is a real person or real customer data.</span>
-    </div>
-  </div>
-  <main id="app" tabindex="-1" aria-live="polite">
-    <div class="wrap"><div class="skeleton w60"></div><div class="skeleton w40"></div></div>
-  </main>
-  <footer class="foot">
-    <div class="wrap">
-      <p>Namesake is open source. Rules decide; AI never decides. Everything on this site runs in your browser; nothing is uploaded.</p>
-      <p>The in-browser Lab is a simplified demo of the rules. The real engine is Python.</p>
-    </div>
-  </footer>
-  <noscript><div class="wrap"><p>This site needs JavaScript to render the case files.</p></div></noscript>
-  <script type="module" src="js/main.js"></script>
-</body>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namesake — show why it's a different person</title>
+    <meta
+      name="description"
+      content="Namesake decides whether a sanctions or PEP screening hit is the same person as the customer, and shows the rule and the records that decided it. Synthetic data only."
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

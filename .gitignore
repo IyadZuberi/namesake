@@ -31,6 +31,8 @@ tmp/
 scratch/
 *.log
 web/.next/
+web/dist/
+web/node_modules/
 
 # Any jsonl is event-like data unless explicitly allowed
 *.jsonl
