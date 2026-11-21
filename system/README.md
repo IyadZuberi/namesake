@@ -43,7 +43,7 @@ None. The scored engine makes no model calls. Notes are read with plain pattern 
 - Practice labels: 50 right decisions, 0 unsafe clearances, decision score 100.0, reason code 100%, customer record 100%.
 - All 819 dev hits: 461 DIFFERENT_ENTITY, 122 SAME_ENTITY, 236 REVIEW (counts only; there are no labels for these).
 - Fire Drill (our own synthetic trap set, 122 hits, expected answers written separately from the policy text): 122 of 122 match, 0 unsafe clearances. This was used to fix two bugs, so it is a regression test, not an independent score.
-- 154 unit tests pass, 4 skipped (`python -m unittest discover -s tests`).
+- 154 unit tests run and pass (`python -m unittest discover -s tests`).
 The score on the unseen set is **not measured**.
 
 ## Three worked cases (synthetic Fire Drill cases, same code path as real data)
@@ -59,5 +59,5 @@ The score on the unseen set is **not measured**.
 - The unseen-set score is unknown. The location rule carries much of the saving, and it depends on finding the customer's countries in notes; reworded notes that hide a country are the main risk of a wrong clear.
 - Company name clears are not implemented (names like "Munchen" and "Munich" would mismatch); companies clear on type, location or time only.
 - Two dev SAME decisions rest on an age found in a search-result snippet; they are the least certain.
-- Name matching: parts written together or apart match exactly, with no spelling tolerance when confirming. When deciding whether a name blocks a clear the matching is deliberately more generous, because a doubtful reading must never lead to a clear.
+- Name matching: single parts get the policy's edit tolerance, but parts written together or apart (Abdulsalam / Abdul Salam) must match letter for letter when confirming. When deciding whether a name blocks a clear the matching is deliberately more generous, because a doubtful reading must never lead to a clear.
 - Some hits are not scored because the answer is not in the files; they are answered anyway.
