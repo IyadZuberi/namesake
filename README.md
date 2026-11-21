@@ -5,7 +5,9 @@
 Namesake is an open, rules-based engine for watchlist screening. For each screening hit it decides **same person**, **different person** or **needs a human**. It writes a short reason and lists the record IDs it relied on. Python standard library only, no model and no network. Every run gives byte-identical output.
 
 > Built solo at the Grok Bot London Financial Crime Hackathon (21 Nov 2026), Track 2 "Same Person or Not?".
-> Website: coming soon.
+>
+> **Live demo:** https://namesake.vercel.app
+> **Demo video:** to be added.
 
 ---
 
@@ -80,6 +82,12 @@ On Windows, or anywhere without `sh`:
 python system\mirror\main.py demo-data\firedrill out.jsonl
 ```
 
+## For judges
+
+The scored entry point is `system/run <data folder> <output file>`. On Windows, or anywhere without `sh`, use `python system\mirror\main.py <data folder> <output file>`.
+
+Architecture, evidence, determinism, three worked cases and limits are in [`system/README.md`](system/README.md).
+
 ## Verify it yourself
 
 ```bash
@@ -131,6 +139,7 @@ The rules come from the bank's identity SOP (`POLICY.md`, supplied with the even
 | `tools/` | repro, score, final check, leak check, Fire Drill generator, decision comparer, site bundler |
 | `tests/` | unit tests, synthetic values only |
 | `demo-data/firedrill/` | synthetic data with expected answers (invented names) |
+| `web/` | product site (Vite + React, HashRouter). In `web/`, run `npm ci` then `npm run build`. |
 | `docs/` | architecture notes and data contracts |
 | `data/` | git-ignored; put the event data here locally |
 
